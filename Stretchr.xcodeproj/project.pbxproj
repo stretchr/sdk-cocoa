@@ -1,0 +1,511 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		710C52881888539F00EFDC88 /* STConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 710C52861888539F00EFDC88 /* STConstants.h */; };
+		710C52891888539F00EFDC88 /* STConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 710C52871888539F00EFDC88 /* STConstants.m */; };
+		710C528D188857F100EFDC88 /* STRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 710C528B188857F100EFDC88 /* STRequest.h */; };
+		710C528E188857F100EFDC88 /* STRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 710C528C188857F100EFDC88 /* STRequest.m */; };
+		710C52901888582200EFDC88 /* STRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 710C528F1888582200EFDC88 /* STRequestTest.m */; };
+		710C529418885B6700EFDC88 /* STResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 710C529218885B6700EFDC88 /* STResponse.h */; };
+		710C529518885B6700EFDC88 /* STResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 710C529318885B6700EFDC88 /* STResponse.m */; };
+		710C529818885C4E00EFDC88 /* STWebTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = 710C529618885C4E00EFDC88 /* STWebTransport.h */; };
+		710C529918885C4E00EFDC88 /* STWebTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 710C529718885C4E00EFDC88 /* STWebTransport.m */; };
+		7161182E18884E66004DD5AB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7161182D18884E66004DD5AB /* Cocoa.framework */; };
+		7161183818884E66004DD5AB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7161183618884E66004DD5AB /* InfoPlist.strings */; };
+		7161183C18884E66004DD5AB /* Stretchr.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161183B18884E66004DD5AB /* Stretchr.m */; };
+		7161184318884E66004DD5AB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7161184218884E66004DD5AB /* XCTest.framework */; };
+		7161184418884E66004DD5AB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7161182D18884E66004DD5AB /* Cocoa.framework */; };
+		7161184718884E66004DD5AB /* Stretchr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7161182A18884E66004DD5AB /* Stretchr.framework */; };
+		7161184D18884E66004DD5AB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7161184B18884E66004DD5AB /* InfoPlist.strings */; };
+		716118591888504B004DD5AB /* STClientTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 716118581888504B004DD5AB /* STClientTest.m */; };
+		7161185C188850F2004DD5AB /* STClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 7161185A188850F2004DD5AB /* STClient.h */; };
+		7161185D188850F2004DD5AB /* STClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161185B188850F2004DD5AB /* STClient.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7161184518884E66004DD5AB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7161182118884E66004DD5AB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7161182918884E66004DD5AB;
+			remoteInfo = Stretchr;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		710C52861888539F00EFDC88 /* STConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STConstants.h; sourceTree = "<group>"; };
+		710C52871888539F00EFDC88 /* STConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STConstants.m; sourceTree = "<group>"; };
+		710C528B188857F100EFDC88 /* STRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRequest.h; sourceTree = "<group>"; };
+		710C528C188857F100EFDC88 /* STRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRequest.m; sourceTree = "<group>"; };
+		710C528F1888582200EFDC88 /* STRequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRequestTest.m; sourceTree = "<group>"; };
+		710C529118885A7600EFDC88 /* STTransportProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STTransportProtocol.h; sourceTree = "<group>"; };
+		710C529218885B6700EFDC88 /* STResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STResponse.h; sourceTree = "<group>"; };
+		710C529318885B6700EFDC88 /* STResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STResponse.m; sourceTree = "<group>"; };
+		710C529618885C4E00EFDC88 /* STWebTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STWebTransport.h; sourceTree = "<group>"; };
+		710C529718885C4E00EFDC88 /* STWebTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STWebTransport.m; sourceTree = "<group>"; };
+		7161182A18884E66004DD5AB /* Stretchr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Stretchr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7161182D18884E66004DD5AB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		7161183018884E66004DD5AB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7161183118884E66004DD5AB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		7161183218884E66004DD5AB /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		7161183518884E66004DD5AB /* Stretchr-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Stretchr-Info.plist"; sourceTree = "<group>"; };
+		7161183718884E66004DD5AB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7161183918884E66004DD5AB /* Stretchr-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Stretchr-Prefix.pch"; sourceTree = "<group>"; };
+		7161183A18884E66004DD5AB /* Stretchr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Stretchr.h; sourceTree = "<group>"; };
+		7161183B18884E66004DD5AB /* Stretchr.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Stretchr.m; sourceTree = "<group>"; };
+		7161184118884E66004DD5AB /* StretchrTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StretchrTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7161184218884E66004DD5AB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		7161184A18884E66004DD5AB /* StretchrTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "StretchrTests-Info.plist"; sourceTree = "<group>"; };
+		7161184C18884E66004DD5AB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		716118581888504B004DD5AB /* STClientTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STClientTest.m; sourceTree = "<group>"; };
+		7161185A188850F2004DD5AB /* STClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STClient.h; sourceTree = "<group>"; };
+		7161185B188850F2004DD5AB /* STClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STClient.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7161182618884E66004DD5AB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7161182E18884E66004DD5AB /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7161183E18884E66004DD5AB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7161184718884E66004DD5AB /* Stretchr.framework in Frameworks */,
+				7161184418884E66004DD5AB /* Cocoa.framework in Frameworks */,
+				7161184318884E66004DD5AB /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7161182018884E66004DD5AB = {
+			isa = PBXGroup;
+			children = (
+				7161183318884E66004DD5AB /* Stretchr */,
+				7161184818884E66004DD5AB /* StretchrTests */,
+				7161182C18884E66004DD5AB /* Frameworks */,
+				7161182B18884E66004DD5AB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7161182B18884E66004DD5AB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7161182A18884E66004DD5AB /* Stretchr.framework */,
+				7161184118884E66004DD5AB /* StretchrTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7161182C18884E66004DD5AB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7161182D18884E66004DD5AB /* Cocoa.framework */,
+				7161184218884E66004DD5AB /* XCTest.framework */,
+				7161182F18884E66004DD5AB /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7161182F18884E66004DD5AB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7161183018884E66004DD5AB /* Foundation.framework */,
+				7161183118884E66004DD5AB /* CoreData.framework */,
+				7161183218884E66004DD5AB /* AppKit.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		7161183318884E66004DD5AB /* Stretchr */ = {
+			isa = PBXGroup;
+			children = (
+				710C52861888539F00EFDC88 /* STConstants.h */,
+				710C52871888539F00EFDC88 /* STConstants.m */,
+				7161183A18884E66004DD5AB /* Stretchr.h */,
+				7161183B18884E66004DD5AB /* Stretchr.m */,
+				7161183418884E66004DD5AB /* Supporting Files */,
+				7161185A188850F2004DD5AB /* STClient.h */,
+				7161185B188850F2004DD5AB /* STClient.m */,
+				710C528B188857F100EFDC88 /* STRequest.h */,
+				710C528C188857F100EFDC88 /* STRequest.m */,
+				710C529118885A7600EFDC88 /* STTransportProtocol.h */,
+				710C529218885B6700EFDC88 /* STResponse.h */,
+				710C529318885B6700EFDC88 /* STResponse.m */,
+				710C529618885C4E00EFDC88 /* STWebTransport.h */,
+				710C529718885C4E00EFDC88 /* STWebTransport.m */,
+			);
+			path = Stretchr;
+			sourceTree = "<group>";
+		};
+		7161183418884E66004DD5AB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7161183518884E66004DD5AB /* Stretchr-Info.plist */,
+				7161183618884E66004DD5AB /* InfoPlist.strings */,
+				7161183918884E66004DD5AB /* Stretchr-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7161184818884E66004DD5AB /* StretchrTests */ = {
+			isa = PBXGroup;
+			children = (
+				7161184918884E66004DD5AB /* Supporting Files */,
+				716118581888504B004DD5AB /* STClientTest.m */,
+				710C528F1888582200EFDC88 /* STRequestTest.m */,
+			);
+			path = StretchrTests;
+			sourceTree = "<group>";
+		};
+		7161184918884E66004DD5AB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7161184A18884E66004DD5AB /* StretchrTests-Info.plist */,
+				7161184B18884E66004DD5AB /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		7161182718884E66004DD5AB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				710C529418885B6700EFDC88 /* STResponse.h in Headers */,
+				7161185C188850F2004DD5AB /* STClient.h in Headers */,
+				710C528D188857F100EFDC88 /* STRequest.h in Headers */,
+				710C529818885C4E00EFDC88 /* STWebTransport.h in Headers */,
+				710C52881888539F00EFDC88 /* STConstants.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		7161182918884E66004DD5AB /* Stretchr */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7161185218884E66004DD5AB /* Build configuration list for PBXNativeTarget "Stretchr" */;
+			buildPhases = (
+				7161182518884E66004DD5AB /* Sources */,
+				7161182618884E66004DD5AB /* Frameworks */,
+				7161182718884E66004DD5AB /* Headers */,
+				7161182818884E66004DD5AB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Stretchr;
+			productName = Stretchr;
+			productReference = 7161182A18884E66004DD5AB /* Stretchr.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		7161184018884E66004DD5AB /* StretchrTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7161185518884E66004DD5AB /* Build configuration list for PBXNativeTarget "StretchrTests" */;
+			buildPhases = (
+				7161183D18884E66004DD5AB /* Sources */,
+				7161183E18884E66004DD5AB /* Frameworks */,
+				7161183F18884E66004DD5AB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7161184618884E66004DD5AB /* PBXTargetDependency */,
+			);
+			name = StretchrTests;
+			productName = StretchrTests;
+			productReference = 7161184118884E66004DD5AB /* StretchrTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7161182118884E66004DD5AB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Stretchr, Inc";
+				TargetAttributes = {
+					7161184018884E66004DD5AB = {
+						TestTargetID = 7161182918884E66004DD5AB;
+					};
+				};
+			};
+			buildConfigurationList = 7161182418884E66004DD5AB /* Build configuration list for PBXProject "Stretchr" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7161182018884E66004DD5AB;
+			productRefGroup = 7161182B18884E66004DD5AB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7161182918884E66004DD5AB /* Stretchr */,
+				7161184018884E66004DD5AB /* StretchrTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7161182818884E66004DD5AB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7161183818884E66004DD5AB /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7161183F18884E66004DD5AB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7161184D18884E66004DD5AB /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7161182518884E66004DD5AB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				710C529518885B6700EFDC88 /* STResponse.m in Sources */,
+				7161183C18884E66004DD5AB /* Stretchr.m in Sources */,
+				7161185D188850F2004DD5AB /* STClient.m in Sources */,
+				710C529918885C4E00EFDC88 /* STWebTransport.m in Sources */,
+				710C528E188857F100EFDC88 /* STRequest.m in Sources */,
+				710C52891888539F00EFDC88 /* STConstants.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7161183D18884E66004DD5AB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				710C52901888582200EFDC88 /* STRequestTest.m in Sources */,
+				716118591888504B004DD5AB /* STClientTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7161184618884E66004DD5AB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7161182918884E66004DD5AB /* Stretchr */;
+			targetProxy = 7161184518884E66004DD5AB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7161183618884E66004DD5AB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7161183718884E66004DD5AB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		7161184B18884E66004DD5AB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7161184C18884E66004DD5AB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7161185018884E66004DD5AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		7161185118884E66004DD5AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		7161185318884E66004DD5AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Stretchr/Stretchr-Prefix.pch";
+				INFOPLIST_FILE = "Stretchr/Stretchr-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		7161185418884E66004DD5AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Stretchr/Stretchr-Prefix.pch";
+				INFOPLIST_FILE = "Stretchr/Stretchr-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		7161185618884E66004DD5AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Stretchr.framework/Versions/A/Stretchr";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Stretchr/Stretchr-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "StretchrTests/StretchrTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		7161185718884E66004DD5AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Stretchr.framework/Versions/A/Stretchr";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Stretchr/Stretchr-Prefix.pch";
+				INFOPLIST_FILE = "StretchrTests/StretchrTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7161182418884E66004DD5AB /* Build configuration list for PBXProject "Stretchr" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7161185018884E66004DD5AB /* Debug */,
+				7161185118884E66004DD5AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7161185218884E66004DD5AB /* Build configuration list for PBXNativeTarget "Stretchr" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7161185318884E66004DD5AB /* Debug */,
+				7161185418884E66004DD5AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7161185518884E66004DD5AB /* Build configuration list for PBXNativeTarget "StretchrTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7161185618884E66004DD5AB /* Debug */,
+				7161185718884E66004DD5AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7161182118884E66004DD5AB /* Project object */;
+}

@@ -16,6 +16,8 @@
 		710C529518885B6700EFDC88 /* STResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 710C529318885B6700EFDC88 /* STResponse.m */; };
 		710C529818885C4E00EFDC88 /* STWebTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = 710C529618885C4E00EFDC88 /* STWebTransport.h */; };
 		710C529918885C4E00EFDC88 /* STWebTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 710C529718885C4E00EFDC88 /* STWebTransport.m */; };
+		710C52A118886F2400EFDC88 /* NSString+STExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 710C529F18886F2400EFDC88 /* NSString+STExtensions.h */; };
+		710C52A218886F2400EFDC88 /* NSString+STExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 710C52A018886F2400EFDC88 /* NSString+STExtensions.m */; };
 		7161182E18884E66004DD5AB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7161182D18884E66004DD5AB /* Cocoa.framework */; };
 		7161183818884E66004DD5AB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7161183618884E66004DD5AB /* InfoPlist.strings */; };
 		7161183C18884E66004DD5AB /* Stretchr.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161183B18884E66004DD5AB /* Stretchr.m */; };
@@ -49,6 +51,8 @@
 		710C529318885B6700EFDC88 /* STResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STResponse.m; sourceTree = "<group>"; };
 		710C529618885C4E00EFDC88 /* STWebTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STWebTransport.h; sourceTree = "<group>"; };
 		710C529718885C4E00EFDC88 /* STWebTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STWebTransport.m; sourceTree = "<group>"; };
+		710C529F18886F2400EFDC88 /* NSString+STExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+STExtensions.h"; sourceTree = "<group>"; };
+		710C52A018886F2400EFDC88 /* NSString+STExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+STExtensions.m"; sourceTree = "<group>"; };
 		7161182A18884E66004DD5AB /* Stretchr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Stretchr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7161182D18884E66004DD5AB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		7161183018884E66004DD5AB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -90,6 +94,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		710C529A18886EF800EFDC88 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				710C529F18886F2400EFDC88 /* NSString+STExtensions.h */,
+				710C52A018886F2400EFDC88 /* NSString+STExtensions.m */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		7161182018884E66004DD5AB = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +145,7 @@
 		7161183318884E66004DD5AB /* Stretchr */ = {
 			isa = PBXGroup;
 			children = (
+				710C529A18886EF800EFDC88 /* Extensions */,
 				710C52861888539F00EFDC88 /* STConstants.h */,
 				710C52871888539F00EFDC88 /* STConstants.m */,
 				7161183A18884E66004DD5AB /* Stretchr.h */,
@@ -191,6 +205,7 @@
 				710C528D188857F100EFDC88 /* STRequest.h in Headers */,
 				710C529818885C4E00EFDC88 /* STWebTransport.h in Headers */,
 				710C52881888539F00EFDC88 /* STConstants.h in Headers */,
+				710C52A118886F2400EFDC88 /* NSString+STExtensions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +309,7 @@
 				7161185D188850F2004DD5AB /* STClient.m in Sources */,
 				710C529918885C4E00EFDC88 /* STWebTransport.m in Sources */,
 				710C528E188857F100EFDC88 /* STRequest.m in Sources */,
+				710C52A218886F2400EFDC88 /* NSString+STExtensions.m in Sources */,
 				710C52891888539F00EFDC88 /* STConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

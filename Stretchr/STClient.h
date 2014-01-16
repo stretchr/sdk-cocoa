@@ -17,11 +17,11 @@
 
 - (STRequest*)requestAt:(NSString*)path;
 
-@property(readonly,copy)NSString* project;
-@property(readonly,copy)NSString* APIKey;
+@property(readonly,copy,nonatomic)NSString* project;
+@property(readonly,copy,nonatomic)NSString* APIKey;
 
-@property(readwrite,copy)NSString* host;
-@property(readwrite,copy)NSString* protocol;
-@property(readwrite,strong)id<STTransportProtocol> transport;
+@property(readwrite,copy,nonatomic)NSString* host;
+@property(readwrite,copy,nonatomic)NSString* protocol;
+@property(readwrite,strong,nonatomic)id<STTransportProtocol> transport;
 
 @end

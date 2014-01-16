@@ -11,6 +11,10 @@
 #import "NSString+STExtensions.h"
 
 @implementation STRequest
+{
+  NSMutableDictionary* _parameters;
+  NSMutableDictionary* _filters;
+}
 
 -(id)initWithClient:(STClient *)client path:(NSString*)path
 {
@@ -27,7 +31,7 @@
 
 - (void)setValue:(NSString*)value forParameter:(NSString*)key
 {
-  self.parameters[key] = value;
+  _parameters[key] = value;
 }
 - (void)setValue:(NSString*)value forFilter:(NSString*)key
 {
@@ -35,7 +39,7 @@
   {
     key = [@":" stringByAppendingString:key];
   }
-  self.filters[key] = value;
+  _filters[key] = value;
 }
 
 @end

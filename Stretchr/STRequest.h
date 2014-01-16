@@ -16,8 +16,8 @@
 
 @property(readonly,strong,nonatomic)STClient* client;
 @property(readonly,strong,nonatomic)NSString* path;
-@property(readonly,strong,nonatomic)NSMutableDictionary* parameters; // TODO: figure out how to make this be immutable
-@property(readonly,strong,nonatomic)NSMutableDictionary* filters; // TODO: figure out how to make this be immutable
+@property(readonly,strong,nonatomic)NSDictionary* parameters;
+@property(readonly,strong,nonatomic)NSDictionary* filters;
 
 - (void)setValue:(NSString*)value forParameter:(NSString*)key;
 - (void)setValue:(NSString*)value forFilter:(NSString*)key;

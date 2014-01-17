@@ -32,36 +32,9 @@
   return [result componentsJoinedByString:@"&"];
 }
 
-/*
- @implementation NSDictionary (StretchrQueryComponents)
- - (NSString *)stringFromQueryComponents
- {
- NSMutableArray* result = [NSMutableArray arrayWithCapacity:[self count]];
- NSMutableArray* sortedKeys = [NSMutableArray arrayWithCapacity:[self count]];
- 
- for(NSString* key in self)
- {
- [sortedKeys addObject:key];
- }
- [sortedKeys sortUsingComparator:StretchrStringComparator];
- 
- for(NSString* key in sortedKeys)
- {
- if([[self objectForKey:key] isKindOfClass:[NSString class]])
- {
- [result addObject:[NSString stringWithFormat:@"%@=%@", key, [self objectForKey:key]]];
- }
- else
- {
- [[self objectForKey:key] sortUsingComparator:StretchrStringComparator];
- for(NSString* value in [self objectForKey:key])
- {
- [result addObject:[NSString stringWithFormat:@"%@=%@", key,value]];
- }
- }
- }
- return [result componentsJoinedByString:@"&"];
- }
- @end*/
++ (NSDictionary*)dictionaryFromJSONString:(NSString*)string error:(NSError**)error
+{
+  return [NSJSONSerialization JSONObjectWithData:[string dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:error];
+}
 
 @end

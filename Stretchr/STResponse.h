@@ -10,6 +10,7 @@
 
 @class STResource;
 @class STRequest;
+@class STChangeInfo;
 
 @interface STResponse : NSObject
 
@@ -24,5 +25,6 @@
 
 - (NSDictionary*)bodyDictionaryOrError:(NSError**)error;
 - (STResource*)resourceOrError:(NSError**)error;
+- (STChangeInfo*)changeInfoOrError:(NSError**)error;
 
 @end

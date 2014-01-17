@@ -10,6 +10,7 @@
 #import "NSString+STExtensions.h"
 #import "STResource.h"
 #import "STRequest.h"
+#import "STChangeInfo.h"
 
 @implementation STResponse
 
@@ -43,5 +44,10 @@
   [resource.data addEntriesFromDictionary:[self bodyDictionaryOrError:error]];
   return resource;
 }
+- (STChangeInfo*)changeInfoOrError:(NSError**)error
+{
+  return [[STChangeInfo alloc] initWithChangeDictionary:[self bodyDictionaryOrError:error]];
+}
+
 
 @end

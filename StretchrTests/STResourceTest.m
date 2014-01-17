@@ -9,6 +9,10 @@
 #import <XCTest/XCTest.h>
 #import "STResource.h"
 #import "STClient.h"
+#import "STTestTransport.h"
+#import "STRequest.h"
+#import "STResponse.h"
+#import "NSMutableArray+Queue.h"
 
 @interface STResourceTest : XCTestCase
 
@@ -36,5 +40,30 @@
   XCTAssertEqualObjects(res.path, @"people/1/books");
   XCTAssertEqualObjects(res.client, client);
 }
+
+/*
+- (void)testSaveNewResource
+{
+  STTestTransport* transport = [[STTestTransport alloc] init];
+  STClient* client = [[STClient alloc] initWithProject:@"abc123" APIKey:@"def456"];
+  client.transport = transport;
+  
+  STRequest* request = [[STRequest alloc] initWithClient:client path:@"people"];
+  STResponse* fakeResponse = [[STResponse alloc] initWithRequest:request];
+  fakeResponse.status = 200;
+  fakeResponse.body = @""body": "{\"~changes\":{\"~created\":1,\"~deltas\":[{\"~id\":\"IDINURL\"}]},\"~status\":201}";
+  
+  [transport.responses enqueue:fakeResponse];
+  
+  STResource *resource = [client newResourceWithPath:@"people"];
+  [resource.data setObject:@"Tyler" forKey:@"name"];
+  
+  STResponse* response = [request save];
+  
+  XCTAssertNotNil(response);
+  XCTAssertEqualObjects(resource.data[@"~id"], @"new-id");
+  
+}
+*/
 
 @end

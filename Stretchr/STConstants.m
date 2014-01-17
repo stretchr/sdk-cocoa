@@ -8,6 +8,8 @@
 
 #import "STConstants.h"
 
+const NSString* STID = @"~id";
+
 const struct STDefaultsStruct STDefaults = {
   .Protocol = @"https",
   .HostSuffix = @"stretchr.com",
@@ -20,4 +22,12 @@ const struct STHTTPMethodsStruct STHTTPMethods = {
   .Delete = @"DELETE",
   .Post = @"POST",
   .Patch = @"PATCH"
+};
+
+const struct STChangeInfoConstantsStruct STChangeInfoConstants = {
+  .Changes = @"~changes",
+  .Created = @"~created",
+  .Updated = @"~updated",
+  .Deleted = @"~deleted",
+  .Deltas = @"~deltas"
 };

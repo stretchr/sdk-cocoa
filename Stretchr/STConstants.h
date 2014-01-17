@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+extern const NSString* STID;
+
 extern const struct STDefaultsStruct {
   __unsafe_unretained NSString* Protocol;
   __unsafe_unretained NSString* HostSuffix;
@@ -21,3 +23,11 @@ extern const struct STHTTPMethodsStruct {
   __unsafe_unretained NSString* Delete;
   __unsafe_unretained NSString* Post;
 } STHTTPMethods;
+
+extern const struct STChangeInfoConstantsStruct {
+  __unsafe_unretained NSString* Changes;
+  __unsafe_unretained NSString* Created;
+  __unsafe_unretained NSString* Updated;
+  __unsafe_unretained NSString* Deleted;
+  __unsafe_unretained NSString* Deltas;
+} STChangeInfoConstants;

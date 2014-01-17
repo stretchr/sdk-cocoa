@@ -10,4 +10,5 @@
 
 @interface NSDictionary (STExtensions)
 - (NSString *)stringFromQueryComponents;
++ (NSDictionary*)dictionaryFromJSONString:(NSString*)string error:(NSError**)error;
 @end

@@ -15,6 +15,7 @@
 #import "STTestTransport.h"
 #import "STResponse.h"
 #import "NSMutableArray+Queue.h"
+#import "STConstants.h"
 
 @interface STRequestTest : XCTestCase
 @property(readwrite,strong)STClient* client;
@@ -98,7 +99,7 @@
   XCTAssertEqualObjects(response, fakeResponse);
   XCTAssertTrue([NSString isNilOrEmpty:request.body], @"There should be no body");
   // TODO: use constants for HTTP methods
-  XCTAssertEqualObjects(@"GET", request.HTTPMethod);
+  XCTAssertEqualObjects(STHTTPMethods.Get, request.HTTPMethod);
   
 }
 
@@ -117,7 +118,7 @@
   XCTAssertEqualObjects(response, fakeResponse);
   XCTAssertTrue([NSString isNilOrEmpty:request.body], @"There should be no body");
   // TODO: use constants for HTTP methods
-  XCTAssertEqualObjects(@"DELETE", request.HTTPMethod);
+  XCTAssertEqualObjects(STHTTPMethods.Delete, request.HTTPMethod);
   
 }
 

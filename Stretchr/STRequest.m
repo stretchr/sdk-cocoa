@@ -10,6 +10,7 @@
 #import "STClient.h"
 #import "NSString+STExtensions.h"
 #import "NSDictionary+STExtensions.h"
+#import "STConstants.h"
 
 @implementation STRequest
 {
@@ -54,11 +55,13 @@
 
 - (STResponse*)read
 {
+  self.HTTPMethod = STHTTPMethods.Get;
   return [self.client.transport makeRequest:self];
 }
 
 - (STResponse*)delete
 {
+  self.HTTPMethod = STHTTPMethods.Delete;
   return [self.client.transport makeRequest:self];
 }
 

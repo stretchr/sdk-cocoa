@@ -8,8 +8,16 @@
 
 #import "STConstants.h"
 
-const struct DefaultsStruct STDefaults = {
+const struct STDefaultsStruct STDefaults = {
   .Protocol = @"https",
   .HostSuffix = @"stretchr.com",
   .Version = @"1.1"
+};
+
+const struct STHTTPMethodsStruct STHTTPMethods = {
+  .Get = @"GET",
+  .Put = @"PUT",
+  .Delete = @"DELETE",
+  .Post = @"POST",
+  .Patch = @"PATCH"
 };

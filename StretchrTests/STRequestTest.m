@@ -10,10 +10,16 @@
 
 #import "STClient.h"
 #import "STRequest.h"
+#import "TestObject.h"
+#import "NSString+STExtensions.h"
+#import "STTestTransport.h"
+#import "STResponse.h"
+#import "NSMutableArray+Queue.h"
 
 @interface STRequestTest : XCTestCase
 @property(readwrite,strong)STClient* client;
 @property(readwrite,strong)STRequest* request;
+@property(readwrite,strong)STTestTransport* transport;
 @end
 
 @implementation STRequestTest
@@ -23,6 +29,8 @@
   [super setUp];
   self.client = [[STClient alloc] init];
   self.request = [[STRequest alloc] initWithClient:self.client path:@"people"];
+  self.transport = [[STTestTransport alloc] init];
+  self.client.transport = self.transport;
   
 }
 
@@ -58,12 +66,55 @@
   XCTAssertEqualObjects(@"10", self.request.filters[@":lowerAge"]);
 }
 
+- (void)testRequestURL
+{
+  STClient* client = [[STClient alloc] initWithProject:@"project.company" APIKey:@"ABC123"];
+  STRequest* request = [[STRequest alloc] initWithClient:client path:@"people"];
+  
+  [request setValue:@"age" forParameter:@"order"];
+  [request setValue:@"<=18" forFilter:@":upperAge"];
+  [request setValue:@">10" forFilter:@"lowerAge"];
+  
+  NSString* url = [request URLString];
+  
+  XCTAssertTrue([url beginsWithString:@"https://project.company.stretchr.com/api/v1.1/people"]);
+  XCTAssertTrue([url containsString:@"order=age"]);
+  XCTAssertTrue([url containsString:@"%3AupperAge=%3C%3D18"]);
+  XCTAssertTrue([url containsString:@"%3AlowerAge=%3E10"]);
+}
+
+- (void)testRead
+{
+  STRequest* request = [[STRequest alloc] initWithClient:[self client] path:@"people"];
+  
+  STResponse* fakeResponse = [[STResponse alloc] init];
+  
+  [self.transport.responses enqueue:fakeResponse];
+  
+  STResponse* response = [request read]; 
+    
+  XCTAssertNotNil(response);
+  XCTAssertEqual([self.transport.requests count], (NSUInteger)1);
+  XCTAssertEqualObjects(response, fakeResponse);
+  
+}
+
+
 /*
  
  request.where("age>=18").where("active=true")
  
  A: [request where:@"age" is:">18"];
  B: [request addFilter:@":age=>18"];
+ 
+ [
+ {
+ blah
+ },
+ {
+ dah
+ }
+ ]
  
  
  [request addFilters:@[@"blah",@"blah2"]]

@@ -54,4 +54,13 @@
   XCTAssertEqualObjects(request.path, @"people/tyler");
 }
 
+- (void)testBaseURL
+{
+  STClient* client = [[STClient alloc] initWithProject:@"project.company" APIKey:@"ABC123"];
+  NSString* url = [client baseURLString];
+  XCTAssertEqualObjects(@"https://project.company.stretchr.com/api/v1.1/", url);
+}
+
+
+
 @end

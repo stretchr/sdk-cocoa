@@ -9,6 +9,7 @@
 #import "STRequest.h"
 #import "STClient.h"
 #import "NSString+STExtensions.h"
+#import "NSDictionary+STExtensions.h"
 
 @implementation STRequest
 {
@@ -41,5 +42,20 @@
   }
   _filters[key] = value;
 }
+
+- (NSString*)URLString
+{
+  NSMutableDictionary* dict = [NSMutableDictionary dictionaryWithDictionary:[self parameters]];
+  [dict addEntriesFromDictionary:[self filters]];
+  return [NSString stringWithFormat:@"%@%@?%@",[[self client] baseURLString], [self path], [dict stringFromQueryComponents]];
+}
+
+#pragma mark - Actions
+
+- (STResponse*)read
+{
+  return [self.client.transport makeRequest:self];
+}
+
 
 @end

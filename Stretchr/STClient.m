@@ -33,4 +33,9 @@
   return [[STRequest alloc] initWithClient:self path:path];
 }
 
+- (NSString*)baseURLString
+{
+  return [NSString stringWithFormat:@"%@://%@/api/v%@/",_protocol,_host,STDefaults.Version];
+}
+
 @end

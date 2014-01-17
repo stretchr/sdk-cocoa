@@ -9,23 +9,27 @@
 #import "NSString+STExtensions.h"
 
 @implementation NSString (STExtensions)
+
++ (BOOL)isNilOrEmpty:(NSString*)string
+{
+  return string == nil || [string length] == 0;
+}
+
 - (BOOL)beginsWithString:(NSString*)string
 {
-  NSRange range = [self rangeOfString:string];
-  BOOL beginsWithString = (range.location == 0);
-  return beginsWithString;
+  return [self rangeOfString:string].location == 0;
 }
 
 - (BOOL)containsString:(NSString*)substring
 {
-  NSRange range = [self rangeOfString:substring];
-  BOOL found = (range.location != NSNotFound);
-  return found;
+  return [self rangeOfString:substring].location != NSNotFound;
 }
-+ (BOOL)isNilOrEmpty:(NSString*)string
-{
-  if(string == nil) return YES;
-  if([string length] == 0) return YES;
-  return NO;
+
+
+- (NSString*)stringByEncodingURLFormat
+{  
+  return CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,  (CFStringRef)self,  NULL,  (CFStringRef)@"!*'();:@&=+$,/?%#[]\"",  kCFStringEncodingUTF8));
 }
+
+
 @end

@@ -10,4 +10,10 @@
 
 @interface STResponse : NSObject
 
+@property (assign) NSInteger status;
+@property (copy) NSString* body;
+@property (strong) NSArray *errors;
+
+- (BOOL) success;
+
 @end

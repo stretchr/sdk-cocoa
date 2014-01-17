@@ -10,4 +10,8 @@
 
 @implementation STResponse
 
+- (BOOL) success {
+  return self.status >= 100 && self.status < 400;
+}
+
 @end

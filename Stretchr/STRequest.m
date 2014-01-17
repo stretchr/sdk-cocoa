@@ -57,5 +57,9 @@
   return [self.client.transport makeRequest:self];
 }
 
+- (STResponse*)delete
+{
+  return [self.client.transport makeRequest:self];
+}
 
 @end

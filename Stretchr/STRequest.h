@@ -15,11 +15,12 @@
 
 - (id)initWithClient:(STClient*)client path:(NSString*)path;
 
-@property(readonly,strong,nonatomic)STClient* client;
-@property(readonly,copy,nonatomic)NSString* path;
-@property(readonly,strong,nonatomic)NSDictionary* parameters;
-@property(readonly,strong,nonatomic)NSDictionary* filters;
-@property(readonly,copy,nonatomic)NSString* body;
+@property (readonly,strong,nonatomic) STClient* client;
+@property (readonly,copy,nonatomic) NSString* path;
+@property (readonly,strong,nonatomic) NSDictionary* parameters;
+@property (readonly,strong,nonatomic) NSDictionary* filters;
+@property (readonly,copy,nonatomic) NSString* body;
+@property (readwrite,copy) NSString *HTTPMethod;
 
 - (void)setValue:(NSString*)value forParameter:(NSString*)key;
 - (void)setValue:(NSString*)value forFilter:(NSString*)key;
@@ -29,5 +30,6 @@
 #pragma mark - Actions
 
 - (STResponse*)read;
+- (STResponse*)delete;
 
 @end

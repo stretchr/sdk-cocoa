@@ -15,12 +15,12 @@
 
 - (id)initWithProject:(NSString*)project APIKey:(NSString*)APIKey;
 
-@property(readonly,copy,nonatomic)NSString* project;
-@property(readonly,copy,nonatomic)NSString* APIKey;
+@property (readonly,copy,nonatomic) NSString* project;
+@property (readonly,copy,nonatomic) NSString* APIKey;
 
-@property(readwrite,copy,nonatomic)NSString* host;
-@property(readwrite,copy,nonatomic)NSString* protocol;
-@property(readwrite,strong,nonatomic)id<STTransportProtocol> transport;
+@property (readwrite,copy,nonatomic) NSString* host;
+@property (readwrite,copy,nonatomic) NSString* protocol;
+@property (readwrite,strong,nonatomic) id<STTransportProtocol> transport;
 
 - (STRequest*)requestAt:(NSString*)path;
 - (NSString*)baseURLString;

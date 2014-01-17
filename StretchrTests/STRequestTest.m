@@ -91,34 +91,34 @@
   
   [self.transport.responses enqueue:fakeResponse];
   
-  STResponse* response = [request read]; 
-    
+  STResponse* response = [request read];
+  
   XCTAssertNotNil(response);
   XCTAssertEqual([self.transport.requests count], (NSUInteger)1);
   XCTAssertEqualObjects(response, fakeResponse);
+  XCTAssertTrue([NSString isNilOrEmpty:request.body], @"There should be no body");
+  // TODO: use constants for HTTP methods
+  XCTAssertEqualObjects(@"GET", request.HTTPMethod);
   
 }
 
-
-/*
- 
- request.where("age>=18").where("active=true")
- 
- A: [request where:@"age" is:">18"];
- B: [request addFilter:@":age=>18"];
- 
- [
- {
- blah
- },
- {
- dah
- }
- ]
- 
- 
- [request addFilters:@[@"blah",@"blah2"]]
- 
- */
+- (void)testDelete
+{
+  STRequest* request = [[STRequest alloc] initWithClient:[self client] path:@"people"];
+  
+  STResponse* fakeResponse = [[STResponse alloc] init];
+  
+  [self.transport.responses enqueue:fakeResponse];
+  
+  STResponse* response = [request delete];
+  
+  XCTAssertNotNil(response);
+  XCTAssertEqual([self.transport.requests count], (NSUInteger)1);
+  XCTAssertEqualObjects(response, fakeResponse);
+  XCTAssertTrue([NSString isNilOrEmpty:request.body], @"There should be no body");
+  // TODO: use constants for HTTP methods
+  XCTAssertEqualObjects(@"DELETE", request.HTTPMethod);
+  
+}
 
 @end

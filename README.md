@@ -1,8 +1,6 @@
-stretchr-cocoa
-==============
+# Stretchr Cocoa SDK for iOS and Mac OS X
 
-Stretchr Cocoa and iOS SDK Source Code
-
+A rewrite is in progress - check back in a few days.
 
 ### Development
 

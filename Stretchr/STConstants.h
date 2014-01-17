@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-extern const NSString* STID;
+extern const NSString* STResourceKeyID;
 
 extern const struct STDefaultsStruct {
   __unsafe_unretained NSString* Protocol;

@@ -51,6 +51,15 @@
   return [NSString stringWithFormat:@"%@%@?%@",[[self client] baseURLString], [self path], [dict stringFromQueryComponents]];
 }
 
+#pragma mark - Data
+
+- (void)setBodyData:(id)data orError:(NSError**)error {
+  // TODO: this @tylerb
+  // It should serialise the object into JSON and set it to the .body
+  // string.
+  _body = @"{\"something\":true}";
+}
+
 #pragma mark - Actions
 
 - (STResponse*)read

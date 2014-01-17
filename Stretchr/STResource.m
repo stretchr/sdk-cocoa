@@ -8,6 +8,10 @@
 
 #import "STResource.h"
 #import "STClient.h"
+#import "STRequest.h"
+#import "STResponse.h"
+#import "STChangeInfo.h"
+#import "STConstants.h"
 
 @implementation STResource
 - (id)initWithClient:(STClient*)client forPath:(NSString*)path
@@ -21,4 +25,59 @@
   
   return self;
 }
+
+#pragma mark - Data
+
+- (BOOL) hasId {
+  return self.data[STResourceKeyID] != nil;
+}
+
+#pragma mark - Actions
+
+- (STResponse *)saveOrError:(NSError**)error {
+  
+  error = nil;
+  STRequest *request;
+  
+  // is this a POST (create) or a PUT (update)?
+  if (![self hasId]) {
+    // create
+    request = [self.client requestAt:self.path];
+    request.HTTPMethod = STHTTPMethods.Post;
+  } else {
+    // update
+    request = [self.client requestAt:[NSString stringWithFormat:@"%@/%@", self.path, self.data[STResourceKeyID]]];
+    request.HTTPMethod = STHTTPMethods.Put;
+  }
+  
+  // set the body
+  [request setBodyData:self.data orError:error];
+  
+  if (error == nil) {
+    
+    // make the request
+    STResponse *response = [self.client.transport makeRequest:request];
+
+    // was it successful?
+    if (response.success) {
+
+      // merge in the change info
+      STChangeInfo *changes = [response changeInfoOrError:error];
+      if (error == nil) {
+        
+        // assume only one delta
+        NSDictionary *thisDelta = [changes.deltas objectAtIndex:0];
+        [self.data addEntriesFromDictionary:thisDelta];
+        
+      }
+      
+    }
+    return response;
+
+  }
+
+  return nil;
+  
+}
+
 @end

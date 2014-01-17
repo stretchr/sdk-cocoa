@@ -8,7 +8,7 @@
 
 #import "STConstants.h"
 
-const NSString* STID = @"~id";
+const NSString* STResourceKeyID = @"~id";
 
 const struct STDefaultsStruct STDefaults = {
   .Protocol = @"https",

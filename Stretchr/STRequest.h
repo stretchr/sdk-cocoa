@@ -27,6 +27,10 @@
 
 - (NSString*)URLString;
 
+#pragma mark - Data
+
+- (void)setBodyData:(id)data orError:(NSError**)error;
+
 #pragma mark - Actions
 
 - (STResponse*)read;

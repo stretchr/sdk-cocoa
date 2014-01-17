@@ -10,6 +10,7 @@
 #import "STConstants.h"
 #import "STRequest.h"
 #import "STWebTransport.h"
+#import "STResource.h"
 
 @implementation STClient
 
@@ -28,14 +29,21 @@
   
 }
 
+- (NSString*)baseURLString
+{
+  return [NSString stringWithFormat:@"%@://%@/api/v%@/",_protocol,_host,STDefaults.Version];
+}
+
+#pragma mark - Stretchr Interaction
+
 - (STRequest*)requestAt:(NSString*)path
 {
   return [[STRequest alloc] initWithClient:self path:path];
 }
 
-- (NSString*)baseURLString
+- (STResource*)newResourceWithPath:(NSString*)path
 {
-  return [NSString stringWithFormat:@"%@://%@/api/v%@/",_protocol,_host,STDefaults.Version];
+  return [[STResource alloc] initWithClient:self forPath:path];
 }
 
 @end

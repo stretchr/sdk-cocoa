@@ -8,12 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
+@class STResource;
+@class STRequest;
+
 @interface STResponse : NSObject
 
+- (id)initWithRequest:(STRequest*)request;
+
+@property(readonly,strong)STRequest* request;
 @property (assign) NSInteger status;
 @property (copy) NSString* body;
 @property (strong) NSArray *errors;
 
 - (BOOL) success;
+
+- (NSDictionary*)bodyDictionaryOrError:(NSError**)error;
+- (STResource*)resourceOrError:(NSError**)error;
 
 @end

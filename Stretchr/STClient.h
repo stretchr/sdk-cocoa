@@ -10,6 +10,7 @@
 #import "STTransportProtocol.h"
 
 @class STRequest;
+@class STResource;
 
 @interface STClient : NSObject
 
@@ -22,7 +23,13 @@
 @property (readwrite,copy,nonatomic) NSString* protocol;
 @property (readwrite,strong,nonatomic) id<STTransportProtocol> transport;
 
-- (STRequest*)requestAt:(NSString*)path;
 - (NSString*)baseURLString;
+
+#pragma mark - Stretchr Interaction
+
+- (STRequest*)requestAt:(NSString*)path;
+- (STResource*)newResourceWithPath:(NSString*)path;
+
+
 
 @end

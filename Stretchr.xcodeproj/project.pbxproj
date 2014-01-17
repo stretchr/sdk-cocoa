@@ -35,6 +35,9 @@
 		716118591888504B004DD5AB /* STClientTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 716118581888504B004DD5AB /* STClientTest.m */; };
 		7161185C188850F2004DD5AB /* STClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 7161185A188850F2004DD5AB /* STClient.h */; };
 		7161185D188850F2004DD5AB /* STClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161185B188850F2004DD5AB /* STClient.m */; };
+		71DFCE57188993E4006604FD /* STResource.h in Headers */ = {isa = PBXBuildFile; fileRef = 71DFCE55188993E4006604FD /* STResource.h */; };
+		71DFCE58188993E4006604FD /* STResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DFCE56188993E4006604FD /* STResource.m */; };
+		71DFCE5A18899559006604FD /* STResourceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DFCE5918899559006604FD /* STResourceTest.m */; };
 		A1D37D0416AB4D059E434F9A /* libPods-StretchrTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C1466D74A4645D891D9FC87 /* libPods-StretchrTests.a */; };
 		F3882DA29E7949E8894D121C /* libPods-Stretchr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 42513373CEF94940B0C6EFA0 /* libPods-Stretchr.a */; };
 /* End PBXBuildFile section */
@@ -92,6 +95,9 @@
 		716118581888504B004DD5AB /* STClientTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STClientTest.m; sourceTree = "<group>"; };
 		7161185A188850F2004DD5AB /* STClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STClient.h; sourceTree = "<group>"; };
 		7161185B188850F2004DD5AB /* STClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STClient.m; sourceTree = "<group>"; };
+		71DFCE55188993E4006604FD /* STResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STResource.h; sourceTree = "<group>"; };
+		71DFCE56188993E4006604FD /* STResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STResource.m; sourceTree = "<group>"; };
+		71DFCE5918899559006604FD /* STResourceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STResourceTest.m; sourceTree = "<group>"; };
 		9E7CF660D7CE4B0EAE490DE5 /* Pods-StretchrTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StretchrTests.xcconfig"; path = "Pods/Pods-StretchrTests.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -218,6 +224,8 @@
 				710C529318885B6700EFDC88 /* STResponse.m */,
 				710C529618885C4E00EFDC88 /* STWebTransport.h */,
 				710C529718885C4E00EFDC88 /* STWebTransport.m */,
+				71DFCE55188993E4006604FD /* STResource.h */,
+				71DFCE56188993E4006604FD /* STResource.m */,
 				7161183418884E66004DD5AB /* Supporting Files */,
 			);
 			path = Stretchr;
@@ -243,6 +251,7 @@
 				716118581888504B004DD5AB /* STClientTest.m */,
 				710C528F1888582200EFDC88 /* STRequestTest.m */,
 				059F189B1888D24C003D823D /* STResponseTest.m */,
+				71DFCE5918899559006604FD /* STResourceTest.m */,
 			);
 			path = StretchrTests;
 			sourceTree = "<group>";
@@ -264,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				710C529418885B6700EFDC88 /* STResponse.h in Headers */,
+				71DFCE57188993E4006604FD /* STResource.h in Headers */,
 				7161185C188850F2004DD5AB /* STClient.h in Headers */,
 				710C528D188857F100EFDC88 /* STRequest.h in Headers */,
 				710C52A81888C15800EFDC88 /* NSDictionary+STExtensions.h in Headers */,
@@ -436,6 +446,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				710C529518885B6700EFDC88 /* STResponse.m in Sources */,
+				71DFCE58188993E4006604FD /* STResource.m in Sources */,
 				7161183C18884E66004DD5AB /* Stretchr.m in Sources */,
 				7161185D188850F2004DD5AB /* STClient.m in Sources */,
 				710C529918885C4E00EFDC88 /* STWebTransport.m in Sources */,
@@ -452,6 +463,7 @@
 			files = (
 				710C52901888582200EFDC88 /* STRequestTest.m in Sources */,
 				059F189C1888D24C003D823D /* STResponseTest.m in Sources */,
+				71DFCE5A18899559006604FD /* STResourceTest.m in Sources */,
 				710C52A51888B4AC00EFDC88 /* TestObject.m in Sources */,
 				716118591888504B004DD5AB /* STClientTest.m in Sources */,
 				710C52B01888C8D200EFDC88 /* STTestTransport.m in Sources */,

@@ -98,7 +98,6 @@
   XCTAssertEqual([self.transport.requests count], (NSUInteger)1);
   XCTAssertEqualObjects(response, fakeResponse);
   XCTAssertTrue([NSString isNilOrEmpty:request.body], @"There should be no body");
-  // TODO: use constants for HTTP methods
   XCTAssertEqualObjects(STHTTPMethods.Get, request.HTTPMethod);
   
 }
@@ -117,7 +116,6 @@
   XCTAssertEqual([self.transport.requests count], (NSUInteger)1);
   XCTAssertEqualObjects(response, fakeResponse);
   XCTAssertTrue([NSString isNilOrEmpty:request.body], @"There should be no body");
-  // TODO: use constants for HTTP methods
   XCTAssertEqualObjects(STHTTPMethods.Delete, request.HTTPMethod);
   
 }

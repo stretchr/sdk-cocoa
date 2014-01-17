@@ -12,6 +12,7 @@
 #import "STRequest.h"
 #import "STConstants.h"
 #import "STWebTransport.h"
+#import "STResource.h"
 
 @interface STClientTest : XCTestCase
 @property(readwrite,strong)STClient* client;
@@ -59,6 +60,14 @@
   STClient* client = [[STClient alloc] initWithProject:@"project.company" APIKey:@"ABC123"];
   NSString* url = [client baseURLString];
   XCTAssertEqualObjects(@"https://project.company.stretchr.com/api/v1.1/", url);
+}
+
+- (void)testResourceWithPath
+{
+  STResource* res = [self.client newResourceWithPath:@"people/tyler/books"];
+  XCTAssertNotNil(res);
+  XCTAssertEqualObjects(res.path, @"people/tyler/books");
+  XCTAssertEqualObjects(res.client, self.client);
 }
 
 

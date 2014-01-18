@@ -8,7 +8,8 @@
 
 #import "STConstants.h"
 
-const NSString* STResourceKeyID = @"~id";
+NSString* const STResourceKeyID = @"~id";
+NSString* const STErrorDomain = @"com.stretchr.error";
 
 const struct STDefaultsStruct STDefaults = {
   .Protocol = @"https",
@@ -30,4 +31,16 @@ const struct STChangeInfoConstantsStruct STChangeInfoConstants = {
   .Updated = @"~updated",
   .Deleted = @"~deleted",
   .Deltas = @"~deltas"
+};
+
+const struct STErrorStringsStruct  STErrorStrings = {
+  .ObjectNotSerializable = @"Attempted to serialize an object to JSON that is not serializable."
+};
+
+
+// 100s - app level errors
+// 200s - transport level errors
+
+const struct STErrorCodesStruct STErrorCodes = {
+  .ObjectNotSerializable = 100
 };

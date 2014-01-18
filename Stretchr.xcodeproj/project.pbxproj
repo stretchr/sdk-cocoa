@@ -25,6 +25,8 @@
 		710C52AC1888C18900EFDC88 /* NSDictionary+STExtensionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 710C52AB1888C18900EFDC88 /* NSDictionary+STExtensionsTest.m */; };
 		710C52B01888C8D200EFDC88 /* STTestTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 710C52AF1888C8D200EFDC88 /* STTestTransport.m */; };
 		710C52B41888C9A600EFDC88 /* NSMutableArray+Queue.m in Sources */ = {isa = PBXBuildFile; fileRef = 710C52B31888C9A600EFDC88 /* NSMutableArray+Queue.m */; };
+		712B3E4F1889F15800D8AD30 /* NSError+STExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 712B3E4D1889F15800D8AD30 /* NSError+STExtensions.h */; };
+		712B3E501889F15800D8AD30 /* NSError+STExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 712B3E4E1889F15800D8AD30 /* NSError+STExtensions.m */; };
 		7161182E18884E66004DD5AB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7161182D18884E66004DD5AB /* Cocoa.framework */; };
 		7161183818884E66004DD5AB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7161183618884E66004DD5AB /* InfoPlist.strings */; };
 		7161183C18884E66004DD5AB /* Stretchr.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161183B18884E66004DD5AB /* Stretchr.m */; };
@@ -81,6 +83,8 @@
 		710C52AF1888C8D200EFDC88 /* STTestTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTestTransport.m; sourceTree = "<group>"; };
 		710C52B21888C9A600EFDC88 /* NSMutableArray+Queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Queue.h"; sourceTree = "<group>"; };
 		710C52B31888C9A600EFDC88 /* NSMutableArray+Queue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Queue.m"; sourceTree = "<group>"; };
+		712B3E4D1889F15800D8AD30 /* NSError+STExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+STExtensions.h"; sourceTree = "<group>"; };
+		712B3E4E1889F15800D8AD30 /* NSError+STExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+STExtensions.m"; sourceTree = "<group>"; };
 		7161182A18884E66004DD5AB /* Stretchr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Stretchr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7161182D18884E66004DD5AB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		7161183018884E66004DD5AB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -138,6 +142,8 @@
 				710C52A018886F2400EFDC88 /* NSString+STExtensions.m */,
 				710C52A61888C15800EFDC88 /* NSDictionary+STExtensions.h */,
 				710C52A71888C15800EFDC88 /* NSDictionary+STExtensions.m */,
+				712B3E4D1889F15800D8AD30 /* NSError+STExtensions.h */,
+				712B3E4E1889F15800D8AD30 /* NSError+STExtensions.m */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -282,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				710C529418885B6700EFDC88 /* STResponse.h in Headers */,
+				712B3E4F1889F15800D8AD30 /* NSError+STExtensions.h in Headers */,
 				71DFCE57188993E4006604FD /* STResource.h in Headers */,
 				7161185C188850F2004DD5AB /* STClient.h in Headers */,
 				710C528D188857F100EFDC88 /* STRequest.h in Headers */,
@@ -456,6 +463,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				710C529518885B6700EFDC88 /* STResponse.m in Sources */,
+				712B3E501889F15800D8AD30 /* NSError+STExtensions.m in Sources */,
 				71DFCE58188993E4006604FD /* STResource.m in Sources */,
 				7161183C18884E66004DD5AB /* Stretchr.m in Sources */,
 				7161185D188850F2004DD5AB /* STClient.m in Sources */,

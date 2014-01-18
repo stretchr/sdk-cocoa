@@ -6,11 +6,14 @@
 //  Copyright (c) 2014 Stretchr, Inc. All rights reserved.
 //
 
+#import <JSONModel/JSONModel.h>
+
 #import "STRequest.h"
 #import "STClient.h"
 #import "NSString+STExtensions.h"
 #import "NSDictionary+STExtensions.h"
 #import "STConstants.h"
+#import "NSError+STExtensions.h"
 
 @implementation STRequest
 {
@@ -54,10 +57,33 @@
 #pragma mark - Data
 
 - (void)setBodyData:(id)data orError:(NSError**)error {
-  // TODO: this @tylerb
-  // It should serialise the object into JSON and set it to the .body
-  // string.
-  _body = @"{\"something\":true}";
+  
+  if (data == nil)
+  {
+    *error = [NSError errorWithDomain:STErrorDomain
+                                 code:STErrorCodes.ObjectNotSerializable
+                          errorString:STErrorStrings.ObjectNotSerializable
+                            errorData:*error];
+  }
+  
+  NSData* body;
+  
+  if ([data isKindOfClass:[NSArray class]] || [data isKindOfClass:[NSDictionary class]])
+  {
+    body = [NSJSONSerialization dataWithJSONObject:data options:0 error:error];
+  }
+  
+  if (error != nil && *error != nil)
+  {
+    *error = [NSError errorWithDomain:STErrorDomain
+                                 code:STErrorCodes.ObjectNotSerializable
+                          errorString:STErrorStrings.ObjectNotSerializable
+                            errorData:*error];
+  }
+  else
+  {
+    _body = [[NSString alloc] initWithData:body encoding:NSUTF8StringEncoding];
+  }
 }
 
 #pragma mark - Actions

@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Stretchr, Inc. All rights reserved.
 //
 
+#import <JSONModel/JSONModel.h>
+
 #import "STResource.h"
 #import "STClient.h"
 #import "STRequest.h"
@@ -30,6 +32,14 @@
 
 - (BOOL) hasId {
   return self.data[STResourceKeyID] != nil;
+}
+
+- (void)setDataFromObject:(id)data
+{
+  if ([data respondsToSelector:@selector(toDictionary)])
+  {
+    _data = [[data toDictionary] mutableCopy];
+  }
 }
 
 #pragma mark - Actions

@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-extern const NSString* STResourceKeyID;
+extern NSString* const STResourceKeyID;
+extern NSString* const STErrorDomain;
 
 extern const struct STDefaultsStruct {
   __unsafe_unretained NSString* Protocol;
@@ -31,3 +32,12 @@ extern const struct STChangeInfoConstantsStruct {
   __unsafe_unretained NSString* Deleted;
   __unsafe_unretained NSString* Deltas;
 } STChangeInfoConstants;
+
+extern const struct STErrorStringsStruct {
+  __unsafe_unretained NSString* ObjectNotSerializable;
+} STErrorStrings;
+
+extern const struct STErrorCodesStruct
+{
+  NSUInteger ObjectNotSerializable;
+} STErrorCodes;

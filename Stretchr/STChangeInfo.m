@@ -11,14 +11,13 @@
 
 
 @implementation STChangeInfo
-- (id)initWithChangeDictionary:(NSDictionary*)response
+- (id)initWithChangeDictionary:(NSDictionary*)changes
 {
   if (!(self = [super init]))
     return nil;
   
-  if (response != nil)
+  if (changes != nil)
   {
-    NSDictionary* changes = [response objectForKey:STChangeInfoConstants.Changes];
     id temp = nil;
     temp = [changes objectForKey:STChangeInfoConstants.Created];
     _created = temp == nil ? 0 : [temp integerValue];

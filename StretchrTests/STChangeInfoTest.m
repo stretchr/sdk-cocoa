@@ -31,16 +31,11 @@
 
 - (void)testInit
 {
-  //{\"~changes\":{\"~created\":1,\"~deltas\":[{\"~id\":\"IDINURL\"}]},\"~status\":201}
   
-  STResponse* response = [[STResponse alloc] initWithRequest:nil];
-  response.body = @"{\"~changes\":{\"~created\":12,\"~updated\":13,\"~deleted\":14,\"~deltas\":[{\"~id\":\"idone\",\"~created\":123},{\"~id\":\"idtwo\"}]},\"~status\":201}";
+  NSDictionary *changesDictionary = @{@"~created": @12, @"~updated": @13, @"~deleted": @14, @"~deltas": @[@{@"~id": @"idone", @"~created": @123},@{@"~id":@"idtwo"}]};
   
-  NSError *error = nil;
-  STChangeInfo *changeInfo = [response changeInfoOrError:&error];
-  
-  XCTAssertNil(error);
-  
+  STChangeInfo *changeInfo = [[STChangeInfo alloc] initWithChangeDictionary:changesDictionary];
+    
   XCTAssertEqual((NSUInteger)12, changeInfo.created);
   XCTAssertEqual((NSUInteger)13, changeInfo.updated);
   XCTAssertEqual((NSUInteger)14, changeInfo.deleted);

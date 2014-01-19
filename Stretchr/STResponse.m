@@ -11,6 +11,7 @@
 #import "STResource.h"
 #import "STRequest.h"
 #import "STChangeInfo.h"
+#import "STConstants.h"
 
 @implementation STResponse
 
@@ -46,7 +47,12 @@
 }
 - (STChangeInfo*)changeInfoOrError:(NSError**)error
 {
-  return [[STChangeInfo alloc] initWithChangeDictionary:[self bodyDictionaryOrError:error]];
+  error = nil;
+  NSDictionary *response =[self bodyDictionaryOrError:error];
+  if (error == nil) {
+    return [[STChangeInfo alloc] initWithChangeDictionary:response[STChangeInfoConstants.Changes]];
+  }
+  return nil;
 }
 
 

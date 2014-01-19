@@ -11,7 +11,7 @@
 #import "STResource.h"
 #import "STRequest.h"
 #import "STClient.h"
-
+#import "STChangeInfo.h"
 
 @interface STResponseTest : XCTestCase
 @property(readwrite,strong)STClient* client;
@@ -65,7 +65,7 @@
 
 }
 
-- (void)testBodyObject
+- (void)testBodyDictionaryOrError
 {
   STResponse* response = [[STResponse alloc] init];
   response.body = @"{\"name\":\"Tyler\",\"age\":29}";
@@ -79,7 +79,7 @@
   XCTAssertEqualObjects(body[@"age"], @29);
 }
 
-- (void)testResourceObject
+- (void)testResourceOrError
 {
   STResponse* response = [[STResponse alloc] initWithRequest:self.request];
   response.body = @"{\"name\":\"Tyler\",\"age\":29}";
@@ -93,6 +93,26 @@
   XCTAssertEqualObjects(resource.path, self.request.path);
   XCTAssertEqualObjects(resource.data[@"name"], @"Tyler");
   XCTAssertEqualObjects(resource.data[@"age"], @29);
+}
+
+- (void)testChangeInfoOrError
+{
+  
+  STResponse* response = [[STResponse alloc] initWithRequest:nil];
+  response.body = @"{\"~changes\":{\"~created\":12,\"~updated\":13,\"~deleted\":14,\"~deltas\":[{\"~id\":\"idone\",\"~created\":123},{\"~id\":\"idtwo\"}]},\"~status\":201}";
+  
+  NSError *error = nil;
+  STChangeInfo *changeInfo = [response changeInfoOrError:&error];
+  
+  XCTAssertNil(error);
+  
+  XCTAssertEqual((NSUInteger)12, changeInfo.created);
+  XCTAssertEqual((NSUInteger)13, changeInfo.updated);
+  XCTAssertEqual((NSUInteger)14, changeInfo.deleted);
+  XCTAssertEqualObjects(@"idone", changeInfo.deltas[0][@"~id"]);
+  XCTAssertEqualObjects(@123, changeInfo.deltas[0][@"~created"]);
+  XCTAssertEqualObjects(@"idtwo", changeInfo.deltas[1][@"~id"]);
+  
 }
 
 @end

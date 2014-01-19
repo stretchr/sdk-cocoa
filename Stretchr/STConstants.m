@@ -25,12 +25,16 @@ const struct STHTTPMethodsStruct STHTTPMethods = {
   .Patch = @"PATCH"
 };
 
-const struct STChangeInfoConstantsStruct STChangeInfoConstants = {
+const struct STResponseConstantsStruct STResponseConstants = {
   .Changes = @"~changes",
   .Created = @"~created",
   .Updated = @"~updated",
   .Deleted = @"~deleted",
-  .Deltas = @"~deltas"
+  .Deltas = @"~deltas",
+  .Data = @"~data",
+  .Count = @"~count",
+  .Total = @"~total",
+  .Items = @"~items"
 };
 
 const struct STErrorStringsStruct  STErrorStrings = {

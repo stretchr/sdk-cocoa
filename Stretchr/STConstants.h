@@ -25,13 +25,17 @@ extern const struct STHTTPMethodsStruct {
   __unsafe_unretained NSString* Post;
 } STHTTPMethods;
 
-extern const struct STChangeInfoConstantsStruct {
+extern const struct STResponseConstantsStruct {
   __unsafe_unretained NSString* Changes;
   __unsafe_unretained NSString* Created;
   __unsafe_unretained NSString* Updated;
   __unsafe_unretained NSString* Deleted;
   __unsafe_unretained NSString* Deltas;
-} STChangeInfoConstants;
+  __unsafe_unretained NSString* Data;
+  __unsafe_unretained NSString* Count;
+  __unsafe_unretained NSString* Total;
+  __unsafe_unretained NSString* Items;
+} STResponseConstants;
 
 extern const struct STErrorStringsStruct {
   __unsafe_unretained NSString* ObjectNotSerializable;

@@ -9,6 +9,7 @@
 #import "STResponse.h"
 #import "NSString+STExtensions.h"
 #import "STResource.h"
+#import "STResourceCollection.h"
 #import "STRequest.h"
 #import "STChangeInfo.h"
 #import "STConstants.h"
@@ -41,19 +42,55 @@
 }
 - (STResource*)resourceOrError:(NSError**)error
 {
+  error = nil;
+  NSDictionary *responseData = [self bodyDictionaryOrError:error];
+  
+  if (error != nil) {
+    return nil;
+  }
+  NSDictionary *data = responseData[STResponseConstants.Data];
+
   STResource* resource = [[STResource alloc] initWithClient:self.request.client forPath:self.request.path];
-  [resource.data addEntriesFromDictionary:[self bodyDictionaryOrError:error]];
+  [resource.data addEntriesFromDictionary:data];
   return resource;
+}
+- (STResourceCollection*)resourceCollectionOrError:(NSError**)error {
+  
+  error = nil;
+  NSDictionary *responseData = [self bodyDictionaryOrError:error];
+  
+  if (error != nil) {
+    return nil;
+  }
+  
+  // get the data
+  NSDictionary *data = responseData[STResponseConstants.Data];
+  STResourceCollection *collection = [[STResourceCollection alloc] initWithCapacity:(NSUInteger)data[STResponseConstants.Count]];
+  
+  // if there is a total - set it
+  if (data[STResponseConstants.Total]) {
+    collection.total = [(NSNumber*)data[STResponseConstants.Total] intValue];
+  }
+  
+  // get the items
+  NSArray *items = (NSArray*)data[STResponseConstants.Items];
+  for (NSInteger i = 0; i < items.count; i++) {
+    NSDictionary *item = [items objectAtIndex:i];
+    STResource* resource = [[STResource alloc] initWithClient:self.request.client forPath:self.request.path];
+    [resource.data addEntriesFromDictionary:item];
+    [collection.resources addObject:resource];
+  }
+  
+  return collection;
 }
 - (STChangeInfo*)changeInfoOrError:(NSError**)error
 {
   error = nil;
   NSDictionary *response =[self bodyDictionaryOrError:error];
   if (error == nil) {
-    return [[STChangeInfo alloc] initWithChangeDictionary:response[STChangeInfoConstants.Changes]];
+    return [[STChangeInfo alloc] initWithChangeDictionary:response[STResponseConstants.Changes]];
   }
   return nil;
 }
-
 
 @end

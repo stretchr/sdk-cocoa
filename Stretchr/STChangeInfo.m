@@ -19,13 +19,13 @@
   if (changes != nil)
   {
     id temp = nil;
-    temp = [changes objectForKey:STChangeInfoConstants.Created];
+    temp = [changes objectForKey:STResponseConstants.Created];
     _created = temp == nil ? 0 : [temp integerValue];
-    temp = [changes objectForKey:STChangeInfoConstants.Updated];
+    temp = [changes objectForKey:STResponseConstants.Updated];
     _updated = temp == nil ? 0 : [temp integerValue];
-    temp = [changes objectForKey:STChangeInfoConstants.Deleted];
+    temp = [changes objectForKey:STResponseConstants.Deleted];
     _deleted = temp == nil ? 0 : [temp integerValue];
-    _deltas = [changes objectForKey:STChangeInfoConstants.Deltas];
+    _deltas = [changes objectForKey:STResponseConstants.Deltas];
   }
   
   return self;

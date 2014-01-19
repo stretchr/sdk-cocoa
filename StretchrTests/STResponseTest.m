@@ -12,6 +12,7 @@
 #import "STRequest.h"
 #import "STClient.h"
 #import "STChangeInfo.h"
+#import "STResourceCollection.h"
 
 @interface STResponseTest : XCTestCase
 @property(readwrite,strong)STClient* client;
@@ -82,7 +83,7 @@
 - (void)testResourceOrError
 {
   STResponse* response = [[STResponse alloc] initWithRequest:self.request];
-  response.body = @"{\"name\":\"Tyler\",\"age\":29}";
+  response.body = @"{\"~data\":{\"name\":\"Tyler\",\"age\":29}}";
   
   NSError *error = nil;
   STResource* resource = [response resourceOrError:&error];
@@ -93,6 +94,36 @@
   XCTAssertEqualObjects(resource.path, self.request.path);
   XCTAssertEqualObjects(resource.data[@"name"], @"Tyler");
   XCTAssertEqualObjects(resource.data[@"age"], @29);
+}
+
+- (void)testResourceCollectionOrError
+{
+  
+  STResponse* response = [[STResponse alloc] initWithRequest:nil];
+  response.body = @"{\"~data\":{\"~count\":4,\"~total\":100,\"~items\":[{\"name\":\"Mat\",\"~id\":\"idzero\"},{\"name\":\"Laurie\",\"~id\":\"idone\"},{\"name\":\"Simon\",\"~id\":\"idtwo\"},{\"name\":\"Chi\",\"~id\":\"idthree\"}]},\"~status\":200}";
+
+  NSError *error = nil;
+  STResourceCollection *collection = [response resourceCollectionOrError:&error];
+  
+  XCTAssertNil(error);
+  XCTAssertNotNil(collection);
+  XCTAssertEqual((NSUInteger)100, collection.total);
+  XCTAssertEqual((NSUInteger)4, [collection.resources count]);
+  
+  STResource *one = [collection.resources objectAtIndex:0];
+  STResource *two = [collection.resources objectAtIndex:1];
+  STResource *three = [collection.resources objectAtIndex:2];
+  STResource *four = [collection.resources objectAtIndex:3];
+  
+  XCTAssertEqualObjects(one.data[@"name"], @"Mat");
+  XCTAssertEqualObjects(one.data[@"~id"], @"idzero");
+  XCTAssertEqualObjects(two.data[@"name"], @"Laurie");
+  XCTAssertEqualObjects(two.data[@"~id"], @"idone");
+  XCTAssertEqualObjects(three.data[@"name"], @"Simon");
+  XCTAssertEqualObjects(three.data[@"~id"], @"idtwo");
+  XCTAssertEqualObjects(four.data[@"name"], @"Chi");
+  XCTAssertEqualObjects(four.data[@"~id"], @"idthree");
+  
 }
 
 - (void)testChangeInfoOrError

@@ -58,32 +58,26 @@
 
 - (void)setBodyData:(id)data orError:(NSError*__autoreleasing *)error {
   
-  if (data == nil)
+  if (data != nil)
   {
-    *error = [NSError errorWithDomain:STErrorDomain
-                                 code:STErrorCodes.ObjectNotSerializable
-                          errorString:STErrorStrings.ObjectNotSerializable
-                            errorData:*error];
+    NSData* body;
+    
+    if ([data isKindOfClass:[NSArray class]] || [data isKindOfClass:[NSDictionary class]])
+    {
+      body = [NSJSONSerialization dataWithJSONObject:data options:0 error:error];
+    }
+    
+    if (error != nil && *error == nil)
+    {
+      _body = [[NSString alloc] initWithData:body encoding:NSUTF8StringEncoding];
+      return;      
+    }
   }
   
-  NSData* body;
-  
-  if ([data isKindOfClass:[NSArray class]] || [data isKindOfClass:[NSDictionary class]])
-  {
-    body = [NSJSONSerialization dataWithJSONObject:data options:0 error:error];
-  }
-  
-  if (error != nil && *error != nil)
-  {
-    *error = [NSError errorWithDomain:STErrorDomain
-                                 code:STErrorCodes.ObjectNotSerializable
-                          errorString:STErrorStrings.ObjectNotSerializable
-                            errorData:*error];
-  }
-  else
-  {
-    _body = [[NSString alloc] initWithData:body encoding:NSUTF8StringEncoding];
-  }
+  *error = [NSError errorWithDomain:STErrorDomain
+                               code:STErrorCodes.ObjectNotSerializable
+                        errorString:STErrorStrings.ObjectNotSerializable
+                          errorData:*error];
 }
 
 #pragma mark - Actions

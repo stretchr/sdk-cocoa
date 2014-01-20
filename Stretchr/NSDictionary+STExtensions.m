@@ -32,7 +32,7 @@
   return [result componentsJoinedByString:@"&"];
 }
 
-+ (NSDictionary*)dictionaryFromJSONString:(NSString*)string error:(NSError**)error
++ (NSDictionary*)dictionaryFromJSONString:(NSString*)string error:(NSError*__autoreleasing *)error
 {
   return [NSJSONSerialization JSONObjectWithData:[string dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:error];
 }

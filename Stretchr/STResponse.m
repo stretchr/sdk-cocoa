@@ -32,7 +32,7 @@
 }
 
 // bodyDictionary returns a nil object if it fails to decode the JSON string
-- (NSDictionary*)bodyDictionaryOrError:(NSError**)error
+- (NSDictionary*)bodyDictionaryOrError:(NSError*__autoreleasing *)error
 {
   if ([NSString isNilOrEmpty:self.body])
     return nil;
@@ -40,7 +40,7 @@
   return [NSJSONSerialization JSONObjectWithData:[self.body dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:error];
     
 }
-- (STResource*)resourceOrError:(NSError**)error
+- (STResource*)resourceOrError:(NSError*__autoreleasing *)error
 {
   error = nil;
   NSDictionary *responseData = [self bodyDictionaryOrError:error];
@@ -54,7 +54,7 @@
   [resource.data addEntriesFromDictionary:data];
   return resource;
 }
-- (STResourceCollection*)resourceCollectionOrError:(NSError**)error {
+- (STResourceCollection*)resourceCollectionOrError:(NSError*__autoreleasing *)error {
   
   error = nil;
   NSDictionary *responseData = [self bodyDictionaryOrError:error];
@@ -83,7 +83,7 @@
   
   return collection;
 }
-- (STChangeInfo*)changeInfoOrError:(NSError**)error
+- (STChangeInfo*)changeInfoOrError:(NSError*__autoreleasing *)error
 {
   error = nil;
   NSDictionary *response =[self bodyDictionaryOrError:error];

@@ -24,9 +24,9 @@
 
 - (BOOL) success;
 
-- (NSDictionary*)bodyDictionaryOrError:(NSError**)error;
-- (STResource*)resourceOrError:(NSError**)error;
-- (STResourceCollection*)resourceCollectionOrError:(NSError**)error;
-- (STChangeInfo*)changeInfoOrError:(NSError**)error;
+- (NSDictionary*)bodyDictionaryOrError:(NSError*__autoreleasing *)error;
+- (STResource*)resourceOrError:(NSError*__autoreleasing *)error;
+- (STResourceCollection*)resourceCollectionOrError:(NSError*__autoreleasing *)error;
+- (STChangeInfo*)changeInfoOrError:(NSError*__autoreleasing *)error;
 
 @end

@@ -13,6 +13,6 @@
 
 @protocol STTransportProtocol <NSObject>
 
-- (STResponse*)makeRequest:(STRequest*)request;
+- (STResponse*)makeRequest:(STRequest*)request orError:(NSError*__autoreleasing *)error;
 
 @end

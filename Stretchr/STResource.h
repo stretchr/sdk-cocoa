@@ -24,6 +24,6 @@
 
 #pragma mark - Actions
 
-- (STResponse *)saveOrError:(NSError**)error;
+- (STResponse *)saveOrError:(NSError*__autoreleasing *)error;
 
 @end

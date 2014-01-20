@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0509D790188C9BCD00CFE982 /* STWebTransportTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0509D78F188C9BCD00CFE982 /* STWebTransportTest.m */; };
 		059F189C1888D24C003D823D /* STResponseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 059F189B1888D24C003D823D /* STResponseTest.m */; };
 		05FBBE6E188C63BB00B53E63 /* STResourceCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 05FBBE6C188C63BB00B53E63 /* STResourceCollection.h */; };
 		05FBBE6F188C63BB00B53E63 /* STResourceCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FBBE6D188C63BB00B53E63 /* STResourceCollection.m */; };
@@ -61,6 +62,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0509D78F188C9BCD00CFE982 /* STWebTransportTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STWebTransportTest.m; sourceTree = "<group>"; };
 		059F189B1888D24C003D823D /* STResponseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STResponseTest.m; sourceTree = "<group>"; };
 		05FBBE6C188C63BB00B53E63 /* STResourceCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STResourceCollection.h; sourceTree = "<group>"; };
 		05FBBE6D188C63BB00B53E63 /* STResourceCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STResourceCollection.m; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 				71DFCE5918899559006604FD /* STResourceTest.m */,
 				71CACC191889AA6F005F107F /* STChangeInfoTest.m */,
 				05FBBE70188C665100B53E63 /* STResourceCollectionTest.m */,
+				0509D78F188C9BCD00CFE982 /* STWebTransportTest.m */,
 			);
 			path = StretchrTests;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				710C52A51888B4AC00EFDC88 /* TestObject.m in Sources */,
 				71CACC1A1889AA6F005F107F /* STChangeInfoTest.m in Sources */,
 				716118591888504B004DD5AB /* STClientTest.m in Sources */,
+				0509D790188C9BCD00CFE982 /* STWebTransportTest.m in Sources */,
 				710C52B01888C8D200EFDC88 /* STTestTransport.m in Sources */,
 				710C52AC1888C18900EFDC88 /* NSDictionary+STExtensionsTest.m in Sources */,
 				710C52B41888C9A600EFDC88 /* NSMutableArray+Queue.m in Sources */,

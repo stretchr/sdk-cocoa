@@ -44,7 +44,7 @@
 
 #pragma mark - Actions
 
-- (STResponse *)saveOrError:(NSError**)error {
+- (STResponse *)saveOrError:(NSError*__autoreleasing *)error {
   
   error = nil;
   STRequest *request;
@@ -66,23 +66,27 @@
   if (error == nil) {
     
     // make the request
-    STResponse *response = [self.client.transport makeRequest:request];
+    STResponse *response = [self.client.transport makeRequest:request orError:error];
 
-    // was it successful?
-    if (response.success) {
+    if (error == nil) {
+    
+      // was it successful?
+      if (response.success) {
 
-      // merge in the change info
-      STChangeInfo *changes = [response changeInfoOrError:error];
-      if (error == nil) {
-        
-        // assume only one delta
-        NSDictionary *thisDelta = [changes.deltas objectAtIndex:0];
-        [self.data addEntriesFromDictionary:thisDelta];
+        // merge in the change info
+        STChangeInfo *changes = [response changeInfoOrError:error];
+        if (error == nil) {
+          
+          // assume only one delta
+          NSDictionary *thisDelta = [changes.deltas objectAtIndex:0];
+          [self.data addEntriesFromDictionary:thisDelta];
+          
+        }
         
       }
+      return response;
       
     }
-    return response;
 
   }
 

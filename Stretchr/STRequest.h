@@ -29,11 +29,11 @@
 
 #pragma mark - Data
 
-- (void)setBodyData:(id)data orError:(NSError**)error;
+- (void)setBodyData:(id)data orError:(NSError*__autoreleasing *)error;
 
 #pragma mark - Actions
 
-- (STResponse*)read;
-- (STResponse*)delete;
+- (STResponse*)readOrError:(NSError*__autoreleasing *)error;
+- (STResponse*)deleteOrError:(NSError*__autoreleasing *)error;
 
 @end

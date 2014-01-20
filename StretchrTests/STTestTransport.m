@@ -24,9 +24,10 @@
   return self;
 }
 
-- (STResponse *)makeRequest:(STRequest *)request
+- (STResponse *)makeRequest:(STRequest *)request orError:(NSError*__autoreleasing *)error
 {
   [self.requests enqueue:request];
+  //error = [self.errors dequeue];   TODO: simulate errors too
   return [self.responses dequeue];
 }
 

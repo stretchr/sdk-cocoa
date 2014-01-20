@@ -10,7 +10,7 @@
 
 @implementation STWebTransport
 
-- (STResponse *)makeRequest:(STRequest *)request
+- (STResponse *)makeRequest:(STRequest *)request orError:(NSError *__autoreleasing *)error
 {
   return nil;
 }

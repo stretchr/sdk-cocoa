@@ -56,7 +56,7 @@
 
 #pragma mark - Data
 
-- (void)setBodyData:(id)data orError:(NSError**)error {
+- (void)setBodyData:(id)data orError:(NSError*__autoreleasing *)error {
   
   if (data == nil)
   {
@@ -88,16 +88,16 @@
 
 #pragma mark - Actions
 
-- (STResponse*)read
+- (STResponse*)readOrError:(NSError*__autoreleasing *)error
 {
   self.HTTPMethod = STHTTPMethods.Get;
-  return [self.client.transport makeRequest:self];
+  return [self.client.transport makeRequest:self orError:error];
 }
 
-- (STResponse*)delete
+- (STResponse*)deleteOrError:(NSError*__autoreleasing *)error
 {
   self.HTTPMethod = STHTTPMethods.Delete;
-  return [self.client.transport makeRequest:self];
+  return [self.client.transport makeRequest:self orError:error];
 }
 
 @end

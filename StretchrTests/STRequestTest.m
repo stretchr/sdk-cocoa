@@ -92,7 +92,7 @@
   
   [self.transport.responses enqueue:fakeResponse];
   
-  STResponse* response = [request read];
+  STResponse* response = [request readOrError:nil];
   
   XCTAssertNotNil(response);
   XCTAssertEqual([self.transport.requests count], (NSUInteger)1);
@@ -110,7 +110,7 @@
   
   [self.transport.responses enqueue:fakeResponse];
   
-  STResponse* response = [request delete];
+  STResponse* response = [request deleteOrError:nil];
   
   XCTAssertNotNil(response);
   XCTAssertEqual([self.transport.requests count], (NSUInteger)1);

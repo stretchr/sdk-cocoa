@@ -12,4 +12,5 @@
 @interface STTestTransport : NSObject <STTransportProtocol>
 @property(readonly,strong)NSMutableArray* requests;
 @property(readonly,strong)NSMutableArray* responses;
+@property(readonly,strong)NSMutableArray* errors;
 @end

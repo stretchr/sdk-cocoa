@@ -67,17 +67,20 @@
       body = [NSJSONSerialization dataWithJSONObject:data options:0 error:error];
     }
     
-    if (error != nil && *error == nil)
+    if (error == nil)
     {
       _body = [[NSString alloc] initWithData:body encoding:NSUTF8StringEncoding];
       return;      
     }
   }
   
-  *error = [NSError errorWithDomain:STErrorDomain
-                               code:STErrorCodes.ObjectNotSerializable
-                        errorString:STErrorStrings.ObjectNotSerializable
-                          errorData:*error];
+  if (error != nil)
+  {
+    *error = [NSError errorWithDomain:STErrorDomain
+                                 code:STErrorCodes.ObjectNotSerializable
+                          errorString:STErrorStrings.ObjectNotSerializable
+                            errorData:*error];
+  }
 }
 
 #pragma mark - Actions

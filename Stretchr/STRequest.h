@@ -19,7 +19,7 @@
 @property (readonly,copy,nonatomic) NSString* path;
 @property (readonly,strong,nonatomic) NSDictionary* parameters;
 @property (readonly,strong,nonatomic) NSDictionary* filters;
-@property (readonly,copy,nonatomic) NSString* body;
+@property (readwrite,copy,nonatomic) NSString* body;
 @property (readwrite,copy) NSString *HTTPMethod;
 
 - (void)setValue:(NSString*)value forParameter:(NSString*)key;

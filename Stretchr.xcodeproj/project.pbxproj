@@ -43,6 +43,8 @@
 		7161185D188850F2004DD5AB /* STClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161185B188850F2004DD5AB /* STClient.m */; };
 		71735CEE188DE9C2008CB90C /* NSData+STExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 71735CEC188DE9C2008CB90C /* NSData+STExtensions.h */; };
 		71735CEF188DE9C2008CB90C /* NSData+STExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 71735CED188DE9C2008CB90C /* NSData+STExtensions.m */; };
+		71735CF3188E0013008CB90C /* URLConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 71735CF1188E0013008CB90C /* URLConnection.h */; };
+		71735CF4188E0013008CB90C /* URLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 71735CF2188E0013008CB90C /* URLConnection.m */; };
 		71CACC171889A97A005F107F /* STChangeInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 71CACC151889A97A005F107F /* STChangeInfo.h */; };
 		71CACC181889A97A005F107F /* STChangeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 71CACC161889A97A005F107F /* STChangeInfo.m */; };
 		71CACC1A1889AA6F005F107F /* STChangeInfoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 71CACC191889AA6F005F107F /* STChangeInfoTest.m */; };
@@ -114,6 +116,8 @@
 		7161185B188850F2004DD5AB /* STClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STClient.m; sourceTree = "<group>"; };
 		71735CEC188DE9C2008CB90C /* NSData+STExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+STExtensions.h"; sourceTree = "<group>"; };
 		71735CED188DE9C2008CB90C /* NSData+STExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+STExtensions.m"; sourceTree = "<group>"; };
+		71735CF1188E0013008CB90C /* URLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLConnection.h; sourceTree = "<group>"; };
+		71735CF2188E0013008CB90C /* URLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLConnection.m; sourceTree = "<group>"; };
 		71CACC151889A97A005F107F /* STChangeInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STChangeInfo.h; sourceTree = "<group>"; };
 		71CACC161889A97A005F107F /* STChangeInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STChangeInfo.m; sourceTree = "<group>"; };
 		71CACC191889AA6F005F107F /* STChangeInfoTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STChangeInfoTest.m; sourceTree = "<group>"; };
@@ -236,6 +240,7 @@
 		7161183318884E66004DD5AB /* Stretchr */ = {
 			isa = PBXGroup;
 			children = (
+				71735CF0188DFFEC008CB90C /* Support Classes */,
 				710C529A18886EF800EFDC88 /* Extensions */,
 				71CACC151889A97A005F107F /* STChangeInfo.h */,
 				71CACC161889A97A005F107F /* STChangeInfo.m */,
@@ -298,6 +303,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		71735CF0188DFFEC008CB90C /* Support Classes */ = {
+			isa = PBXGroup;
+			children = (
+				71735CF1188E0013008CB90C /* URLConnection.h */,
+				71735CF2188E0013008CB90C /* URLConnection.m */,
+			);
+			name = "Support Classes";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -317,6 +331,7 @@
 				71CACC171889A97A005F107F /* STChangeInfo.h in Headers */,
 				710C52881888539F00EFDC88 /* STConstants.h in Headers */,
 				710C52A118886F2400EFDC88 /* NSString+STExtensions.h in Headers */,
+				71735CF3188E0013008CB90C /* URLConnection.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +502,7 @@
 				71DFCE58188993E4006604FD /* STResource.m in Sources */,
 				7161183C18884E66004DD5AB /* Stretchr.m in Sources */,
 				7161185D188850F2004DD5AB /* STClient.m in Sources */,
+				71735CF4188E0013008CB90C /* URLConnection.m in Sources */,
 				71735CEF188DE9C2008CB90C /* NSData+STExtensions.m in Sources */,
 				710C529918885C4E00EFDC88 /* STWebTransport.m in Sources */,
 				710C528E188857F100EFDC88 /* STRequest.m in Sources */,

@@ -11,6 +11,7 @@
 #import "STRequest.h"
 #import "STClient.h"
 #import "STResponse.h"
+#import "STConstants.h"
 
 @interface STWebTransportTest : XCTestCase
 
@@ -35,13 +36,14 @@
   STClient *client = [[STClient alloc] initWithProject:@"test.internal" APIKey:@"no-such-key"];
   [client setProtocol:@"http"];
   STRequest *request = [[STRequest alloc] initWithClient:client path:@"something"];
+  [request setHTTPMethod:STHTTPMethods.Get];
   
   STWebTransport *transport = [[STWebTransport alloc] init];
   NSError *error;
   STResponse *response = [transport makeRequest:request orError:&error];
   
   XCTAssertNil(error);
-  XCTAssertEqual(response.status, 401);
+  XCTAssertEqual(response.status, (NSInteger)401);
   XCTAssertEqualObjects(response.body, @"{\"~errors\":[{\"~message\":\"The requested API Key was not found.\"}],\"~status\":401}");
   
 }

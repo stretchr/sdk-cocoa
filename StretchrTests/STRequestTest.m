@@ -28,7 +28,7 @@
 - (void)setUp
 {
   [super setUp];
-  self.client = [[STClient alloc] init];
+  self.client = [[STClient alloc] initWithProject:@"test.internal" APIKey:@"ABC123"];
   self.request = [[STRequest alloc] initWithClient:self.client path:@"people"];
   self.transport = [[STTestTransport alloc] init];
   self.client.transport = self.transport;
@@ -43,11 +43,13 @@
 
 - (void)testInit
 {
-  STClient* client = [[STClient alloc] init];
+  STClient* client = [[STClient alloc] initWithProject:@"test.internal" APIKey:@"ABC123"];
   STRequest* request = [[STRequest alloc] initWithClient:client path:@"people"];
   XCTAssertNotNil(request);
   XCTAssertEqualObjects(request.client, client);
   XCTAssertEqualObjects(request.path, @"people");
+  XCTAssertEqualObjects(request.parameters[@"key"], @"ABC123");
+  
   XCTAssertNotNil(request.parameters);
   XCTAssertNotNil(request.filters);
 }

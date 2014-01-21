@@ -31,6 +31,9 @@
   _parameters = [[NSMutableDictionary alloc] init];
   _filters = [[NSMutableDictionary alloc] init];
   
+  // set the key (which will always be required)
+  _parameters[@"key"] = client.APIKey;
+  
   return self;
 }
 

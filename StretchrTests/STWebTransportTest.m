@@ -8,6 +8,9 @@
 
 #import <XCTest/XCTest.h>
 #import "STWebTransport.h"
+#import "STRequest.h"
+#import "STClient.h"
+#import "STResponse.h"
 
 @interface STWebTransportTest : XCTestCase
 
@@ -29,7 +32,17 @@
 
 - (void)testMakeRequest {
   
-  // TODO: What's a good way to unit test real HTTP interactions?
+  STClient *client = [[STClient alloc] initWithProject:@"test.internal" APIKey:@"no-such-key"];
+  [client setProtocol:@"http"];
+  STRequest *request = [[STRequest alloc] initWithClient:client path:@"something"];
+  
+  STWebTransport *transport = [[STWebTransport alloc] init];
+  NSError *error;
+  STResponse *response = [transport makeRequest:request orError:&error];
+  
+  XCTAssertNil(error);
+  XCTAssertEqual(response.status, 401);
+  XCTAssertEqualObjects(response.body, @"{\"~errors\":[{\"~message\":\"The requested API Key was not found.\"}],\"~status\":401}");
   
 }
 

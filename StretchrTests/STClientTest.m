@@ -43,6 +43,7 @@
   XCTAssertEqualObjects(client.host, @"project.company.stretchr.com");
   XCTAssertEqualObjects(client.protocol, STDefaults.Protocol);
   
+  // make sure a real web transport was created 
   XCTAssertNotNil(client.transport);
   XCTAssertEqual([STWebTransport class], [client.transport class]);
 }

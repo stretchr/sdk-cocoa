@@ -16,6 +16,7 @@
 #import "STResponse.h"
 #import "NSMutableArray+Queue.h"
 #import "STConstants.h"
+#import "STResource.h"
 
 @interface STRequestTest : XCTestCase
 @property(readwrite,strong)STClient* client;
@@ -119,6 +120,30 @@
   XCTAssertEqualObjects(response, fakeResponse);
   XCTAssertTrue([NSString isNilOrEmpty:request.body], @"There should be no body");
   XCTAssertEqualObjects(STHTTPMethods.Delete, request.HTTPMethod);
+  
+}
+
+- (void)testCreate
+{
+  STRequest* request = [[STRequest alloc] initWithClient:[self client] path:@"people"];
+  STResponse* fakeResponse = [[STResponse alloc] init];
+  STResource* resource = [[STResource alloc] initWithClient:self.client forPath:@"people"];
+  
+  [resource.data setObject:@"Mat" forKey:@"name"];
+  [resource.data setObject:@31 forKey:@"age"];
+  [resource.data setObject:@YES forKey:@"active"];
+
+  [self.transport.responses enqueue:fakeResponse];
+  
+  STResponse* response = [request createResource:resource orError:nil];
+  
+  XCTAssertNotNil(response);
+  XCTAssertEqual([self.transport.requests count], (NSUInteger)1);
+  XCTAssertEqualObjects(response, fakeResponse);
+  XCTAssertFalse([NSString isNilOrEmpty:request.body], @"There should be a body");
+  NSLog(@"%@", request.body);
+  XCTAssertEqualObjects(@"{\"name\":\"Mat\",\"age\":31,\"active\":true}", request.body);
+  XCTAssertEqualObjects(STHTTPMethods.Post, request.HTTPMethod);
   
 }
 

@@ -14,6 +14,7 @@
 #import "NSDictionary+STExtensions.h"
 #import "STConstants.h"
 #import "NSError+STExtensions.h"
+#import "STResource.h"
 
 @implementation STRequest
 {
@@ -97,6 +98,14 @@
 - (STResponse*)deleteOrError:(NSError*__autoreleasing *)error
 {
   self.HTTPMethod = STHTTPMethods.Delete;
+  return [self.client.transport makeRequest:self orError:error];
+}
+- (STResponse*)createResource:(STResource*)resource orError:(NSError*__autoreleasing *)error {
+  self.HTTPMethod = STHTTPMethods.Post;
+  [self setBodyData:resource.data orError:error];
+  if (&error == nil) {
+    return nil;
+  }
   return [self.client.transport makeRequest:self orError:error];
 }
 

@@ -10,6 +10,7 @@
 
 @class STClient;
 @class STResponse;
+@class STResource;
 
 @interface STRequest : NSObject
 
@@ -35,5 +36,6 @@
 
 - (STResponse*)readOrError:(NSError*__autoreleasing *)error;
 - (STResponse*)deleteOrError:(NSError*__autoreleasing *)error;
+- (STResponse*)createResource:(STResource*)resource orError:(NSError*__autoreleasing *)error;
 
 @end

@@ -43,8 +43,8 @@
   STResponse *response = [transport makeRequest:request orError:&error];
   
   XCTAssertNil(error);
-  XCTAssertEqual(response.status, (NSInteger)401);
-  XCTAssertEqualObjects(response.body, @"{\"~errors\":[{\"~message\":\"The requested API Key was not found.\"}],\"~status\":401}");
+  XCTAssertEqual(response.status, (NSInteger)404);  
+  XCTAssertTrue([response.body rangeOfString:@"The requested project was not found."].location != NSNotFound);
   
 }
 

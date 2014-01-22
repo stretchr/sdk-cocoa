@@ -43,7 +43,7 @@
   STResponse *response = [transport makeRequest:request orError:&error];
   
   XCTAssertNil(error);
-  XCTAssertEqual(response.status, (NSInteger)404);  
+  XCTAssertEqual(response.status, (NSInteger)404);
   XCTAssertTrue([response.body rangeOfString:@"The requested project was not found."].location != NSNotFound);
   
 }

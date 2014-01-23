@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Stretchr, Inc. All rights reserved.
 //
 
-#import "NSError+STExtensions.h"
+#import "STNSError+STExtensions.h"
 
 @implementation NSError (STExtensions)
 + (id)errorWithDomain:(NSString *)domain code:(NSInteger)code errorString:(NSString*)errorString errorData:(NSError*)error

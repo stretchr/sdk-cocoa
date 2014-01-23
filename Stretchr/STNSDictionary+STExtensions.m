@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Stretchr, Inc. All rights reserved.
 //
 
-#import "NSDictionary+STExtensions.h"
-#import "NSString+STExtensions.h"
+#import "STNSDictionary+STExtensions.h"
+#import "STNSString+STExtensions.h"
 
 @implementation NSDictionary (STExtensions)
 

@@ -11,7 +11,7 @@
 #import "STClient.h"
 #import "STRequest.h"
 #import "TestObject.h"
-#import "NSString+STExtensions.h"
+#import "STNSString+STExtensions.h"
 #import "STTestTransport.h"
 #import "STResponse.h"
 #import "NSMutableArray+Queue.h"

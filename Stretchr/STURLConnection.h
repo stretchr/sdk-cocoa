@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
-@interface URLConnection : NSObject <NSURLConnectionDataDelegate, NSURLConnectionDelegate>
+@interface STURLConnection : NSObject <NSURLConnectionDataDelegate, NSURLConnectionDelegate>
 
 + (NSData *)sendSynchronousRequest:(NSURLRequest *)request
                  returningResponse:(NSURLResponse **)response

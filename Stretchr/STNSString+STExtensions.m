@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Stretchr, Inc. All rights reserved.
 //
 
-#import "NSString+STExtensions.h"
+#import "STNSString+STExtensions.h"
 
 @implementation NSString (STExtensions)
 

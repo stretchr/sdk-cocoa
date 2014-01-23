@@ -10,10 +10,10 @@
 
 #import "STRequest.h"
 #import "STClient.h"
-#import "NSString+STExtensions.h"
-#import "NSDictionary+STExtensions.h"
+#import "STNSString+STExtensions.h"
+#import "STNSDictionary+STExtensions.h"
 #import "STConstants.h"
-#import "NSError+STExtensions.h"
+#import "STNSError+STExtensions.h"
 #import "STResource.h"
 #import "STResponse.h"
 #import "STChangeInfo.h"

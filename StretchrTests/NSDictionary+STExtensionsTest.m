@@ -7,8 +7,8 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "NSString+STExtensions.h"
-#import "NSDictionary+STExtensions.h"
+#import "STNSString+STExtensions.h"
+#import "STNSDictionary+STExtensions.h"
 
 @interface NSDictionary_STExtensionsTest : XCTestCase
 

@@ -8,11 +8,11 @@
 
 #import "STWebTransport.h"
 #import "STRequest.h"
-#import "NSString+STExtensions.h"
+#import "STNSString+STExtensions.h"
 #import "STResponse.h"
-#import "NSData+STExtensions.h"
+#import "STNSData+STExtensions.h"
 #import "STConstants.h"
-#import "URLConnection.h"
+#import "STURLConnection.h"
 
 @implementation STWebTransport
 
@@ -30,7 +30,7 @@
   }
   
   NSHTTPURLResponse* urlResponse = nil;
-  NSData* responseBody = [URLConnection sendSynchronousRequest:urlRequest returningResponse:&urlResponse error:error];
+  NSData* responseBody = [STURLConnection sendSynchronousRequest:urlRequest returningResponse:&urlResponse error:error];
     
   
   if (error != nil && [(*error) code] == kCFURLErrorUserCancelledAuthentication)

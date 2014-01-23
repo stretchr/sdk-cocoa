@@ -7,7 +7,7 @@
 //
 
 #import "STResponse.h"
-#import "NSString+STExtensions.h"
+#import "STNSString+STExtensions.h"
 #import "STResource.h"
 #import "STResourceCollection.h"
 #import "STRequest.h"

@@ -1,10 +1,10 @@
 #import <Foundation/Foundation.h>
-#import "URLConnection.h"
+#import "STURLConnection.h"
 
 
-#import "URLConnection.h"
+#import "STURLConnection.h"
 
-@interface URLConnection ()
+@interface STURLConnection ()
 @property(nonatomic, strong) NSURLConnection *connection;
 @property(nonatomic, strong) NSURLResponse *response;
 @property(nonatomic, strong) NSData *responseData;
@@ -13,12 +13,12 @@
 @property(nonatomic) BOOL connectionDidFinishLoading;
 @end
 
-@implementation URLConnection
+@implementation STURLConnection
 
 + (NSData *)sendSynchronousRequest:(NSURLRequest *)request
                  returningResponse:(NSURLResponse **)response
                              error:(NSError **)error {
-  return [[[URLConnection alloc] init] sendSynchronousRequest:request returningResponse:response error:error];
+  return [[[STURLConnection alloc] init] sendSynchronousRequest:request returningResponse:response error:error];
 }
 
 - (id)init {

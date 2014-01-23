@@ -7,7 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "NSDictionary+STExtensions.h"
+#import "STNSDictionary+STExtensions.h"
 #import "STResponse.h"
 #import "STChangeInfo.h"
 

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Stretchr, Inc. All rights reserved.
 //
 
-#import "NSData+STExtensions.h"
+#import "STNSData+STExtensions.h"
 
 @implementation NSData (STExtensions)
 - (NSString*)UTF8String

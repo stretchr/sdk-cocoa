@@ -52,40 +52,29 @@
   if (![self hasId]) {
     // create
     request = [self.client requestAt:self.path];
-    request.HTTPMethod = STHTTPMethods.Post;
   } else {
     // update
     request = [self.client requestAt:[NSString stringWithFormat:@"%@/%@", self.path, self.data[STResourceKeyID]]];
-    request.HTTPMethod = STHTTPMethods.Put;
   }
   
   // set the body
   [request setBodyData:self.data orError:error];
   
-  NSLog(@"-------------------- %@", (*error).description);
-  
   if (!STIsError(error)) {
     
-    NSLog(@"----- making request");
-    // make the request
-    STResponse *response = [self.client.transport makeRequest:request orError:error];
-
+    STResponse *response;
+    
+    // is this a POST (create) or a PUT (update)?
+    if (![self hasId]) {
+      // create
+      response = [request createResource:self orError:error];
+    } else {
+      // replace
+      response = [request replaceResource:self orError:error];
+    }
+    
     if (!STIsError(error)) {
     
-      // was it successful?
-      if (response.success) {
-
-        // merge in the change info
-        STChangeInfo *changes = [response changeInfoOrError:error];
-        if (!STIsError(error)) {
-          
-          // assume only one delta
-          NSDictionary *thisDelta = [changes.deltas objectAtIndex:0];
-          [self.data addEntriesFromDictionary:thisDelta];
-          
-        }
-        
-      }
       return response;
       
     }

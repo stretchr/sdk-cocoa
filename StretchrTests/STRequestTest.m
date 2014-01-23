@@ -126,7 +126,9 @@
 - (void)testCreateResourceOrError
 {
   STRequest* request = [[STRequest alloc] initWithClient:[self client] path:@"people"];
-  STResponse* fakeResponse = [[STResponse alloc] init];
+  STResponse* fakeResponse = [[STResponse alloc] initWithRequest:request];
+  fakeResponse.body = @"{\"~changes\":{\"~deltas\":[{\"~id\":\"new-id\",\"something\":true}]}}";
+  fakeResponse.status = 200;
   STResource* resource = [[STResource alloc] initWithClient:self.client forPath:@"people"];
   
   [resource.data setObject:@"Mat" forKey:@"name"];
@@ -135,22 +137,29 @@
   
   [self.transport.responses enqueue:fakeResponse];
   
-  STResponse* response = [request createResource:resource orError:nil];
+  NSError *error;
+  STResponse* response = [request createResource:resource orError:&error];
   
+  XCTAssertFalse(STIsError(&error));
   XCTAssertNotNil(response);
   XCTAssertEqual([self.transport.requests count], (NSUInteger)1);
   XCTAssertEqualObjects(response, fakeResponse);
   XCTAssertFalse([NSString isNilOrEmpty:request.body], @"There should be a body");
-  NSLog(@"%@", request.body);
   XCTAssertEqualObjects(@"{\"name\":\"Mat\",\"age\":31,\"active\":true}", request.body);
   XCTAssertEqualObjects(STHTTPMethods.Post, request.HTTPMethod);
   
+  XCTAssertEqualObjects(resource.data[@"~id"], @"new-id", @"Delta data should get mixed in");
+  XCTAssertEqualObjects(resource.data[@"name"], @"Mat", @"Existing data not mentioned in the delta shouldn't change");
+  XCTAssertEqualObjects(resource.data[@"something"], @true, @"Delta data should get mixed in");
+
 }
 
 - (void)testUpdateResourceOrError
 {
   STRequest* request = [[STRequest alloc] initWithClient:[self client] path:@"people"];
-  STResponse* fakeResponse = [[STResponse alloc] init];
+  STResponse* fakeResponse = [[STResponse alloc] initWithRequest:request];
+  fakeResponse.body = @"{\"~changes\":{\"~deltas\":[{\"~id\":\"new-id\",\"something\":true}]}}";
+  fakeResponse.status = 200;
   STResource* resource = [[STResource alloc] initWithClient:self.client forPath:@"people"];
   
   [resource.data setObject:@"Mat" forKey:@"name"];
@@ -159,22 +168,30 @@
   
   [self.transport.responses enqueue:fakeResponse];
   
-  STResponse* response = [request updateResource:resource orError:nil];
+  NSError *error;
+  STResponse* response = [request updateResource:resource orError:&error];
+  
+  XCTAssertFalse(STIsError(&error));
   
   XCTAssertNotNil(response);
   XCTAssertEqual([self.transport.requests count], (NSUInteger)1);
   XCTAssertEqualObjects(response, fakeResponse);
   XCTAssertFalse([NSString isNilOrEmpty:request.body], @"There should be a body");
-  NSLog(@"%@", request.body);
   XCTAssertEqualObjects(@"{\"name\":\"Mat\",\"age\":31,\"active\":true}", request.body);
   XCTAssertEqualObjects(STHTTPMethods.Patch, request.HTTPMethod);
   
+  XCTAssertEqualObjects(resource.data[@"~id"], @"new-id", @"Delta data should get mixed in");
+  XCTAssertEqualObjects(resource.data[@"name"], @"Mat", @"Existing data not mentioned in the delta shouldn't change");
+  XCTAssertEqualObjects(resource.data[@"something"], @true, @"Delta data should get mixed in");
+
 }
 
 - (void)testReplaceResourceOrError
 {
   STRequest* request = [[STRequest alloc] initWithClient:[self client] path:@"people"];
-  STResponse* fakeResponse = [[STResponse alloc] init];
+  STResponse* fakeResponse = [[STResponse alloc] initWithRequest:request];
+  fakeResponse.body = @"{\"~changes\":{\"~deltas\":[{\"~id\":\"new-id\",\"something\":true}]}}";
+  fakeResponse.status = 200;
   STResource* resource = [[STResource alloc] initWithClient:self.client forPath:@"people"];
   
   [resource.data setObject:@"Mat" forKey:@"name"];
@@ -183,15 +200,20 @@
   
   [self.transport.responses enqueue:fakeResponse];
   
-  STResponse* response = [request replaceResource:resource orError:nil];
+  NSError *error;
+  STResponse* response = [request replaceResource:resource orError:&error];
   
+  XCTAssertFalse(STIsError(&error));
   XCTAssertNotNil(response);
   XCTAssertEqual([self.transport.requests count], (NSUInteger)1);
   XCTAssertEqualObjects(response, fakeResponse);
   XCTAssertFalse([NSString isNilOrEmpty:request.body], @"There should be a body");
-  NSLog(@"%@", request.body);
   XCTAssertEqualObjects(@"{\"name\":\"Mat\",\"age\":31,\"active\":true}", request.body);
   XCTAssertEqualObjects(STHTTPMethods.Put, request.HTTPMethod);
+  
+  XCTAssertEqualObjects(resource.data[@"~id"], @"new-id", @"Delta data should get mixed in");
+  XCTAssertEqualObjects(resource.data[@"name"], @"Mat", @"Existing data not mentioned in the delta shouldn't change");
+  XCTAssertEqualObjects(resource.data[@"something"], @true, @"Delta data should get mixed in");
   
 }
 

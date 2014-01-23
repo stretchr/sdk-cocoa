@@ -15,6 +15,8 @@
 #import "STConstants.h"
 #import "NSError+STExtensions.h"
 #import "STResource.h"
+#import "STResponse.h"
+#import "STChangeInfo.h"
 
 @implementation STRequest
 {
@@ -101,12 +103,36 @@
   return [self.client.transport makeRequest:self orError:error];
 }
 - (STResponse*)pushResource:(STResource*)resource withHTTPMethod:(NSString*)HTTPMethod orError:(NSError*__autoreleasing *)error {
+  
   self.HTTPMethod = HTTPMethod;
   [self setBodyData:resource.data orError:error];
   if (STIsError(error)) {
     return nil;
   }
-  return [self.client.transport makeRequest:self orError:error];
+  
+  STResponse *response = [self.client.transport makeRequest:self orError:error];
+  
+  if (!STIsError(error)) {
+    
+    // was it successful?
+    if (response.success) {
+      
+      // merge in the change info
+      STChangeInfo *changes = [response changeInfoOrError:error];
+      if (!STIsError(error)) {
+        
+        // assume only one delta
+        NSDictionary *thisDelta = [changes.deltas objectAtIndex:0];
+        [resource.data addEntriesFromDictionary:thisDelta];
+        
+      }
+      
+    }
+    
+  }
+  
+  return response;
+  
 }
 - (STResponse*)createResource:(STResource*)resource orError:(NSError*__autoreleasing *)error {
   return [self pushResource:resource withHTTPMethod:STHTTPMethods.Post orError:error];

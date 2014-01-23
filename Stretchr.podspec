@@ -22,6 +22,8 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/stretchr/sdk-cocoa.git", :tag => "0.1.0" }
 
+  s.dependency 'JSONModel'
+
   s.ios.deployment_target = '5.1'
   s.osx.deployment_target = '10.8'
 

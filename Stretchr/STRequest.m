@@ -100,13 +100,22 @@
   self.HTTPMethod = STHTTPMethods.Delete;
   return [self.client.transport makeRequest:self orError:error];
 }
-- (STResponse*)createResource:(STResource*)resource orError:(NSError*__autoreleasing *)error {
-  self.HTTPMethod = STHTTPMethods.Post;
+- (STResponse*)pushResource:(STResource*)resource withHTTPMethod:(NSString*)HTTPMethod orError:(NSError*__autoreleasing *)error {
+  self.HTTPMethod = HTTPMethod;
   [self setBodyData:resource.data orError:error];
-  if (&error == nil) {
+  if (NSIsError(error)) {
     return nil;
   }
   return [self.client.transport makeRequest:self orError:error];
+}
+- (STResponse*)createResource:(STResource*)resource orError:(NSError*__autoreleasing *)error {
+  return [self pushResource:resource withHTTPMethod:STHTTPMethods.Post orError:error];
+}
+- (STResponse*)updateResource:(STResource*)resource orError:(NSError*__autoreleasing *)error {
+  return [self pushResource:resource withHTTPMethod:STHTTPMethods.Patch orError:error];
+}
+- (STResponse*)replaceResource:(STResource*)resource orError:(NSError*__autoreleasing *)error {
+  return [self pushResource:resource withHTTPMethod:STHTTPMethods.Put orError:error];
 }
 
 @end

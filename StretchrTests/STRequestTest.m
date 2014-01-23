@@ -87,7 +87,7 @@
   XCTAssertTrue([url containsString:@"%3AlowerAge=%3E10"]);
 }
 
-- (void)testRead
+- (void)testReadOrError
 {
   STRequest* request = [[STRequest alloc] initWithClient:[self client] path:@"people"];
   
@@ -105,7 +105,7 @@
   
 }
 
-- (void)testDelete
+- (void)testDeleteOrError
 {
   STRequest* request = [[STRequest alloc] initWithClient:[self client] path:@"people"];
   
@@ -123,7 +123,7 @@
   
 }
 
-- (void)testCreate
+- (void)testCreateResourceOrError
 {
   STRequest* request = [[STRequest alloc] initWithClient:[self client] path:@"people"];
   STResponse* fakeResponse = [[STResponse alloc] init];
@@ -132,7 +132,7 @@
   [resource.data setObject:@"Mat" forKey:@"name"];
   [resource.data setObject:@31 forKey:@"age"];
   [resource.data setObject:@YES forKey:@"active"];
-
+  
   [self.transport.responses enqueue:fakeResponse];
   
   STResponse* response = [request createResource:resource orError:nil];
@@ -144,6 +144,54 @@
   NSLog(@"%@", request.body);
   XCTAssertEqualObjects(@"{\"name\":\"Mat\",\"age\":31,\"active\":true}", request.body);
   XCTAssertEqualObjects(STHTTPMethods.Post, request.HTTPMethod);
+  
+}
+
+- (void)testUpdateResourceOrError
+{
+  STRequest* request = [[STRequest alloc] initWithClient:[self client] path:@"people"];
+  STResponse* fakeResponse = [[STResponse alloc] init];
+  STResource* resource = [[STResource alloc] initWithClient:self.client forPath:@"people"];
+  
+  [resource.data setObject:@"Mat" forKey:@"name"];
+  [resource.data setObject:@31 forKey:@"age"];
+  [resource.data setObject:@YES forKey:@"active"];
+  
+  [self.transport.responses enqueue:fakeResponse];
+  
+  STResponse* response = [request updateResource:resource orError:nil];
+  
+  XCTAssertNotNil(response);
+  XCTAssertEqual([self.transport.requests count], (NSUInteger)1);
+  XCTAssertEqualObjects(response, fakeResponse);
+  XCTAssertFalse([NSString isNilOrEmpty:request.body], @"There should be a body");
+  NSLog(@"%@", request.body);
+  XCTAssertEqualObjects(@"{\"name\":\"Mat\",\"age\":31,\"active\":true}", request.body);
+  XCTAssertEqualObjects(STHTTPMethods.Patch, request.HTTPMethod);
+  
+}
+
+- (void)testReplaceResourceOrError
+{
+  STRequest* request = [[STRequest alloc] initWithClient:[self client] path:@"people"];
+  STResponse* fakeResponse = [[STResponse alloc] init];
+  STResource* resource = [[STResource alloc] initWithClient:self.client forPath:@"people"];
+  
+  [resource.data setObject:@"Mat" forKey:@"name"];
+  [resource.data setObject:@31 forKey:@"age"];
+  [resource.data setObject:@YES forKey:@"active"];
+  
+  [self.transport.responses enqueue:fakeResponse];
+  
+  STResponse* response = [request replaceResource:resource orError:nil];
+  
+  XCTAssertNotNil(response);
+  XCTAssertEqual([self.transport.requests count], (NSUInteger)1);
+  XCTAssertEqualObjects(response, fakeResponse);
+  XCTAssertFalse([NSString isNilOrEmpty:request.body], @"There should be a body");
+  NSLog(@"%@", request.body);
+  XCTAssertEqualObjects(@"{\"name\":\"Mat\",\"age\":31,\"active\":true}", request.body);
+  XCTAssertEqualObjects(STHTTPMethods.Put, request.HTTPMethod);
   
 }
 

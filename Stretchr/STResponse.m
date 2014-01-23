@@ -85,9 +85,8 @@
 }
 - (STChangeInfo*)changeInfoOrError:(NSError*__autoreleasing *)error
 {
-  error = nil;
-  NSDictionary *response =[self bodyDictionaryOrError:error];
-  if (error == nil) {
+  NSDictionary *response = [self bodyDictionaryOrError:error];
+  if (!NSIsError(error)) {
     return [[STChangeInfo alloc] initWithChangeDictionary:response[STResponseConstants.Changes]];
   }
   return nil;

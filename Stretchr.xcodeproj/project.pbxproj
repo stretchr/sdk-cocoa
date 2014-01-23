@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0509D790188C9BCD00CFE982 /* STWebTransportTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0509D78F188C9BCD00CFE982 /* STWebTransportTest.m */; };
+		056A39DD18907BE0001473B7 /* STErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 056A39DC18907BE0001473B7 /* STErrors.m */; };
 		059F189C1888D24C003D823D /* STResponseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 059F189B1888D24C003D823D /* STResponseTest.m */; };
 		05FBBE6E188C63BB00B53E63 /* STResourceCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 05FBBE6C188C63BB00B53E63 /* STResourceCollection.h */; };
 		05FBBE6F188C63BB00B53E63 /* STResourceCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FBBE6D188C63BB00B53E63 /* STResourceCollection.m */; };
@@ -67,6 +68,8 @@
 
 /* Begin PBXFileReference section */
 		0509D78F188C9BCD00CFE982 /* STWebTransportTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STWebTransportTest.m; sourceTree = "<group>"; };
+		056A39DB189077D0001473B7 /* STErrors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STErrors.h; sourceTree = "<group>"; };
+		056A39DC18907BE0001473B7 /* STErrors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STErrors.m; sourceTree = "<group>"; };
 		059F189B1888D24C003D823D /* STResponseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STResponseTest.m; sourceTree = "<group>"; };
 		05FBBE6C188C63BB00B53E63 /* STResourceCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STResourceCollection.h; sourceTree = "<group>"; };
 		05FBBE6D188C63BB00B53E63 /* STResourceCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STResourceCollection.m; sourceTree = "<group>"; };
@@ -272,6 +275,8 @@
 				7161183518884E66004DD5AB /* Stretchr-Info.plist */,
 				7161183618884E66004DD5AB /* InfoPlist.strings */,
 				7161183918884E66004DD5AB /* Stretchr-Prefix.pch */,
+				056A39DB189077D0001473B7 /* STErrors.h */,
+				056A39DC18907BE0001473B7 /* STErrors.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -500,6 +505,7 @@
 				710C529518885B6700EFDC88 /* STResponse.m in Sources */,
 				712B3E501889F15800D8AD30 /* NSError+STExtensions.m in Sources */,
 				71DFCE58188993E4006604FD /* STResource.m in Sources */,
+				056A39DD18907BE0001473B7 /* STErrors.m in Sources */,
 				7161183C18884E66004DD5AB /* Stretchr.m in Sources */,
 				7161185D188850F2004DD5AB /* STClient.m in Sources */,
 				71735CF4188E0013008CB90C /* URLConnection.m in Sources */,

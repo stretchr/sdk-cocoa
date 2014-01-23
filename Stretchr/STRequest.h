@@ -37,5 +37,7 @@
 - (STResponse*)readOrError:(NSError*__autoreleasing *)error;
 - (STResponse*)deleteOrError:(NSError*__autoreleasing *)error;
 - (STResponse*)createResource:(STResource*)resource orError:(NSError*__autoreleasing *)error;
+- (STResponse*)updateResource:(STResource*)resource orError:(NSError*__autoreleasing *)error;
+- (STResponse*)replaceResource:(STResource*)resource orError:(NSError*__autoreleasing *)error;
 
 @end

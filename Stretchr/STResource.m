@@ -46,7 +46,6 @@
 
 - (STResponse *)saveOrError:(NSError*__autoreleasing *)error {
   
-  error = nil;
   STRequest *request;
   
   // is this a POST (create) or a PUT (update)?
@@ -63,19 +62,19 @@
   // set the body
   [request setBodyData:self.data orError:error];
   
-  if (error == nil) {
+  if (!NSIsError(error)) {
     
     // make the request
     STResponse *response = [self.client.transport makeRequest:request orError:error];
 
-    if (error == nil) {
+    if (!NSIsError(error)) {
     
       // was it successful?
       if (response.success) {
 
         // merge in the change info
         STChangeInfo *changes = [response changeInfoOrError:error];
-        if (error == nil) {
+        if (!NSIsError(error)) {
           
           // assume only one delta
           NSDictionary *thisDelta = [changes.deltas objectAtIndex:0];

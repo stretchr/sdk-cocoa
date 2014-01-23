@@ -12,9 +12,14 @@
 + (id)errorWithDomain:(NSString *)domain code:(NSInteger)code errorString:(NSString*)errorString errorData:(NSError*)error
 {
   //NSDictionary* userInfo = [NSDictionary dictionaryWithObject:errorString forKey:NSLocalizedDescriptionKey];
+  id data = error;
+  if (data == nil)
+  {
+    data = [NSNull null];
+  }
   return [NSError errorWithDomain:domain code:code userInfo:@{
                                                               NSLocalizedDescriptionKey:errorString,
-                                                              @"errorData":error
+                                                              @"errorData":data
                                                               }];
 }
 @end

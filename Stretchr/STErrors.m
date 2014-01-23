@@ -9,7 +9,7 @@
 #import "STErrors.h"
 #import <Foundation/Foundation.h>
 
-bool NSIsError(NSError** error) {
+bool STIsError(NSError*__autoreleasing * error) {
   // returns true if an error is present
   return (error != nil && *error != nil);
 };

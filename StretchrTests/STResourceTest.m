@@ -107,15 +107,15 @@
   to.age = 29;
   [resource setDataFromObject:to];
   
-  NSError *error = nil;
+  NSError *error;
   STResponse* response = [resource saveOrError:&error];
   
   XCTAssertNotNil(response);
-  XCTAssertNil(error);
+  XCTAssertFalse(STIsError(&error));
   XCTAssertEqualObjects(resource.data[STResourceKeyID], @"new-id", @"Saving a resource should include the details in the change info in the resource");
   XCTAssertEqualObjects(resource.data[@"something"], @"else");
   
-  request = transport.requests[0];
+  request = [transport.requests objectAtIndex:0];
   XCTAssertEqualObjects(request.path, @"people");
   XCTAssertEqualObjects(request.HTTPMethod, STHTTPMethods.Post);
   XCTAssertEqualObjects(request.body, @"{\"name\":\"Tyler\",\"age\":29}");

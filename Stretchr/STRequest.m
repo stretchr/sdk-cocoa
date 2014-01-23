@@ -103,7 +103,7 @@
 - (STResponse*)pushResource:(STResource*)resource withHTTPMethod:(NSString*)HTTPMethod orError:(NSError*__autoreleasing *)error {
   self.HTTPMethod = HTTPMethod;
   [self setBodyData:resource.data orError:error];
-  if (NSIsError(error)) {
+  if (STIsError(error)) {
     return nil;
   }
   return [self.client.transport makeRequest:self orError:error];

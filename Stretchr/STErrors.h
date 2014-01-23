@@ -11,6 +11,6 @@
 
 #import <Foundation/Foundation.h>
 
-bool NSIsError(NSError** error);
+bool STIsError(NSError*__autoreleasing * error);
 
 #endif

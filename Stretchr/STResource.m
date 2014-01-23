@@ -62,19 +62,22 @@
   // set the body
   [request setBodyData:self.data orError:error];
   
-  if (!NSIsError(error)) {
+  NSLog(@"-------------------- %@", (*error).description);
+  
+  if (!STIsError(error)) {
     
+    NSLog(@"----- making request");
     // make the request
     STResponse *response = [self.client.transport makeRequest:request orError:error];
 
-    if (!NSIsError(error)) {
+    if (!STIsError(error)) {
     
       // was it successful?
       if (response.success) {
 
         // merge in the change info
         STChangeInfo *changes = [response changeInfoOrError:error];
-        if (!NSIsError(error)) {
+        if (!STIsError(error)) {
           
           // assume only one delta
           NSDictionary *thisDelta = [changes.deltas objectAtIndex:0];

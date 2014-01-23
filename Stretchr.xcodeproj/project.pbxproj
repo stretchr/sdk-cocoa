@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0509D790188C9BCD00CFE982 /* STWebTransportTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0509D78F188C9BCD00CFE982 /* STWebTransportTest.m */; };
 		056A39DD18907BE0001473B7 /* STErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 056A39DC18907BE0001473B7 /* STErrors.m */; };
+		056A39DF1890BF01001473B7 /* STErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 056A39DE1890BF01001473B7 /* STErrors.m */; };
 		059F189C1888D24C003D823D /* STResponseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 059F189B1888D24C003D823D /* STResponseTest.m */; };
 		05FBBE6E188C63BB00B53E63 /* STResourceCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 05FBBE6C188C63BB00B53E63 /* STResourceCollection.h */; };
 		05FBBE6F188C63BB00B53E63 /* STResourceCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FBBE6D188C63BB00B53E63 /* STResourceCollection.m */; };
@@ -70,6 +71,7 @@
 		0509D78F188C9BCD00CFE982 /* STWebTransportTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STWebTransportTest.m; sourceTree = "<group>"; };
 		056A39DB189077D0001473B7 /* STErrors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STErrors.h; sourceTree = "<group>"; };
 		056A39DC18907BE0001473B7 /* STErrors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STErrors.m; sourceTree = "<group>"; };
+		056A39DE1890BF01001473B7 /* STErrors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STErrors.m; sourceTree = "<group>"; };
 		059F189B1888D24C003D823D /* STResponseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STResponseTest.m; sourceTree = "<group>"; };
 		05FBBE6C188C63BB00B53E63 /* STResourceCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STResourceCollection.h; sourceTree = "<group>"; };
 		05FBBE6D188C63BB00B53E63 /* STResourceCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STResourceCollection.m; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				71CACC191889AA6F005F107F /* STChangeInfoTest.m */,
 				05FBBE70188C665100B53E63 /* STResourceCollectionTest.m */,
 				0509D78F188C9BCD00CFE982 /* STWebTransportTest.m */,
+				056A39DE1890BF01001473B7 /* STErrors.m */,
 			);
 			path = StretchrTests;
 			sourceTree = "<group>";
@@ -529,6 +532,7 @@
 				059F189C1888D24C003D823D /* STResponseTest.m in Sources */,
 				71DFCE5A18899559006604FD /* STResourceTest.m in Sources */,
 				710C52A51888B4AC00EFDC88 /* TestObject.m in Sources */,
+				056A39DF1890BF01001473B7 /* STErrors.m in Sources */,
 				71CACC1A1889AA6F005F107F /* STChangeInfoTest.m in Sources */,
 				716118591888504B004DD5AB /* STClientTest.m in Sources */,
 				0509D790188C9BCD00CFE982 /* STWebTransportTest.m in Sources */,

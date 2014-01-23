@@ -17,6 +17,7 @@
 #import "STResource.h"
 #import "STResponse.h"
 #import "STChangeInfo.h"
+#import "STErrors.h"
 
 @implementation STRequest
 {

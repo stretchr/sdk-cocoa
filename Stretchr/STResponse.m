@@ -13,6 +13,7 @@
 #import "STRequest.h"
 #import "STChangeInfo.h"
 #import "STConstants.h"
+#import "STErrors.h"
 
 @implementation STResponse
 

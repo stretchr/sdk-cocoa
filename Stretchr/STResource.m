@@ -14,6 +14,7 @@
 #import "STResponse.h"
 #import "STChangeInfo.h"
 #import "STConstants.h"
+#import "STErrors.h"
 
 @implementation STResource
 - (id)initWithClient:(STClient*)client forPath:(NSString*)path

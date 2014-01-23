@@ -1,4 +1,13 @@
-stretchr-cocoa
-==============
+# Stretchr Cocoa SDK for iOS and Mac OS X
 
-Stretchr Cocoa and iOS SDK Source Code
+A rewrite is in progress - check back in a few days.
+
+### Development
+
+Install cocoapods
+
+    sudo gem install cocoapods
+
+Then install pods for this project (in Terminal inside sdk-cocoa directory)
+
+    pod install

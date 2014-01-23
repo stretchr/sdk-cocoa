@@ -71,14 +71,14 @@
       body = [NSJSONSerialization dataWithJSONObject:data options:0 error:error];
     }
     
-    if (error == nil)
+    if (error == nil || (error != nil && *error == nil))
     {
       _body = [[NSString alloc] initWithData:body encoding:NSUTF8StringEncoding];
       return;      
     }
   }
   
-  if (error != nil)
+  if (error != nil && *error != nil)
   {
     *error = [NSError errorWithDomain:STErrorDomain
                                  code:STErrorCodes.ObjectNotSerializable

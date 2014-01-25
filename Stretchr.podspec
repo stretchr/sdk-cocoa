@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Stretchr"
-  s.version      = "0.1.0"
+  s.version      = "0.2.0"
   s.summary      = "The Cocoa SDK for the Stretchr platform."
   s.homepage     = "http://stretchr.com"
 
@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
 
   s.authors      = { "Tyler Bunnell" => "tyler@stretchr.com", "Mat Ryer" => "mat@stretchr.com" }
 
-  s.source       = { :git => "https://github.com/stretchr/sdk-cocoa.git", :tag => "0.1.0" }
+  s.source       = { :git => "https://github.com/stretchr/sdk-cocoa.git", :tag => "0.2.0" }
 
   s.dependency 'JSONModel'
 

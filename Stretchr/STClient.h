@@ -14,8 +14,9 @@
 
 @interface STClient : NSObject
 
-- (id)initWithProject:(NSString*)project APIKey:(NSString*)APIKey;
+- (id)initWithAccount:(NSString*)account project:(NSString*)project APIKey:(NSString*)APIKey;
 
+@property (readonly,copy,nonatomic) NSString* account;
 @property (readonly,copy,nonatomic) NSString* project;
 @property (readonly,copy,nonatomic) NSString* APIKey;
 

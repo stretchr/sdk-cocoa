@@ -23,7 +23,7 @@
 - (void)setUp
 {
   [super setUp];
-  self.client = [[STClient alloc] initWithProject:@"project.company" APIKey:@"ABC123"];
+  self.client = [[STClient alloc] initWithAccount:@"company" project:@"project" APIKey:@"ABC123"];
 }
 
 - (void)tearDown
@@ -34,13 +34,14 @@
 
 - (void)testInit
 {
-  STClient* client = [[STClient alloc] initWithProject:@"project.company" APIKey:@"ABC123"];
+  STClient* client = [[STClient alloc] initWithAccount:@"company" project:@"project" APIKey:@"ABC123"];
   XCTAssertNotNil(client);
-  XCTAssertEqualObjects(@"project.company", client.project);
+  XCTAssertEqualObjects(@"project", client.project);
+  XCTAssertEqualObjects(@"company", client.account);
   XCTAssertEqualObjects(@"ABC123", client.APIKey);
   
   // Test defaults
-  XCTAssertEqualObjects(client.host, @"project.company.stretchr.com");
+  XCTAssertEqualObjects(client.host, @"company.stretchr.com");
   XCTAssertEqualObjects(client.protocol, STDefaults.Protocol);
   
   // make sure a real web transport was created 
@@ -58,9 +59,9 @@
 
 - (void)testBaseURL
 {
-  STClient* client = [[STClient alloc] initWithProject:@"project.company" APIKey:@"ABC123"];
+  STClient* client = [[STClient alloc] initWithAccount:@"company" project:@"project" APIKey:@"ABC123"];
   NSString* url = [client baseURLString];
-  XCTAssertEqualObjects(@"https://project.company.stretchr.com/api/v1.1/", url);
+  XCTAssertEqualObjects(@"https://company.stretchr.com/api/v1.1/project/", url);
 }
 
 - (void)testResourceWithPath

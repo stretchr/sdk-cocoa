@@ -36,7 +36,7 @@
 
 - (void)testInit
 {
-  STClient* client = [[STClient alloc] initWithProject:@"abc123" APIKey:@"def456"];
+  STClient* client = [[STClient alloc] initWithAccount:@"company" project:@"abc123" APIKey:@"def456"];
   STResource* res = [[STResource alloc] initWithClient:client forPath:@"people/1/books"];
   XCTAssertNotNil(res);
   XCTAssertEqualObjects(res.path, @"people/1/books");
@@ -60,7 +60,7 @@
 - (void)testSaveNewResource
 {
   STTestTransport* transport = [[STTestTransport alloc] init];
-  STClient* client = [[STClient alloc] initWithProject:@"abc123" APIKey:@"def456"];
+  STClient* client = [[STClient alloc] initWithAccount:@"company" project:@"abc123" APIKey:@"def456"];
   client.transport = transport;
   
   STRequest* request = [[STRequest alloc] initWithClient:client path:@"people"];
@@ -91,7 +91,7 @@
 - (void)testSaveNewJSONModelResource
 {
   STTestTransport* transport = [[STTestTransport alloc] init];
-  STClient* client = [[STClient alloc] initWithProject:@"abc123" APIKey:@"def456"];
+  STClient* client = [[STClient alloc] initWithAccount:@"company" project:@"abc123" APIKey:@"def456"];
   client.transport = transport;
   
   STRequest* request = [[STRequest alloc] initWithClient:client path:@"people"];
@@ -125,7 +125,7 @@
 - (void)testUpdateExistingResource
 {
   STTestTransport* transport = [[STTestTransport alloc] init];
-  STClient* client = [[STClient alloc] initWithProject:@"abc123" APIKey:@"def456"];
+  STClient* client = [[STClient alloc] initWithAccount:@"company" project:@"abc123" APIKey:@"def456"];
   client.transport = transport;
   
   STRequest* request = [[STRequest alloc] initWithClient:client path:@"people"];

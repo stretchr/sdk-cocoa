@@ -33,9 +33,9 @@
 
 - (void)testMakeRequest {
   
-  STClient *client = [[STClient alloc] initWithProject:@"test.internal" APIKey:@"no-such-key"];
+  STClient *client = [[STClient alloc] initWithAccount:@"internal" project:@"test" APIKey:@"uxWhI7Y03BbVxaI9780ahosdfgUGqthY74c7MhM8y07WGgrOZ89fafGSeto9sfd"];
   [client setProtocol:@"http"];
-  STRequest *request = [[STRequest alloc] initWithClient:client path:@"something"];
+  STRequest *request = [[STRequest alloc] initWithClient:client path:@"sometbhing"];
   [request setHTTPMethod:STHTTPMethods.Get];
   
   STWebTransport *transport = [[STWebTransport alloc] init];
@@ -43,8 +43,8 @@
   STResponse *response = [transport makeRequest:request orError:&error];
   
   XCTAssertNil(error);
-  XCTAssertEqual(response.status, (NSInteger)404);
-  XCTAssertTrue([response.body rangeOfString:@"The requested project was not found."].location != NSNotFound);
+  XCTAssertEqual(response.status, (NSInteger)200);
+  XCTAssertTrue([response.body rangeOfString:@"{\"~data\":{\"~count\":0},\"~status\":200}"].location != NSNotFound);
   
 }
 

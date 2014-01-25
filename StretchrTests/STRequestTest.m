@@ -29,7 +29,7 @@
 - (void)setUp
 {
   [super setUp];
-  self.client = [[STClient alloc] initWithProject:@"test.internal" APIKey:@"ABC123"];
+  self.client = [[STClient alloc] initWithAccount:@"internal" project:@"test" APIKey:@"ABC123"];
   self.request = [[STRequest alloc] initWithClient:self.client path:@"people"];
   self.transport = [[STTestTransport alloc] init];
   self.client.transport = self.transport;
@@ -44,7 +44,7 @@
 
 - (void)testInit
 {
-  STClient* client = [[STClient alloc] initWithProject:@"test.internal" APIKey:@"ABC123"];
+  STClient* client = [[STClient alloc] initWithAccount:@"internal" project:@"test" APIKey:@"ABC123"];
   STRequest* request = [[STRequest alloc] initWithClient:client path:@"people"];
   XCTAssertNotNil(request);
   XCTAssertEqualObjects(request.client, client);
@@ -72,7 +72,7 @@
 
 - (void)testRequestURL
 {
-  STClient* client = [[STClient alloc] initWithProject:@"project.company" APIKey:@"ABC123"];
+  STClient* client = [[STClient alloc] initWithAccount:@"company" project:@"project" APIKey:@"ABC123"];
   STRequest* request = [[STRequest alloc] initWithClient:client path:@"people"];
   
   [request setValue:@"age" forParameter:@"order"];
@@ -81,7 +81,7 @@
   
   NSString* url = [request URLString];
   
-  XCTAssertTrue([url beginsWithString:@"https://project.company.stretchr.com/api/v1.1/people"]);
+  XCTAssertTrue([url beginsWithString:@"https://company.stretchr.com/api/v1.1/project/people"]);
   XCTAssertTrue([url containsString:@"order=age"]);
   XCTAssertTrue([url containsString:@"%3AupperAge=%3C%3D18"]);
   XCTAssertTrue([url containsString:@"%3AlowerAge=%3E10"]);

@@ -25,7 +25,7 @@
 - (void)setUp
 {
   [super setUp];
-  self.client = [[STClient alloc] initWithProject:@"project.company" APIKey:@"ABC123"];
+  self.client = [[STClient alloc] initWithAccount:@"company" project:@"project" APIKey:@"ABC123"];
   self.request = [[STRequest alloc] initWithClient:self.client path:@"people"];
 
 }

@@ -14,14 +14,15 @@
 
 @implementation STClient
 
--(id)initWithProject:(NSString *)project APIKey:(NSString *)APIKey
+- (id)initWithAccount:(NSString*)account project:(NSString*)project APIKey:(NSString*)APIKey
 {
   if (!(self = [super init]))
     return nil;
   
+  _account = account;
   _project = project;
   _APIKey = APIKey;
-  _host = [NSString stringWithFormat:@"%@.%@",project,STDefaults.HostSuffix];
+  _host = [NSString stringWithFormat:@"%@.%@",account,STDefaults.HostSuffix];
   _protocol = STDefaults.Protocol;
   _transport = [[STWebTransport alloc] init];
   
@@ -31,7 +32,7 @@
 
 - (NSString*)baseURLString
 {
-  return [NSString stringWithFormat:@"%@://%@/api/v%@/",_protocol,_host,STDefaults.Version];
+  return [NSString stringWithFormat:@"%@://%@/api/v%@/%@/",_protocol,_host,STDefaults.Version,_project];
 }
 
 #pragma mark - Stretchr Interaction

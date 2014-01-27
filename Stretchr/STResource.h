@@ -20,7 +20,7 @@
 #pragma mark - Data
 
 - (BOOL) hasId;
-- (void)setDataFromObject:(id)data;
+- (void)setResourceData:(id)data;
 
 #pragma mark - Actions
 

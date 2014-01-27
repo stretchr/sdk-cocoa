@@ -35,11 +35,15 @@
   return self.data[STResourceKeyID] != nil;
 }
 
-- (void)setDataFromObject:(id)data
+- (void)setResourceData:(id)data
 {
   if ([data respondsToSelector:@selector(toDictionary)])
   {
     _data = [[data toDictionary] mutableCopy];
+  }
+  else
+  {
+    _data = [data mutableCopy];
   }
 }
 

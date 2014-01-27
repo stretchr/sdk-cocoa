@@ -105,7 +105,7 @@
   TestObject* to = [[TestObject alloc] init];
   to.name = @"Tyler";
   to.age = 29;
-  [resource setDataFromObject:to];
+  [resource setResourceData:to];
   
   NSError *error;
   STResponse* response = [resource saveOrError:&error];

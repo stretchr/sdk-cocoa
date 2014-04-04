@@ -10,13 +10,18 @@
 
 #import "STResource.h"
 #import "STResponse.h"
+#import "STConstants.h"
+#import "STTransport.h"
 
 @interface Stretchr : NSObject
 
 /**
- * The Stretchr class is the class through which you will perform all operations.
- * All operations occur asynchronously, with callbacks being called as appropriate.
- * Callbacks are not called on the main thread. You must manually dispatch to the
+ * The Stretchr class is the class through which you will perform all
+ * operations.
+ * All operations occur asynchronously, with callbacks being called as
+ * appropriate.
+ * Callbacks are not called on the main thread. You must manually dispatch to
+ * the
  * main thread if you wish to perform any operations that require you to be on
  * the main thread.
  */
@@ -34,7 +39,7 @@
  *  @param failure  Called when the creation fails.
  */
 - (void)createResource:(id)object
-                atPath:(NSString *)path
+                atPath:(NSString*)path
                success:(STResponseBlock)success
                failure:(STFailureBlock)failure;
 
@@ -47,13 +52,14 @@
  *  @param success Called when the read is successful. Contains the resource.
  *  @param failure Called when the read fails.
  */
-- (void)readResourceAtPath:(NSString *)path
+- (void)readResourceAtPath:(NSString*)path
                    success:(STResourceBlock)success
                    failure:(STFailureBlock)failure;
 
 /**
  *  updateResourceAtPath issues a PATCH to Stretchr, updating the object found
- *  at the given path. The path MUST contain an ID. If no object is found at that
+ *  at the given path. The path MUST contain an ID. If no object is found at
+ *that
  *  location, this operation is an error.
  *
  *  @param path     The path to the resource.
@@ -61,14 +67,15 @@
  *  @param success  Called when the update succeeds.
  *  @param failure  Called when the update fails.
  */
-- (void)updateResourceAtPath:(NSString *)path
+- (void)updateResourceAtPath:(NSString*)path
                 withResource:(id)object
                      success:(STResponseBlock)success
                      failure:(STFailureBlock)failure;
 
 /**
  *  replaceResourceAtPath issues a PUT to Stretchr, replacing the object found
- *  at the given path. The path MUST contain an ID. If no object is found at that
+ *  at the given path. The path MUST contain an ID. If no object is found at
+ *that
  *  location, the object will be created.
  *
  *  @param path     The path to the resource.
@@ -76,10 +83,10 @@
  *  @param success  Called when the update succeeds.
  *  @param failure  Called when the update fails.
  */
-- (void)replaceResourceAtPath:(NSString *)path
-                withResource:(id)object
-                     success:(STResponseBlock)success
-                     failure:(STFailureBlock)failure;
+- (void)replaceResourceAtPath:(NSString*)path
+                 withResource:(id)object
+                      success:(STResponseBlock)success
+                      failure:(STFailureBlock)failure;
 
 /**
  *  deleteResourceAtPath issues a DELETE to Stretchr, deleting the object
@@ -89,7 +96,7 @@
  *  @param success Called when the delete succeeds.
  *  @param failure Called when the delete fails.
  */
-- (void)deleteResourceAtPath:(NSString *)path
+- (void)deleteResourceAtPath:(NSString*)path
                      success:(STResponseBlock)success
                      failure:(STFailureBlock)failure;
 

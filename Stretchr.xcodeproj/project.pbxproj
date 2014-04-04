@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		710E8A0A18EF19F600A104CA /* STRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 710E8A0818EF19F600A104CA /* STRequest.h */; };
+		710E8A0B18EF19F600A104CA /* STRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 710E8A0918EF19F600A104CA /* STRequest.m */; };
+		710E8A0E18EF1E3400A104CA /* STTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = 710E8A0C18EF1E3400A104CA /* STTransport.h */; };
+		710E8A0F18EF1E3400A104CA /* STTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 710E8A0D18EF1E3400A104CA /* STTransport.m */; };
 		7171D86718EC77BF00F469EF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7171D86618EC77BF00F469EF /* Cocoa.framework */; };
 		7171D87118EC77BF00F469EF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7171D86F18EC77BF00F469EF /* InfoPlist.strings */; };
 		7171D87518EC77BF00F469EF /* Stretchr.m in Sources */ = {isa = PBXBuildFile; fileRef = 7171D87418EC77BF00F469EF /* Stretchr.m */; };
@@ -34,6 +38,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		710E8A0818EF19F600A104CA /* STRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRequest.h; sourceTree = "<group>"; };
+		710E8A0918EF19F600A104CA /* STRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRequest.m; sourceTree = "<group>"; };
+		710E8A0C18EF1E3400A104CA /* STTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTransport.h; sourceTree = "<group>"; };
+		710E8A0D18EF1E3400A104CA /* STTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTransport.m; sourceTree = "<group>"; };
 		7171D86318EC77BF00F469EF /* Stretchr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Stretchr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7171D86618EC77BF00F469EF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		7171D86918EC77BF00F469EF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -79,6 +87,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		710E8A0718EF19CC00A104CA /* Stretchr Communication */ = {
+			isa = PBXGroup;
+			children = (
+				71EFCE3218EC7EC50030A7DC /* STResponse.h */,
+				71EFCE3318EC7EC50030A7DC /* STResponse.m */,
+				710E8A0818EF19F600A104CA /* STRequest.h */,
+				710E8A0918EF19F600A104CA /* STRequest.m */,
+				710E8A0C18EF1E3400A104CA /* STTransport.h */,
+				710E8A0D18EF1E3400A104CA /* STTransport.m */,
+			);
+			name = "Stretchr Communication";
+			sourceTree = "<group>";
+		};
 		7171D85918EC77BF00F469EF = {
 			isa = PBXGroup;
 			children = (
@@ -121,11 +142,10 @@
 		7171D86C18EC77BF00F469EF /* Stretchr */ = {
 			isa = PBXGroup;
 			children = (
+				710E8A0718EF19CC00A104CA /* Stretchr Communication */,
 				71EFCE2D18EC7E810030A7DC /* Support Files */,
 				7171D87318EC77BF00F469EF /* Stretchr.h */,
 				7171D87418EC77BF00F469EF /* Stretchr.m */,
-				71EFCE3218EC7EC50030A7DC /* STResponse.h */,
-				71EFCE3318EC7EC50030A7DC /* STResponse.m */,
 				71EFCE3618EC7ECC0030A7DC /* STResource.h */,
 				71EFCE3718EC7ECC0030A7DC /* STResource.m */,
 				7171D86D18EC77BF00F469EF /* Supporting Files */,
@@ -177,7 +197,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				710E8A0E18EF1E3400A104CA /* STTransport.h in Headers */,
 				71EFCE3818EC7ECC0030A7DC /* STResource.h in Headers */,
+				710E8A0A18EF19F600A104CA /* STRequest.h in Headers */,
 				71EFCE3418EC7EC50030A7DC /* STResponse.h in Headers */,
 				71EFCE3018EC7E970030A7DC /* STConstants.h in Headers */,
 			);
@@ -280,6 +302,8 @@
 			files = (
 				71EFCE3118EC7E970030A7DC /* STConstants.m in Sources */,
 				7171D87518EC77BF00F469EF /* Stretchr.m in Sources */,
+				710E8A0F18EF1E3400A104CA /* STTransport.m in Sources */,
+				710E8A0B18EF19F600A104CA /* STRequest.m in Sources */,
 				71EFCE3918EC7ECC0030A7DC /* STResource.m in Sources */,
 				71EFCE3518EC7EC50030A7DC /* STResponse.m in Sources */,
 			);

@@ -1,19 +1,18 @@
 //
-//  STResourceCollectionTest.m
-//  Stretchr
+//  StretchrTests.m
+//  StretchrTests
 //
-//  Created by Mat Ryer on 1/19/14.
+//  Created by Tyler Bunnell on 4/2/14.
 //  Copyright (c) 2014 Stretchr, Inc. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
-#import "STResourceCollection.h"
 
-@interface STResourceCollectionTest : XCTestCase
+@interface StretchrTests : XCTestCase
 
 @end
 
-@implementation STResourceCollectionTest
+@implementation StretchrTests
 
 - (void)setUp
 {
@@ -27,12 +26,9 @@
     [super tearDown];
 }
 
-- (void)testInitWithCapacity
+- (void)testExample
 {
-  
-  STResourceCollection *collection = [[STResourceCollection alloc] initWithCapacity:9];
-  XCTAssertNotNil(collection);
-  
+    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
 }
 
 @end

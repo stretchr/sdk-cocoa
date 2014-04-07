@@ -16,6 +16,38 @@
 @interface Stretchr : NSObject
 
 /**
+ *  The account string must be set to the account with which you wish to
+ *  interact. This account can be found in your control panel.
+ */
+@property(nonatomic, readwrite, copy) NSString* account;
+
+/**
+ *  The project string must be set to the project with which you wish to
+ *  interact. This project can be found in your control panel.
+ */
+@property(nonatomic, readwrite, copy) NSString* project;
+
+/**
+ *  The key string must be set to the key you wish to use for the given
+ *  account and project. This key can be found in your control panel.
+ */
+@property(nonatomic, readwrite, copy) NSString* key;
+
+/**
+ *  sharedSDK creates a singleton instance of the Stretchr SDK
+ *  object and returns it. This object is guaranteed to be instantiated
+ *  only once, and must be configured before use. For example, it may be
+ *  configured in your app delegate like so:
+ *
+ * <pre><code>[Stretchr sharedSDK].account = @"your_account_name";
+ * [Stretchr sharedSDK].project = @"your_project_name";
+ * [Stretchr sharedSDK].key = @"your API key";</pre></code>
+ *
+ *  @return the shared Stretchr SDK object.
+ */
++ (id)sharedSDK;
+
+/**
  * The Stretchr class is the class through which you will perform all
  * operations.
  * All operations occur asynchronously, with callbacks being called as

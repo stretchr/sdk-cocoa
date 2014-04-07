@@ -10,4 +10,16 @@
 
 @implementation STResponse
 
+- (BOOL)hasErrors {
+  return NO;
+}
+
+- (NSArray*)errors {
+  return nil;
+}
+
+- (int)statusCode {
+  return 0;
+}
+
 @end

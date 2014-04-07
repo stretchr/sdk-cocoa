@@ -1,0 +1,59 @@
+//
+//  STResponse.h
+//  Stretchr
+//
+//  Created by Tyler Bunnell on 4/2/14.
+//  Copyright (c) 2014 Stretchr, Inc. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@class STResponse;
+
+/**
+ *  STResponseBlock defines the block signature that will be called
+ *  when a response is received from Stretchr
+ *
+ *  @param response The STResponse object containing response data.
+ */
+typedef void (^STResponseBlock)(STResponse* response);
+
+/**
+ *  STFailureBlock defines the block signature that will be called
+ *  when a request to Stretchr fails.
+ *
+ *  @param status The HTTP status code received.
+ *  @param errors The errors received from Stretchr, or transport level errors.
+ */
+typedef void (^STFailureBlock)(int status, NSArray* errors);
+
+/**
+ *  STResponse is an object encapsulating the data from a Stretchr
+ *  response object. All responses conform to this particular format, but
+ *  not all fields will be populated. Stretchr returns only the fields
+ *  that are important and/or requested.
+ */
+@interface STResponse : NSObject
+
+/**
+ *  hasErrors returns YES if the response contains any errors.
+ *
+ *  @return YES if errors, else NO.
+ */
+- (BOOL)hasErrors;
+
+/**
+ *  errors returns the array of errors contained in the response.
+ *
+ *  @return The array of errors in the response, or nil if none.
+ */
+- (NSArray*)errors;
+
+/**
+ *  statusCode retrieves the status code of the response
+ *
+ *  @return The response status code.
+ */
+- (int)statusCode;
+
+@end

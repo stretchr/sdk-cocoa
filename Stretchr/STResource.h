@@ -9,13 +9,15 @@
 #import <Foundation/Foundation.h>
 
 @class STResource;
+@class STResponse;
 
 /**
  *  STResourceBlock defines the block signature for the block
  *  that will be called when a resource response is received
  *  from Stretchr
  *
- *  @param resource The STResource object from the response returned by Stretchr.
+ *  @param resource The STResource object from the response returned by
+ *Stretchr.
  */
 typedef void (^STResourceBlock)(STResource* resource);
 
@@ -26,5 +28,15 @@ typedef void (^STResourceBlock)(STResource* resource);
  *  for deeper inspection of the response if desired.
  */
 @interface STResource : NSObject
+
+/**
+ *  resourceWithResponse creates a new STResource object out of the
+ *  given STResponse object.
+ *
+ *  @param response The response object from which to create the STResource.
+ *
+ *  @return The built STResource object.
+ */
++ (id)resourceWithResponse:(STResponse*)response;
 
 @end

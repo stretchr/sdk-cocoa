@@ -10,4 +10,8 @@
 
 @implementation STResource
 
++ (id)resourceWithResponse:(STResponse*)response {
+  return nil;
+}
+
 @end

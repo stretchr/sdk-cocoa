@@ -16,6 +16,16 @@
 @interface Stretchr : NSObject
 
 /**
+ *  The protocol to use when communicating with Stretchr. Defaults to https.
+ */
+@property(nonatomic, readwrite, copy) NSString* protocol;
+
+/**
+ *  The host at which Stretchr is running. Defaults to stretchr.com.
+ */
+@property(nonatomic, readwrite, copy) NSString* host;
+
+/**
  *  The account string must be set to the account with which you wish to
  *  interact. This account can be found in your control panel.
  */

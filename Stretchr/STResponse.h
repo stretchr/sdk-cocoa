@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class STResponse;
+@class STRequest;
 
 /**
  *  STResponseBlock defines the block signature that will be called
@@ -25,7 +26,7 @@ typedef void (^STResponseBlock)(STResponse* response);
  *  @param status The HTTP status code received.
  *  @param errors The errors received from Stretchr, or transport level errors.
  */
-typedef void (^STFailureBlock)(int status, NSArray* errors);
+typedef void (^STFailureBlock)(STRequest* request, int status, NSArray* errors);
 
 /**
  *  STResponse is an object encapsulating the data from a Stretchr
@@ -34,6 +35,17 @@ typedef void (^STFailureBlock)(int status, NSArray* errors);
  *  that are important and/or requested.
  */
 @interface STResponse : NSObject
+
+/**
+ *  responseWithURLResponse:body creates a new STResponse object from the
+ *  URL response and body received from Stretchr.
+ *
+ *  @param response The NSURLResponse object received from Stretchr.
+ *  @param body     The body object in the response from Stretchr.
+ *
+ *  @return An STResponse object ready for use.
+ */
++ (id)responseWithURLResponse:(NSURLResponse*)response body:(NSData*)body;
 
 /**
  *  hasErrors returns YES if the response contains any errors.

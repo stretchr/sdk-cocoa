@@ -10,6 +10,10 @@
 
 @implementation STResponse
 
++ (id)responseWithURLResponse:(NSURLResponse*)response body:(NSData*)body {
+  return nil;
+}
+
 - (BOOL)hasErrors {
   return NO;
 }

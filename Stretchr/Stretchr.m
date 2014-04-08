@@ -13,6 +13,8 @@ dispatch_queue_t requestQueue = NULL;
 
 @implementation Stretchr
 
+@synthesize protocol = _protocol;
+@synthesize host = _host;
 @synthesize account = _account;
 @synthesize project = _project;
 @synthesize key = _key;
@@ -30,7 +32,11 @@ dispatch_queue_t requestQueue = NULL;
 + (id)sharedSDK {
   static Stretchr* sharedSDK;
   static dispatch_once_t onceToken;
-  dispatch_once(&onceToken, ^{ sharedSDK = [[Stretchr alloc] init]; });
+  dispatch_once(&onceToken, ^{
+    sharedSDK = [[Stretchr alloc] init];
+    sharedSDK.protocol = STDefaults.Protocol;
+    sharedSDK.host = STDefaults.HostSuffix;
+  });
   return sharedSDK;
 }
 
@@ -38,17 +44,23 @@ dispatch_queue_t requestQueue = NULL;
                 atPath:(NSString*)path
                success:(STResponseBlock)success
                failure:(STFailureBlock)failure {
-  STRequest* request = [STRequest requestWithMethod:STHTTPMethods.Post
-                                               path:path
-                                           resource:object];
+  STRequest* request = [STRequest requestWithProtocol:self.protocol
+                                                 host:self.host
+                                              account:self.account
+                                              project:self.project
+                                                  key:self.key
+                                               method:STHTTPMethods.Post
+                                                 path:path
+                                               object:object];
+
   dispatch_async(requestQueue, ^{
     NSError* error;
     STResponse* response = [STTransport executeRequest:request error:&error];
     if (error != nil || [response hasErrors]) {
       if (error != nil) {
-        failure(0, @[ error ]);
+        failure(request, STNoStatusCode, @[ error ]);
       } else {
-        failure([response statusCode], [response errors]);
+        failure(request, [response statusCode], [response errors]);
       }
     } else {
       success(response);
@@ -59,17 +71,22 @@ dispatch_queue_t requestQueue = NULL;
 - (void)readResourceAtPath:(NSString*)path
                    success:(STResourceBlock)success
                    failure:(STFailureBlock)failure {
-  STRequest* request =
-      [STRequest requestWithMethod:STHTTPMethods.Get path:path];
+  STRequest* request = [STRequest requestWithProtocol:self.protocol
+                                                 host:self.host
+                                              account:self.account
+                                              project:self.project
+                                                  key:self.key
+                                               method:STHTTPMethods.Get
+                                                 path:path];
 
   dispatch_async(requestQueue, ^{
     NSError* error;
     STResponse* response = [STTransport executeRequest:request error:&error];
     if (error != nil || [response hasErrors]) {
       if (error != nil) {
-        failure(0, @[ error ]);
+        failure(request, STNoStatusCode, @[ error ]);
       } else {
-        failure([response statusCode], [response errors]);
+        failure(request, [response statusCode], [response errors]);
       }
     } else {
       STResource* resource = [STResource resourceWithResponse:response];
@@ -82,17 +99,22 @@ dispatch_queue_t requestQueue = NULL;
                 withResource:(id)object
                      success:(STResponseBlock)success
                      failure:(STFailureBlock)failure {
-  STRequest* request = [STRequest requestWithMethod:STHTTPMethods.Patch
-                                               path:path
-                                           resource:object];
+  STRequest* request = [STRequest requestWithProtocol:self.protocol
+                                                 host:self.host
+                                              account:self.account
+                                              project:self.project
+                                                  key:self.key
+                                               method:STHTTPMethods.Patch
+                                                 path:path
+                                               object:object];
   dispatch_async(requestQueue, ^{
     NSError* error;
     STResponse* response = [STTransport executeRequest:request error:&error];
     if (error != nil || [response hasErrors]) {
       if (error != nil) {
-        failure(0, @[ error ]);
+        failure(request, STNoStatusCode, @[ error ]);
       } else {
-        failure([response statusCode], [response errors]);
+        failure(request, [response statusCode], [response errors]);
       }
     } else {
       success(response);
@@ -104,16 +126,22 @@ dispatch_queue_t requestQueue = NULL;
                  withResource:(id)object
                       success:(STResponseBlock)success
                       failure:(STFailureBlock)failure {
-  STRequest* request =
-      [STRequest requestWithMethod:STHTTPMethods.Put path:path resource:object];
+  STRequest* request = [STRequest requestWithProtocol:self.protocol
+                                                 host:self.host
+                                              account:self.account
+                                              project:self.project
+                                                  key:self.key
+                                               method:STHTTPMethods.Put
+                                                 path:path
+                                               object:object];
   dispatch_async(requestQueue, ^{
     NSError* error;
     STResponse* response = [STTransport executeRequest:request error:&error];
     if (error != nil || [response hasErrors]) {
       if (error != nil) {
-        failure(0, @[ error ]);
+        failure(request, STNoStatusCode, @[ error ]);
       } else {
-        failure([response statusCode], [response errors]);
+        failure(request, [response statusCode], [response errors]);
       }
     } else {
       success(response);
@@ -124,16 +152,21 @@ dispatch_queue_t requestQueue = NULL;
 - (void)deleteResourceAtPath:(NSString*)path
                      success:(STResponseBlock)success
                      failure:(STFailureBlock)failure {
-  STRequest* request =
-      [STRequest requestWithMethod:STHTTPMethods.Delete path:path];
+  STRequest* request = [STRequest requestWithProtocol:self.protocol
+                                                 host:self.host
+                                              account:self.account
+                                              project:self.project
+                                                  key:self.key
+                                               method:STHTTPMethods.Delete
+                                                 path:path];
   dispatch_async(requestQueue, ^{
     NSError* error;
     STResponse* response = [STTransport executeRequest:request error:&error];
     if (error != nil || [response hasErrors]) {
       if (error != nil) {
-        failure(0, @[ error ]);
+        failure(request, STNoStatusCode, @[ error ]);
       } else {
-        failure([response statusCode], [response errors]);
+        failure(request, [response statusCode], [response errors]);
       }
     } else {
       success(response);

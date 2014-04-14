@@ -18,6 +18,8 @@
 		7171D87D18EC77BF00F469EF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7171D86618EC77BF00F469EF /* Cocoa.framework */; };
 		7171D88018EC77BF00F469EF /* Stretchr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7171D86318EC77BF00F469EF /* Stretchr.framework */; };
 		7171D88618EC77BF00F469EF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7171D88418EC77BF00F469EF /* InfoPlist.strings */; };
+		7184773118FC5415007B23ED /* STQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 7184772F18FC5415007B23ED /* STQuery.h */; };
+		7184773218FC5415007B23ED /* STQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 7184773018FC5415007B23ED /* STQuery.m */; };
 		71962BE918F44B6200A62D41 /* STNSString+STExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 71962BE718F44B6200A62D41 /* STNSString+STExtensions.h */; };
 		71962BEA18F44B6200A62D41 /* STNSString+STExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 71962BE818F44B6200A62D41 /* STNSString+STExtensions.m */; };
 		71962BED18F44C3200A62D41 /* STURLConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 71962BEB18F44C3200A62D41 /* STURLConnection.h */; };
@@ -29,6 +31,7 @@
 		71EFCE3518EC7EC50030A7DC /* STResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EFCE3318EC7EC50030A7DC /* STResponse.m */; };
 		71EFCE3818EC7ECC0030A7DC /* STResource.h in Headers */ = {isa = PBXBuildFile; fileRef = 71EFCE3618EC7ECC0030A7DC /* STResource.h */; };
 		71EFCE3918EC7ECC0030A7DC /* STResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EFCE3718EC7ECC0030A7DC /* STResource.m */; };
+		71F7251F18FC6A15005961EF /* STQueryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F7251E18FC6A15005961EF /* STQueryTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +63,8 @@
 		7171D87B18EC77BF00F469EF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		7171D88318EC77BF00F469EF /* StretchrTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "StretchrTests-Info.plist"; sourceTree = "<group>"; };
 		7171D88518EC77BF00F469EF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7184772F18FC5415007B23ED /* STQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STQuery.h; sourceTree = "<group>"; };
+		7184773018FC5415007B23ED /* STQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STQuery.m; sourceTree = "<group>"; };
 		71962BE718F44B6200A62D41 /* STNSString+STExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "STNSString+STExtensions.h"; sourceTree = "<group>"; };
 		71962BE818F44B6200A62D41 /* STNSString+STExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "STNSString+STExtensions.m"; sourceTree = "<group>"; };
 		71962BEB18F44C3200A62D41 /* STURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STURLConnection.h; sourceTree = "<group>"; };
@@ -71,6 +76,7 @@
 		71EFCE3318EC7EC50030A7DC /* STResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STResponse.m; sourceTree = "<group>"; };
 		71EFCE3618EC7ECC0030A7DC /* STResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STResource.h; sourceTree = "<group>"; };
 		71EFCE3718EC7ECC0030A7DC /* STResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STResource.m; sourceTree = "<group>"; };
+		71F7251E18FC6A15005961EF /* STQueryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STQueryTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +112,8 @@
 				710E8A0918EF19F600A104CA /* STRequest.m */,
 				710E8A0C18EF1E3400A104CA /* STTransport.h */,
 				710E8A0D18EF1E3400A104CA /* STTransport.m */,
+				7184772F18FC5415007B23ED /* STQuery.h */,
+				7184773018FC5415007B23ED /* STQuery.m */,
 			);
 			name = "Stretchr Communication";
 			sourceTree = "<group>";
@@ -179,6 +187,7 @@
 			children = (
 				7171D88218EC77BF00F469EF /* Supporting Files */,
 				71962BEF18F44E4C00A62D41 /* STRequestTest.m */,
+				71F7251E18FC6A15005961EF /* STQueryTest.m */,
 			);
 			path = StretchrTests;
 			sourceTree = "<group>";
@@ -221,6 +230,7 @@
 				71962BED18F44C3200A62D41 /* STURLConnection.h in Headers */,
 				710E8A0E18EF1E3400A104CA /* STTransport.h in Headers */,
 				71EFCE3818EC7ECC0030A7DC /* STResource.h in Headers */,
+				7184773118FC5415007B23ED /* STQuery.h in Headers */,
 				710E8A0A18EF19F600A104CA /* STRequest.h in Headers */,
 				71EFCE3418EC7EC50030A7DC /* STResponse.h in Headers */,
 				71EFCE3018EC7E970030A7DC /* STConstants.h in Headers */,
@@ -328,6 +338,7 @@
 				710E8A0F18EF1E3400A104CA /* STTransport.m in Sources */,
 				710E8A0B18EF19F600A104CA /* STRequest.m in Sources */,
 				71EFCE3918EC7ECC0030A7DC /* STResource.m in Sources */,
+				7184773218FC5415007B23ED /* STQuery.m in Sources */,
 				71962BEE18F44C3200A62D41 /* STURLConnection.m in Sources */,
 				71EFCE3518EC7EC50030A7DC /* STResponse.m in Sources */,
 			);
@@ -338,6 +349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71962BF018F44E4C00A62D41 /* STRequestTest.m in Sources */,
+				71F7251F18FC6A15005961EF /* STQueryTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

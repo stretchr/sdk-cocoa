@@ -38,6 +38,18 @@ extern const struct STResponseConstantsStruct {
   __unsafe_unretained NSString* Items;
 } STResponseConstants;
 
+extern const struct STQueryConstantsStruct {
+  __unsafe_unretained NSString* FilterChar;
+  __unsafe_unretained NSString* ListSeparatorChar;
+  __unsafe_unretained NSString* NotChar;
+  __unsafe_unretained NSString* BetweenChar;
+  __unsafe_unretained NSString* ExistsChar;
+  __unsafe_unretained NSString* GreaterThanChar;
+  __unsafe_unretained NSString* LessThanChar;
+  __unsafe_unretained NSString* GreaterThanOrEqualChar;
+  __unsafe_unretained NSString* LessThanOrEqualChar;
+} STQueryConstants;
+
 extern const struct STErrorStringsStruct {
   __unsafe_unretained NSString* ObjectNotSerializable;
 } STErrorStrings;

@@ -65,6 +65,7 @@ NSString* cleanPath(NSString* path) {
 }
 
 - (NSString*)URLString {
+  // TODO: encode the query object and apply it to the URLString
   return [NSString stringWithFormat:@"%@://%@.%@/api/v%@/%@/%@?key=%@",
                                     self.protocol, self.account, self.host,
                                     STDefaults.Version, self.project, self.path,

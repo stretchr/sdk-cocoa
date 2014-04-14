@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class STQuery;
+
 /**
  *  STRequest is used to build a request that will be sent to Stretchr.
  */
@@ -50,8 +52,16 @@
 
 /**
  *  The data object to be included with the request.
+ *
+ *  This object will be copied internally and must implement
+ *  copyWithZone:.
  */
 @property(readwrite, nonatomic, copy) id object;
+
+/**
+ *  The query object to use when making the request.
+ */
+@property(readwrite, nonatomic, copy) STQuery* query;
 
 /**
  *  Creates a new request object which can then be used to execute a request

@@ -32,6 +32,17 @@ const struct STResponseConstantsStruct STResponseConstants = {
     .Total = @"~total",
     .Items = @"~items"};
 
+const struct STQueryConstantsStruct STQueryConstants = {
+    .FilterChar = @":",
+    .ListSeparatorChar = @",",
+    .NotChar = @"!",
+    .BetweenChar = @"..",
+    .ExistsChar = @"*",
+    .GreaterThanChar = @">",
+    .LessThanChar = @"<",
+    .GreaterThanOrEqualChar = @">=",
+    .LessThanOrEqualChar = @"<="};
+
 const struct STErrorStringsStruct STErrorStrings = {
     .ObjectNotSerializable =
         @"Attempted to serialize an object to JSON that is not serializable."};

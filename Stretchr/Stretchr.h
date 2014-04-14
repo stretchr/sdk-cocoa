@@ -13,6 +13,16 @@
 #import "STConstants.h"
 #import "STTransport.h"
 
+/**
+ * The Stretchr class is the class through which you will perform all
+ * operations.
+ * All operations occur asynchronously, with callbacks being called as
+ * appropriate.
+ * Callbacks are not called on the main thread. You must manually dispatch to
+ * the
+ * main thread if you wish to perform any operations that require you to be on
+ * the main thread.
+ */
 @interface Stretchr : NSObject
 
 /**
@@ -56,17 +66,6 @@
  *  @return the shared Stretchr SDK object.
  */
 + (id)sharedSDK;
-
-/**
- * The Stretchr class is the class through which you will perform all
- * operations.
- * All operations occur asynchronously, with callbacks being called as
- * appropriate.
- * Callbacks are not called on the main thread. You must manually dispatch to
- * the
- * main thread if you wish to perform any operations that require you to be on
- * the main thread.
- */
 
 // @Resource Operations
 

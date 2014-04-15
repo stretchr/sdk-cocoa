@@ -87,6 +87,10 @@
 
   [query addOrderByKeyDescending:@"year"];
   XCTAssertEqualObjects([query parameters][@"order"][1], @"-year");
+
+  [query setPage:10];
+  XCTAssertEqual(query.limit, 100);
+  XCTAssertEqual(query.skip, 900);
 }
 
 @end

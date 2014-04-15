@@ -16,6 +16,7 @@ extern const struct STDefaultsStruct {
   __unsafe_unretained NSString* Protocol;
   __unsafe_unretained NSString* HostSuffix;
   __unsafe_unretained NSString* Version;
+  NSUInteger ResourceLimit;
 } STDefaults;
 
 extern const struct STHTTPMethodsStruct {

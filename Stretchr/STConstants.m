@@ -12,8 +12,10 @@ NSString *const STResourceKeyID = @"~id";
 NSString *const STErrorDomain = @"com.stretchr.error";
 const int STNoStatusCode = -1;
 
-const struct STDefaultsStruct STDefaults = {
-    .Protocol = @"https", .HostSuffix = @"stretchr.com", .Version = @"1.1"};
+const struct STDefaultsStruct STDefaults = {.Protocol = @"https",
+                                            .HostSuffix = @"stretchr.com",
+                                            .Version = @"1.1",
+                                            .ResourceLimit = 100};
 
 const struct STHTTPMethodsStruct STHTTPMethods = {.Get = @"GET",
                                                   .Put = @"PUT",

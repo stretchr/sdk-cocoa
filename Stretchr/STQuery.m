@@ -27,6 +27,8 @@ NSString* ensureFirstChar(NSString* firstChar, NSString* string) {
 @implementation STQuery
 
 @synthesize parameters = _parameters;
+@synthesize limit = _limit;
+@synthesize skip = _skip;
 
 + (id)query {
   return [[STQuery alloc] init];
@@ -37,7 +39,8 @@ NSString* ensureFirstChar(NSString* firstChar, NSString* string) {
     return nil;
   }
 
-  [self setParameters:[[NSMutableDictionary alloc] init]];
+  self.parameters = [[NSMutableDictionary alloc] init];
+  self.limit = STDefaults.ResourceLimit;
   return self;
 }
 
@@ -136,13 +139,8 @@ NSString* ensureFirstChar(NSString* firstChar, NSString* string) {
       addObject:ensureFirstChar(STQueryConstants.NegateChar, key)];
 }
 
-- (void)setLimit:(NSUInteger)limit {
-}
-
-- (void)setSkip:(NSUInteger)skip {
-}
-
 - (void)setPage:(NSUInteger)page {
+  self.skip = self.limit * (page - 1);
 }
 
 @end

@@ -192,18 +192,15 @@
 /**
  *  Instructs Stretchr to limit the number of resources returned to the given
  *  value. Currently, the default limit is 100 and the maximum is 1000.
- *
- *  @param limit The maximum number of records to return.
  */
-- (void)setLimit:(NSUInteger)limit;
+@property(readwrite, assign, nonatomic) NSUInteger limit;
 
 /**
- *  Instructs Stretchr to skip over the first "skip" results in the result set.
- *  Useful for paging.
- *
- *  @param skip The number of records to skip.
+ *  Instructs Stretchr to skip the number of resources given by this value.
+ *  This can be used for paging. It is recommended to use the setPage:
+ *  function instead.
  */
-- (void)setSkip:(NSUInteger)skip;
+@property(readwrite, assign, nonatomic) NSUInteger skip;
 
 /**
  *  Calculates the appropriate skip parameter to set in order to retrieve the

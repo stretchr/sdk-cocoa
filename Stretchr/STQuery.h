@@ -163,6 +163,56 @@
 
 // @Querying
 
+/**
+ *  Instructs Stretchr to sort the response, in ascending order, by the
+ *  value contained at the given key.
+ *
+ *  This method allows you to specify multiple keys for sorting. Each time you
+ *  call this method, the key will be added to the list of keys on which to
+ *  sort.
+ *  The response will be sorted first by the first item, then by the next, etc.
+ *
+ *  @param key The key to use when sorting.
+ */
+- (void)addOrderByKeyAscending:(NSString*)key;
+
+/**
+ *  Instructs Stretchr to sort the response, in descending order, by the
+ *  value contained at the given key.
+ *
+ *  This method allows you to specify multiple keys for sorting. Each time you
+ *  call this method, the key will be added to the list of keys on which to
+ *  sort.
+ *  The response will be sorted first by the first item, then by the next, etc.
+ *
+ *  @param key The key to use when sorting.
+ */
+- (void)addOrderByKeyDescending:(NSString*)key;
+
+/**
+ *  Instructs Stretchr to limit the number of resources returned to the given
+ *  value. Currently, the default limit is 100 and the maximum is 1000.
+ *
+ *  @param limit The maximum number of records to return.
+ */
+- (void)setLimit:(NSUInteger)limit;
+
+/**
+ *  Instructs Stretchr to skip over the first "skip" results in the result set.
+ *  Useful for paging.
+ *
+ *  @param skip The number of records to skip.
+ */
+- (void)setSkip:(NSUInteger)skip;
+
+/**
+ *  Calculates the appropriate skip parameter to set in order to retrieve the
+ *  desired page based on the current limit value.
+ *
+ *  @param page The page to retrieve.
+ */
+- (void)setPage:(NSUInteger)page;
+
 // @General
 
 /**
@@ -172,6 +222,6 @@
  *  @param key   The key for the query parameter.
  *  @param value The value for the query parameter.
  */
-- (void)addParameterKey:(NSString*)key value:(NSString*)value;
+- (void)addParameterForKey:(NSString*)key value:(NSString*)value;
 
 @end

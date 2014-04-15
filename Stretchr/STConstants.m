@@ -41,7 +41,11 @@ const struct STQueryConstantsStruct STQueryConstants = {
     .GreaterThanChar = @">",
     .LessThanChar = @"<",
     .GreaterThanOrEqualChar = @">=",
-    .LessThanOrEqualChar = @"<="};
+    .LessThanOrEqualChar = @"<=",
+    .NegateChar = @"-",
+    .Limit = @"limit",
+    .Skip = @"skip",
+    .Order = @"order"};
 
 const struct STErrorStringsStruct STErrorStrings = {
     .ObjectNotSerializable =

@@ -48,6 +48,10 @@ extern const struct STQueryConstantsStruct {
   __unsafe_unretained NSString* LessThanChar;
   __unsafe_unretained NSString* GreaterThanOrEqualChar;
   __unsafe_unretained NSString* LessThanOrEqualChar;
+  __unsafe_unretained NSString* NegateChar;
+  __unsafe_unretained NSString* Limit;
+  __unsafe_unretained NSString* Skip;
+  __unsafe_unretained NSString* Order;
 } STQueryConstants;
 
 extern const struct STErrorStringsStruct {

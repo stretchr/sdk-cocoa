@@ -79,8 +79,14 @@
   [query addFilterForKey:@"age" lessThanOrEqualTo:@"25"];
   XCTAssertEqualObjects([query parameters][@":age"], @"<=25");
 
-  [query addParameterKey:@"agg" value:@"group(name).sum(sales)"];
+  [query addParameterForKey:@"agg" value:@"group(name).sum(sales)"];
   XCTAssertEqualObjects([query parameters][@"agg"], @"group(name).sum(sales)");
+
+  [query addOrderByKeyAscending:@"age"];
+  XCTAssertEqualObjects([query parameters][@"order"][0], @"age");
+
+  [query addOrderByKeyDescending:@"year"];
+  XCTAssertEqualObjects([query parameters][@"order"][1], @"-year");
 }
 
 @end

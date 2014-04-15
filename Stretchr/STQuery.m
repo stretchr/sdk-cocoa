@@ -117,8 +117,32 @@ NSString* ensureFirstChar(NSString* firstChar, NSString* string) {
          forKey:ensureFirstChar(STQueryConstants.FilterChar, key)];
 }
 
-- (void)addParameterKey:(NSString*)key value:(NSString*)value {
+- (void)addParameterForKey:(NSString*)key value:(NSString*)value {
   [self.parameters setObject:value forKey:key];
+}
+
+- (void)addOrderByKeyAscending:(NSString*)key {
+  if (!self.parameters[STQueryConstants.Order]) {
+    self.parameters[STQueryConstants.Order] = [[NSMutableArray alloc] init];
+  }
+  [self.parameters[STQueryConstants.Order] addObject:key];
+}
+
+- (void)addOrderByKeyDescending:(NSString*)key {
+  if (!self.parameters[STQueryConstants.Order]) {
+    self.parameters[STQueryConstants.Order] = [[NSMutableArray alloc] init];
+  }
+  [self.parameters[STQueryConstants.Order]
+      addObject:ensureFirstChar(STQueryConstants.NegateChar, key)];
+}
+
+- (void)setLimit:(NSUInteger)limit {
+}
+
+- (void)setSkip:(NSUInteger)skip {
+}
+
+- (void)setPage:(NSUInteger)page {
 }
 
 @end

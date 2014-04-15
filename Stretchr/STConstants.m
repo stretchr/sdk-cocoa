@@ -47,7 +47,8 @@ const struct STQueryConstantsStruct STQueryConstants = {
     .NegateChar = @"-",
     .Limit = @"limit",
     .Skip = @"skip",
-    .Order = @"order"};
+    .Order = @"order",
+    .Aggregate = @"agg"};
 
 const struct STAggregationConstantsStruct STAggregationConstants = {
     .Sum = @"sum",

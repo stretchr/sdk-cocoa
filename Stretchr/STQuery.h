@@ -38,7 +38,7 @@
  *
  *  @return The compiled URL Parameter representation.
  */
-- (NSString*)queryAsURLParameters;
+- (NSString*)URLParameters;
 
 // @Filtering
 

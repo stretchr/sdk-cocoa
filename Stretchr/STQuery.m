@@ -8,6 +8,7 @@
 
 #import "STQuery.h"
 #import "STConstants.h"
+#import "STNSDictionary+STExtensions.h"
 
 @interface STQuery ()
 /**
@@ -15,7 +16,19 @@
  *  generate the final query string.
  */
 @property(readwrite, nonatomic, retain) NSMutableDictionary* parameters;
+
+/**
+ *  Holds all the aggregations assigned via the exposed methods. Used to
+ *  generate the final query string.
+ */
 @property(readwrite, nonatomic, retain) NSMutableDictionary* aggregations;
+
+/**
+ *  Compiles the aggregations map into a URL ready representation.
+ *
+ *  @return The compiled aggregation in URL format.
+ */
+- (NSString*)compileAggregation;
 @end
 
 NSString* ensureFirstChar(NSString* firstChar, NSString* string) {
@@ -46,8 +59,40 @@ NSString* ensureFirstChar(NSString* firstChar, NSString* string) {
   return self;
 }
 
-- (NSString*)queryAsURLParameters {
-  return @"";
+- (NSString*)URLParameters {
+
+  NSMutableDictionary* encodable =
+      [NSMutableDictionary dictionaryWithDictionary:self.parameters];
+  encodable[STQueryConstants.Limit] = [NSNumber numberWithInteger:self.limit];
+  encodable[STQueryConstants.Skip] = [NSNumber numberWithInteger:self.skip];
+
+  NSString* URLParameters = [encodable stringFromQueryComponents];
+
+  if ([self.aggregations count] != 0) {
+    NSString* agg = [self compileAggregation];
+    URLParameters = [URLParameters
+        stringByAppendingFormat:@"&%@=%@", STQueryConstants.Aggregate, agg];
+  }
+
+  return URLParameters;
+}
+
+- (NSString*)compileAggregation {
+  NSString* agg = @"";
+
+  for (NSString* key in self.aggregations) {
+    id value = self.aggregations[key];
+    if ([key isEqualToString:STAggregationConstants.Count]) {
+      agg = [agg stringByAppendingFormat:@"%@().", key];
+
+    } else {
+      agg = [agg stringByAppendingFormat:@"%@(%@).", key,
+                                         [value componentsJoinedByString:@","]];
+    }
+  }
+  agg = [agg stringByTrimmingCharactersInSet:
+                 [NSCharacterSet characterSetWithCharactersInString:@"."]];
+  return agg;
 }
 
 - (void)addFilterForKey:(NSString*)key equals:(NSString*)value {
@@ -176,6 +221,5 @@ NSString* ensureFirstChar(NSString* firstChar, NSString* string) {
 - (void)setAggregateCountResults {
   self.aggregations[STAggregationConstants.Count] = @YES;
 }
-
 
 @end

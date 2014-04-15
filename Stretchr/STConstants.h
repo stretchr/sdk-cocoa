@@ -53,6 +53,7 @@ extern const struct STQueryConstantsStruct {
   __unsafe_unretained NSString* Limit;
   __unsafe_unretained NSString* Skip;
   __unsafe_unretained NSString* Order;
+  __unsafe_unretained NSString* Aggregate;
 } STQueryConstants;
 
 extern const struct STAggregationConstantsStruct {

@@ -11,6 +11,8 @@
 		710E8A0B18EF19F600A104CA /* STRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 710E8A0918EF19F600A104CA /* STRequest.m */; };
 		710E8A0E18EF1E3400A104CA /* STTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = 710E8A0C18EF1E3400A104CA /* STTransport.h */; };
 		710E8A0F18EF1E3400A104CA /* STTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 710E8A0D18EF1E3400A104CA /* STTransport.m */; };
+		712E064218FDBBEF00A46847 /* STNSDictionary+STExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 712E064018FDBBEF00A46847 /* STNSDictionary+STExtensions.h */; };
+		712E064318FDBBEF00A46847 /* STNSDictionary+STExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 712E064118FDBBEF00A46847 /* STNSDictionary+STExtensions.m */; };
 		7171D86718EC77BF00F469EF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7171D86618EC77BF00F469EF /* Cocoa.framework */; };
 		7171D87118EC77BF00F469EF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7171D86F18EC77BF00F469EF /* InfoPlist.strings */; };
 		7171D87518EC77BF00F469EF /* Stretchr.m in Sources */ = {isa = PBXBuildFile; fileRef = 7171D87418EC77BF00F469EF /* Stretchr.m */; };
@@ -49,6 +51,8 @@
 		710E8A0918EF19F600A104CA /* STRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRequest.m; sourceTree = "<group>"; };
 		710E8A0C18EF1E3400A104CA /* STTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTransport.h; sourceTree = "<group>"; };
 		710E8A0D18EF1E3400A104CA /* STTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTransport.m; sourceTree = "<group>"; };
+		712E064018FDBBEF00A46847 /* STNSDictionary+STExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "STNSDictionary+STExtensions.h"; sourceTree = "<group>"; };
+		712E064118FDBBEF00A46847 /* STNSDictionary+STExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "STNSDictionary+STExtensions.m"; sourceTree = "<group>"; };
 		7171D86318EC77BF00F469EF /* Stretchr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Stretchr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7171D86618EC77BF00F469EF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		7171D86918EC77BF00F469EF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -206,6 +210,8 @@
 			children = (
 				71962BE718F44B6200A62D41 /* STNSString+STExtensions.h */,
 				71962BE818F44B6200A62D41 /* STNSString+STExtensions.m */,
+				712E064018FDBBEF00A46847 /* STNSDictionary+STExtensions.h */,
+				712E064118FDBBEF00A46847 /* STNSDictionary+STExtensions.m */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -228,6 +234,7 @@
 			files = (
 				71962BE918F44B6200A62D41 /* STNSString+STExtensions.h in Headers */,
 				71962BED18F44C3200A62D41 /* STURLConnection.h in Headers */,
+				712E064218FDBBEF00A46847 /* STNSDictionary+STExtensions.h in Headers */,
 				710E8A0E18EF1E3400A104CA /* STTransport.h in Headers */,
 				71EFCE3818EC7ECC0030A7DC /* STResource.h in Headers */,
 				7184773118FC5415007B23ED /* STQuery.h in Headers */,
@@ -336,6 +343,7 @@
 				7171D87518EC77BF00F469EF /* Stretchr.m in Sources */,
 				71962BEA18F44B6200A62D41 /* STNSString+STExtensions.m in Sources */,
 				710E8A0F18EF1E3400A104CA /* STTransport.m in Sources */,
+				712E064318FDBBEF00A46847 /* STNSDictionary+STExtensions.m in Sources */,
 				710E8A0B18EF19F600A104CA /* STRequest.m in Sources */,
 				71EFCE3918EC7ECC0030A7DC /* STResource.m in Sources */,
 				7184773218FC5415007B23ED /* STQuery.m in Sources */,

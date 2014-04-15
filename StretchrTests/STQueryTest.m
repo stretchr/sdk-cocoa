@@ -123,6 +123,18 @@
 
   [query setAggregateCountResults];
   XCTAssertEqualObjects([query aggregations][@"count"], @YES);
+
+  query = [STQuery query];
+  [query addFilterForKey:@"name" equals:@"Tyler"];
+  [query addFilterForKey:@"age" between:@"18" and:@"34"];
+  [query addFilterForKeyExists:@"active"];
+  [query setAggregateGroupByKeys:@[ @"name", @"age" ]];
+  [query setAggregateSumForKeys:@[ @"sales" ]];
+  [query setAggregateCountResults];
+
+  XCTAssertEqualObjects([query URLParameters], @":age=18..34&:name=Tyler&:"
+                                                "active=*&agg=group(name,age)."
+                                                "sum(sales).count()");
 }
 
 @end

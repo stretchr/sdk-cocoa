@@ -54,14 +54,24 @@
 @property(nonatomic, readwrite, copy) NSString* key;
 
 /**
- *  sharedSDK creates a singleton instance of the Stretchr SDK
- *  object and returns it. This object is guaranteed to be instantiated
- *  only once, and must be configured before use. For example, it may be
- *  configured in your app delegate like so:
+ *  Creates and configures the shared singleton SDK instance using the given
+ *  parameters. This method must be called before calling sharedSDK to retrive
+ *  a pointer to the shared instance.
  *
- * <pre><code>[Stretchr sharedSDK].account = @"your_account_name";
- * [Stretchr sharedSDK].project = @"your_project_name";
- * [Stretchr sharedSDK].key = @"your API key";</pre></code>
+ *  This object is guaranteed to be instantiated only once.
+ *
+ *  @param account The name of the account you wish to use.
+ *  @param project The name of the project you wish to use.
+ *  @param key     The key you wish to use.
+ */
++ (void)initializeSharedSDKWithAccount:(NSString*)account
+                               project:(NSString*)project
+                                   key:(NSString*)key;
+
+/**
+ *  sharedSDK returns the singleton instance of the Stretchr SDK
+ *  object. You must call the initialization function before calling this method
+ *  or you will receive a nil object.
  *
  *  @return the shared Stretchr SDK object.
  */

@@ -29,14 +29,23 @@ dispatch_queue_t requestQueue = NULL;
   }
 }
 
-+ (id)sharedSDK {
-  static Stretchr* sharedSDK;
+static Stretchr* sharedSDK;
+
++ (void)initializeSharedSDKWithAccount:(NSString*)account
+                               project:(NSString*)project
+                                   key:(NSString*)key {
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
     sharedSDK = [[Stretchr alloc] init];
     sharedSDK.protocol = STDefaults.Protocol;
     sharedSDK.host = STDefaults.HostSuffix;
+    sharedSDK.account = account;
+    sharedSDK.project = project;
+    sharedSDK.key = key;
   });
+}
+
++ (id)sharedSDK {
   return sharedSDK;
 }
 

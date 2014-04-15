@@ -10,6 +10,7 @@
 
 #import "STRequest.h"
 #import "STConstants.h"
+#import "STQuery.h"
 
 @interface STRequestTest : XCTestCase
 
@@ -54,6 +55,30 @@
   XCTAssertEqualObjects(
       @"https://account.stretchr.com/api/v1.1/project/people/tyler?key=123",
       [request URLString]);
+
+  request = [STRequest requestWithProtocol:@"https"
+                                      host:@"stretchr.com"
+                                   account:@"account"
+                                   project:@"project"
+                                       key:@"123"
+                                    method:@"GET"
+                                      path:@"people/tyler"];
+
+  STQuery* query = [STQuery query];
+  [query addFilterForKey:@"name" equals:@"Tyler"];
+  [query addFilterForKey:@"age" between:@"18" and:@"34"];
+  [query addFilterForKeyExists:@"active"];
+  [query setAggregateGroupByKeys:@[ @"name", @"age" ]];
+  [query setAggregateSumForKeys:@[ @"sales" ]];
+  [query setAggregateCountResults];
+
+  [request setQuery:query];
+
+  XCTAssertEqualObjects(@"https://account.stretchr.com/api/v1.1/project/"
+                         "people/"
+                         "tyler?key=123&%3Aage=18..34&%3Aname=Tyler&%3Aactive=%"
+                         "2A&agg=group(name,age).sum(sales).count()",
+                        [request URLString]);
 }
 
 @end

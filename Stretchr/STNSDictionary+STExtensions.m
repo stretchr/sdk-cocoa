@@ -16,10 +16,15 @@
   for (NSString* key in self) {
     id object = [self objectForKey:key];
     if ([object isKindOfClass:[NSString class]]) {
-      [result addObject:[NSString stringWithFormat:@"%@=%@", key, object]];
+      [result addObject:[NSString stringWithFormat:
+                                      @"%@=%@", [key stringByEncodingURLFormat],
+                                      [object stringByEncodingURLFormat]]];
     } else if ([object isKindOfClass:[NSArray class]]) {
       for (NSString* subObject in object) {
-        [result addObject:[NSString stringWithFormat:@"%@=%@", key, subObject]];
+        [result
+            addObject:[NSString stringWithFormat:
+                                    @"%@=%@", [key stringByEncodingURLFormat],
+                                    [subObject stringByEncodingURLFormat]]];
       }
     }
   }

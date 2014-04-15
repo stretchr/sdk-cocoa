@@ -9,6 +9,7 @@
 #import "STRequest.h"
 #import "STConstants.h"
 #import "STNSString+STExtensions.h"
+#import "STQuery.h"
 
 NSString* cleanPath(NSString* path) {
   if ([path beginsWithString:@"/"]) {
@@ -65,7 +66,14 @@ NSString* cleanPath(NSString* path) {
 }
 
 - (NSString*)URLString {
-  // TODO: encode the query object and apply it to the URLString
+
+  if (self.query != nil) {
+    return
+        [NSString stringWithFormat:@"%@://%@.%@/api/v%@/%@/%@?key=%@&%@",
+                                   self.protocol, self.account, self.host,
+                                   STDefaults.Version, self.project, self.path,
+                                   self.key, [self.query URLParameters]];
+  }
   return [NSString stringWithFormat:@"%@://%@.%@/api/v%@/%@/%@?key=%@",
                                     self.protocol, self.account, self.host,
                                     STDefaults.Version, self.project, self.path,

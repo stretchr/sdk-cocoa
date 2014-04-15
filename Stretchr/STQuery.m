@@ -222,4 +222,13 @@ NSString* ensureFirstChar(NSString* firstChar, NSString* string) {
   self.aggregations[STAggregationConstants.Count] = @YES;
 }
 
+- (id)copyWithZone:(NSZone*)zone {
+  STQuery* query = [STQuery query];
+  [query setParameters:[self parameters]];
+  [query setAggregations:[self aggregations]];
+  [query setLimit:[self limit]];
+  [query setSkip:[self skip]];
+  return query;
+}
+
 @end

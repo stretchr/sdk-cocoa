@@ -132,9 +132,9 @@
   [query setAggregateSumForKeys:@[ @"sales" ]];
   [query setAggregateCountResults];
 
-  XCTAssertEqualObjects([query URLParameters], @":age=18..34&:name=Tyler&:"
-                                                "active=*&agg=group(name,age)."
-                                                "sum(sales).count()");
+  XCTAssertEqualObjects([query URLParameters], @"%3Aage=18..34&%3Aname=Tyler&%"
+                                                "3Aactive=%2A&agg=group(name,"
+                                                "age).sum(sales).count()");
 }
 
 @end

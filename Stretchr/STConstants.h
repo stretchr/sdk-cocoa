@@ -55,6 +55,17 @@ extern const struct STQueryConstantsStruct {
   __unsafe_unretained NSString* Order;
 } STQueryConstants;
 
+extern const struct STAggregationConstantsStruct {
+  __unsafe_unretained NSString* Sum;
+  __unsafe_unretained NSString* Max;
+  __unsafe_unretained NSString* Min;
+  __unsafe_unretained NSString* Average;
+  __unsafe_unretained NSString* UniqueSet;
+  __unsafe_unretained NSString* Count;
+  __unsafe_unretained NSString* Group;
+  __unsafe_unretained NSString* Unwind;
+} STAggregationConstants;
+
 extern const struct STErrorStringsStruct {
   __unsafe_unretained NSString* ObjectNotSerializable;
 } STErrorStrings;

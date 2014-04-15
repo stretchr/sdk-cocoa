@@ -49,6 +49,16 @@ const struct STQueryConstantsStruct STQueryConstants = {
     .Skip = @"skip",
     .Order = @"order"};
 
+const struct STAggregationConstantsStruct STAggregationConstants = {
+    .Sum = @"sum",
+    .Max = @"max",
+    .Min = @"min",
+    .Average = @"avg",
+    .UniqueSet = @"uniqueSet",
+    .Count = @"count",
+    .Group = @"group",
+    .Unwind = @"unwind"};
+
 const struct STErrorStringsStruct STErrorStrings = {
     .ObjectNotSerializable =
         @"Attempted to serialize an object to JSON that is not serializable."};

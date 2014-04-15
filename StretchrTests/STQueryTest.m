@@ -15,6 +15,7 @@
  *  generate the final query string.
  */
 @property(readwrite, nonatomic, copy) NSMutableDictionary* parameters;
+@property(readwrite, nonatomic, copy) NSMutableDictionary* aggregations;
 @end
 
 @interface STQueryTest : XCTestCase
@@ -91,6 +92,37 @@
   [query setPage:10];
   XCTAssertEqual(query.limit, 100);
   XCTAssertEqual(query.skip, 900);
+
+  [query setAggregateSumForKeys:@[ @"Tyler", @"Mat" ]];
+  XCTAssertEqualObjects([query aggregations][@"sum"][0], @"Tyler");
+  XCTAssertEqualObjects([query aggregations][@"sum"][1], @"Mat");
+
+  [query setAggregateMaxForKeys:@[ @"Tyler", @"Mat" ]];
+  XCTAssertEqualObjects([query aggregations][@"max"][0], @"Tyler");
+  XCTAssertEqualObjects([query aggregations][@"max"][1], @"Mat");
+
+  [query setAggregateMinForKeys:@[ @"Tyler", @"Mat" ]];
+  XCTAssertEqualObjects([query aggregations][@"min"][0], @"Tyler");
+  XCTAssertEqualObjects([query aggregations][@"min"][1], @"Mat");
+
+  [query setAggregateAverageForKeys:@[ @"Tyler", @"Mat" ]];
+  XCTAssertEqualObjects([query aggregations][@"avg"][0], @"Tyler");
+  XCTAssertEqualObjects([query aggregations][@"avg"][1], @"Mat");
+
+  [query setAggregateUniqueSetForKeys:@[ @"Tyler", @"Mat" ]];
+  XCTAssertEqualObjects([query aggregations][@"uniqueSet"][0], @"Tyler");
+  XCTAssertEqualObjects([query aggregations][@"uniqueSet"][1], @"Mat");
+
+  [query setAggregateGroupByKeys:@[ @"Tyler", @"Mat" ]];
+  XCTAssertEqualObjects([query aggregations][@"group"][0], @"Tyler");
+  XCTAssertEqualObjects([query aggregations][@"group"][1], @"Mat");
+
+  [query setAggregateUnwindKeys:@[ @"Tyler", @"Mat" ]];
+  XCTAssertEqualObjects([query aggregations][@"unwind"][0], @"Tyler");
+  XCTAssertEqualObjects([query aggregations][@"unwind"][1], @"Mat");
+
+  [query setAggregateCountResults];
+  XCTAssertEqualObjects([query aggregations][@"count"], @YES);
 }
 
 @end

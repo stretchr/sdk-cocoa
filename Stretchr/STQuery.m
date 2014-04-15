@@ -15,6 +15,7 @@
  *  generate the final query string.
  */
 @property(readwrite, nonatomic, retain) NSMutableDictionary* parameters;
+@property(readwrite, nonatomic, retain) NSMutableDictionary* aggregations;
 @end
 
 NSString* ensureFirstChar(NSString* firstChar, NSString* string) {
@@ -40,6 +41,7 @@ NSString* ensureFirstChar(NSString* firstChar, NSString* string) {
   }
 
   self.parameters = [[NSMutableDictionary alloc] init];
+  self.aggregations = [[NSMutableDictionary alloc] init];
   self.limit = STDefaults.ResourceLimit;
   return self;
 }
@@ -142,5 +144,38 @@ NSString* ensureFirstChar(NSString* firstChar, NSString* string) {
 - (void)setPage:(NSUInteger)page {
   self.skip = self.limit * (page - 1);
 }
+
+- (void)setAggregateSumForKeys:(NSArray*)keys {
+  self.aggregations[STAggregationConstants.Sum] = [keys copy];
+}
+
+- (void)setAggregateMaxForKeys:(NSArray*)keys {
+  self.aggregations[STAggregationConstants.Max] = [keys copy];
+}
+
+- (void)setAggregateMinForKeys:(NSArray*)keys {
+  self.aggregations[STAggregationConstants.Min] = [keys copy];
+}
+
+- (void)setAggregateAverageForKeys:(NSArray*)keys {
+  self.aggregations[STAggregationConstants.Average] = [keys copy];
+}
+
+- (void)setAggregateUniqueSetForKeys:(NSArray*)keys {
+  self.aggregations[STAggregationConstants.UniqueSet] = [keys copy];
+}
+
+- (void)setAggregateGroupByKeys:(NSArray*)keys {
+  self.aggregations[STAggregationConstants.Group] = [keys copy];
+}
+
+- (void)setAggregateUnwindKeys:(NSArray*)keys {
+  self.aggregations[STAggregationConstants.Unwind] = [keys copy];
+}
+
+- (void)setAggregateCountResults {
+  self.aggregations[STAggregationConstants.Count] = @YES;
+}
+
 
 @end

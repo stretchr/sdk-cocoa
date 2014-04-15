@@ -210,6 +210,91 @@
  */
 - (void)setPage:(NSUInteger)page;
 
+// @Aggregation
+
+/**
+ *  Instructs Stretchr to perform an aggregation operation on the given
+ *  keys.
+ *
+ *  Returns the sum of the values contained at each of the given keys.
+ *
+ *  @param keys The keys on which to perform the sum aggregation.
+ */
+- (void)setAggregateSumForKeys:(NSArray*)keys;
+
+/**
+ *  Instructs Stretchr to perform an aggregation operation on the given
+ *  keys.
+ *
+ *  Returns the maximum of the values contained at each of the given keys.
+ *
+ *  @param keys The keys on which to perform the max aggregation.
+ */
+- (void)setAggregateMaxForKeys:(NSArray*)keys;
+
+/**
+ *  Instructs Stretchr to perform an aggregation operation on the given
+ *  keys.
+ *
+ *  Returns the minimum of the values contained at each of the given keys.
+ *
+ *  @param keys The keys on which to perform the min aggregation.
+ */
+- (void)setAggregateMinForKeys:(NSArray*)keys;
+
+/**
+ *  Instructs Stretchr to perform an aggregation operation on the given
+ *  keys.
+ *
+ *  Returns the average of the values contained at each of the given keys.
+ *
+ *  @param keys The keys on which to perform the average aggregation.
+ */
+- (void)setAggregateAverageForKeys:(NSArray*)keys;
+
+/**
+ *  Instructs Stretchr to perform an aggregation operation on the given
+ *  keys.
+ *
+ *  For each key, returns an array of all the unique values contained
+ *  at that key throughout the dataset.
+ *
+ *  @param keys The keys on which to perform the uniqueSet aggregation.
+ */
+- (void)setAggregateUniqueSetForKeys:(NSArray*)keys;
+
+/**
+ *  Instructs Stretchr to perform an aggregation operation on the given
+ *  keys.
+ *
+ *  Groups each result resource by the given keys. Similar to an SQL
+ *  SELECT one,two statement.
+ *
+ *  @param keys The keys on which to perform the group aggregation.
+ */
+- (void)setAggregateGroupByKeys:(NSArray*)keys;
+
+/**
+ *  Instructs Stretchr to perform an aggregation operation on the given
+ *  keys.
+ *
+ *  If the value contained at the given key is an array type, it will be
+ *  exploded into one resource per value, allowing the aggregation
+ *  functions to operate on the data contained therein.
+ *
+ *  @param keys The keys on which to unwind.
+ */
+- (void)setAggregateUnwindKeys:(NSArray*)keys;
+
+/**
+ *  Instructs Stretchr to perform an aggregation operation on the given
+ *  keys.
+ *
+ *  Returns the count of the number of records matching the complete
+ *  aggregation query.
+ */
+- (void)setAggregateCountResults;
+
 // @General
 
 /**

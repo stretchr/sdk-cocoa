@@ -306,4 +306,13 @@
  */
 - (void)addParameterForKey:(NSString*)key value:(NSString*)value;
 
+/**
+ *  Adds an entry to the array of fields to include in the response that are
+ *  not typically included. For example, ~parent and ~path. These fields can be
+ *  found in the STConstants.h file.
+ *
+ *  @param key The field to include in the response.
+ */
+- (void)addInclude:(NSString*)field;
+
 @end

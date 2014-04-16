@@ -222,6 +222,13 @@ NSString* ensureFirstChar(NSString* firstChar, NSString* string) {
   self.aggregations[STAggregationConstants.Count] = @YES;
 }
 
+- (void)addInclude:(NSString*)field {
+  if (!self.parameters[STQueryConstants.Include]) {
+    self.parameters[STQueryConstants.Include] = [[NSMutableArray alloc] init];
+  }
+  [self.parameters[STQueryConstants.Include] addObject:field];
+}
+
 - (id)copyWithZone:(NSZone*)zone {
   STQuery* query = [STQuery query];
   [query setParameters:[self parameters]];

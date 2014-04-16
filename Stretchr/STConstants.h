@@ -46,7 +46,6 @@ extern const struct STResourceConstantsStruct {
   __unsafe_unretained NSString* Parent;
 } STResourceConstants;
 
-
 extern const struct STQueryConstantsStruct {
   __unsafe_unretained NSString* FilterChar;
   __unsafe_unretained NSString* ListSeparatorChar;
@@ -62,6 +61,7 @@ extern const struct STQueryConstantsStruct {
   __unsafe_unretained NSString* Skip;
   __unsafe_unretained NSString* Order;
   __unsafe_unretained NSString* Aggregate;
+  __unsafe_unretained NSString* Include;
 } STQueryConstants;
 
 extern const struct STAggregationConstantsStruct {

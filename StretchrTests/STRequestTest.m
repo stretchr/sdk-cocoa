@@ -40,9 +40,9 @@
                                                method:@"GET"
                                                  path:@"/people/tyler"];
 
-  XCTAssertEqualObjects(
-      @"https://account.stretchr.com/api/v1.1/project/people/tyler?key=123",
-      [request URLString]);
+  XCTAssertEqualObjects(@"https://account.stretchr.com/api/v1.1/project/people/"
+                         "tyler?key=123&include=~path",
+                        [request URLString]);
 
   request = [STRequest requestWithProtocol:@"https"
                                       host:@"stretchr.com"
@@ -52,9 +52,9 @@
                                     method:@"GET"
                                       path:@"people/tyler"];
 
-  XCTAssertEqualObjects(
-      @"https://account.stretchr.com/api/v1.1/project/people/tyler?key=123",
-      [request URLString]);
+  XCTAssertEqualObjects(@"https://account.stretchr.com/api/v1.1/project/people/"
+                         "tyler?key=123&include=~path",
+                        [request URLString]);
 
   request = [STRequest requestWithProtocol:@"https"
                                       host:@"stretchr.com"
@@ -74,11 +74,12 @@
 
   [request setQuery:query];
 
-  XCTAssertEqualObjects(@"https://account.stretchr.com/api/v1.1/project/"
-                         "people/"
-                         "tyler?key=123&%3Aage=18..34&%3Aname=Tyler&%3Aactive=%"
-                         "2A&agg=group(name,age).sum(sales).count()",
-                        [request URLString]);
+  XCTAssertEqualObjects(
+      @"https://account.stretchr.com/api/v1.1/project/"
+       "people/"
+       "tyler?key=123&%3Aage=18..34&%3Aname=Tyler&include=~path&%3Aactive=%"
+       "2A&agg=group(name,age).sum(sales).count()",
+      [request URLString]);
 }
 
 @end

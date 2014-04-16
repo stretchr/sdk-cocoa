@@ -22,11 +22,19 @@
 
 - (id)initWithResponse:(STResponse *)response {
   if (!(self = [super init])) {
-    _data = response.data[STResponseConstants.Data];
-    _ID = _data[STResourceConstants.ID];
-    _path = _data[STResourceConstants.Path];
+    return nil;
   }
+
+  _data = response.data[STResponseConstants.Data];
+  _ID = _data[STResourceConstants.ID];
+  _path = _data[STResourceConstants.Path];
+
   return self;
+}
+
+- (NSString *)description {
+  return [NSString
+      stringWithFormat:@"ID: %@, Path: %@, Data: %@", _ID, _path, _data];
 }
 
 @end

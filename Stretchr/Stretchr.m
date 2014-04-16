@@ -47,7 +47,9 @@ static Stretchr* sharedSDK;
 - (id)initWithAccount:(NSString*)account
               project:(NSString*)project
                   key:(NSString*)key {
-  if (!(self = [super init])) return nil;
+  if (!(self = [super init])) {
+    return nil;
+  }
 
   self.protocol = STDefaults.Protocol;
   self.host = STDefaults.HostSuffix;

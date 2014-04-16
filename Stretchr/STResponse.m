@@ -28,15 +28,17 @@
                     error:(NSError* __autoreleasing*)error {
 
   if (!(self = [super init])) {
-
-    _data = [NSJSONSerialization JSONObjectWithData:body options:0 error:error];
-    if (error != nil && *error != nil) {
-      return nil;
-    }
-
-    _status = [_data[STResponseConstants.Status] integerValue];
-    _errors = _data[STResponseConstants.Errors];
+    return nil;
   }
+
+  _data = [NSJSONSerialization JSONObjectWithData:body options:0 error:error];
+  if (error != nil && *error != nil) {
+    return nil;
+  }
+
+  _status = [_data[STResponseConstants.Status] integerValue];
+  _errors = _data[STResponseConstants.Errors];
+
   return self;
 }
 

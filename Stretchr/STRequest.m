@@ -48,17 +48,14 @@ NSString* cleanPath(NSString* path) {
 
 - (NSString*)URLString {
 
-  if (self.query != nil) {
-    return
-        [NSString stringWithFormat:@"%@://%@.%@/api/v%@/%@/%@?key=%@&%@",
-                                   self.protocol, self.account, self.host,
-                                   STDefaults.Version, self.project, self.path,
-                                   self.key, [self.query URLParameters]];
+  if (self.query == nil) {
+    self.query = [STQuery query];
   }
-  return [NSString stringWithFormat:@"%@://%@.%@/api/v%@/%@/%@?key=%@",
+  [self.query addInclude:STResourceConstants.Path];
+  return [NSString stringWithFormat:@"%@://%@.%@/api/v%@/%@/%@?key=%@&%@",
                                     self.protocol, self.account, self.host,
                                     STDefaults.Version, self.project, self.path,
-                                    self.key];
+                                    self.key, [self.query URLParameters]];
 }
 
 @end

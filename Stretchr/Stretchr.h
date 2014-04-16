@@ -60,6 +60,15 @@
  *
  *  This object is guaranteed to be instantiated only once.
  *
+ *  The instance is initialized with the default protocol of "https", as well
+ *  as the default host of "stretchr.com". If this application requires these
+ *  options to be changed, accessors are provided. The host will typically only
+ *  change for private cloud or enterprise installations as they will not be
+ *  hosted on "stretchr.com".
+ *
+ *  The cloud offering of Stretchr enforces the "https" protocol. You should not
+ *  change the protocol to "http" if you are using the "stretchr.com" host.
+ *
  *  @param account The name of the account you wish to use.
  *  @param project The name of the project you wish to use.
  *  @param key     The key you wish to use.
@@ -76,6 +85,34 @@
  *  @return the shared Stretchr SDK object.
  */
 + (id)sharedSDK;
+
+/**
+ *  Creates and configures an instance of the Stretchr object.
+ *
+ *  Most applications use only one account, project and key, and will
+ *  typically use the shared instance for convenience. This method is provided
+ *  for those atypical cases where more than one account, project or key is
+ *  needed for the application. This method does not interact with the shared
+ *  instance in any way.
+ *
+ *  The instance is initialized with the default protocol of "https", as well
+ *  as the default host of "stretchr.com". If this application requires these
+ *  options to be changed, accessors are provided. The host will typically only
+ *  change for private cloud or enterprise installations as they will not be
+ *  hosted on "stretchr.com".
+ *
+ *  The cloud offering of Stretchr enforces the "https" protocol. You should not
+ *  change the protocol to "http" if you are using the "stretchr.com" host.
+ *
+ *  @param account The name of the account you wish to use.
+ *  @param project The name of the project you wish to use.
+ *  @param key     The key you wish to use.
+ *
+ *  @return The initialized Stretchr object.
+ */
+- (id)initWithAccount:(NSString*)account
+              project:(NSString*)project
+                  key:(NSString*)key;
 
 // @Resource Operations
 
@@ -152,5 +189,8 @@
                      failure:(STFailureBlock)failure;
 
 // @ResourceCollection Operations
+
+// TODO: write the collection version of the functions. these will optionally
+// take queries.
 
 @end

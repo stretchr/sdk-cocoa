@@ -36,17 +36,27 @@ static Stretchr* sharedSDK;
                                    key:(NSString*)key {
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
-    sharedSDK = [[Stretchr alloc] init];
-    sharedSDK.protocol = STDefaults.Protocol;
-    sharedSDK.host = STDefaults.HostSuffix;
-    sharedSDK.account = account;
-    sharedSDK.project = project;
-    sharedSDK.key = key;
+    sharedSDK =
+        [[Stretchr alloc] initWithAccount:account project:project key:key];
   });
 }
 
 + (id)sharedSDK {
   return sharedSDK;
+}
+
+- (id)initWithAccount:(NSString*)account
+              project:(NSString*)project
+                  key:(NSString*)key {
+  if (!(self = [super init])) return nil;
+
+  self.protocol = STDefaults.Protocol;
+  self.host = STDefaults.HostSuffix;
+  self.account = account;
+  self.project = project;
+  self.key = key;
+
+  return self;
 }
 
 - (void)createResource:(id)object

@@ -7,11 +7,26 @@
 //
 
 #import "STResource.h"
+#import "STResponse.h"
+#import "STConstants.h"
 
 @implementation STResource
 
-+ (id)resourceWithResponse:(STResponse*)response {
-  return nil;
+@synthesize ID = _ID;
+@synthesize path = _path;
+@synthesize data = _data;
+
++ (id)resourceWithResponse:(STResponse *)response {
+  return [[STResource alloc] initWithResponse:response];
+}
+
+- (id)initWithResponse:(STResponse *)response {
+  if (!(self = [super init])) {
+    _data = response.data[STResponseConstants.Data];
+    _ID = _data[STResourceConstants.ID];
+    _path = _data[STResourceConstants.Path];
+  }
+  return self;
 }
 
 @end

@@ -8,7 +8,6 @@
 
 #import "STConstants.h"
 
-NSString *const STResourceKeyID = @"~id";
 NSString *const STErrorDomain = @"com.stretchr.error";
 const int STNoStatusCode = -1;
 
@@ -35,6 +34,9 @@ const struct STResponseConstantsStruct STResponseConstants = {
     .Count = @"~count",
     .Total = @"~total",
     .Items = @"~items"};
+
+const struct STResourceConstantsStruct STResourceConstants = {
+    .ID = @"~id", .Path = @"~path", .Parent = @"~parent"};
 
 const struct STQueryConstantsStruct STQueryConstants = {
     .FilterChar = @":",

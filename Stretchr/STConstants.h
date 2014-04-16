@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString* const STResourceKeyID;
 extern NSString* const STErrorDomain;
 extern const int STNoStatusCode;
 
@@ -40,6 +39,13 @@ extern const struct STResponseConstantsStruct {
   __unsafe_unretained NSString* Total;
   __unsafe_unretained NSString* Items;
 } STResponseConstants;
+
+extern const struct STResourceConstantsStruct {
+  __unsafe_unretained NSString* ID;
+  __unsafe_unretained NSString* Path;
+  __unsafe_unretained NSString* Parent;
+} STResourceConstants;
+
 
 extern const struct STQueryConstantsStruct {
   __unsafe_unretained NSString* FilterChar;

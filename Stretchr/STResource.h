@@ -32,13 +32,36 @@ typedef void (^STResourceBlock)(STRequest* request, STResource* resource);
 @interface STResource : NSObject
 
 /**
- *  resourceWithResponse creates a new STResource object out of the
- *  given STResponse object.
+ *  The Stretchr ID of the resource.
+ */
+@property(readonly, nonatomic) NSString* ID;
+
+/**
+ *  The path to the resource inside Stretchr.
+ */
+@property(readonly, nonatomic) NSString* path;
+
+/**
+ *  The data contained within the resource.
+ */
+@property(readonly, nonatomic) NSDictionary* data;
+
+/**
+ *  Creates a new STResource object out of the given STResponse object.
  *
  *  @param response The response object from which to create the STResource.
  *
  *  @return The built STResource object.
  */
 + (id)resourceWithResponse:(STResponse*)response;
+
+/**
+ *  Creates a new STResource object out of the given STResponse object.
+ *
+ *  @param response The response object from which to create the STResource.
+ *
+ *  @return The built STResource object.
+ */
+- (id)initWithResponse:(STResponse*)response;
 
 @end

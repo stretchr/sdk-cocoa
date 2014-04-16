@@ -7,7 +7,6 @@
 //
 
 #import "Stretchr.h"
-#import "STRequest.h"
 
 dispatch_queue_t requestQueue = NULL;
 
@@ -59,37 +58,31 @@ static Stretchr* sharedSDK;
   return self;
 }
 
-- (void)createResource:(id)object
-                atPath:(NSString*)path
-               success:(STResponseBlock)success
-               failure:(STFailureBlock)failure {
+- (void)createResourceAtPath:(NSString*)path
+                  withObject:(id)object
+                     success:(STResponseBlock)success
+                     failure:(STFailureBlock)failure
+                    userInfo:(NSDictionary*)userInfo {
   STRequest* request = [STRequest requestWithProtocol:self.protocol
                                                  host:self.host
                                               account:self.account
                                               project:self.project
                                                   key:self.key
                                                method:STHTTPMethods.Post
-                                                 path:path
-                                               object:object];
+                                                 path:path];
+  request.object = object;
+  request.userInfo = userInfo;
 
-  dispatch_async(requestQueue, ^{
-    NSError* error;
-    STResponse* response = [STTransport executeRequest:request error:&error];
-    if (error != nil || [response hasErrors]) {
-      if (error != nil) {
-        failure(request, STNoStatusCode, @[ error ]);
-      } else {
-        failure(request, [response statusCode], [response errors]);
-      }
-    } else {
-      success(response);
-    }
-  });
+  [self executeRequest:request
+               success:success
+               failure:failure
+              userInfo:userInfo];
 }
 
 - (void)readResourceAtPath:(NSString*)path
                    success:(STResourceBlock)success
-                   failure:(STFailureBlock)failure {
+                   failure:(STFailureBlock)failure
+                  userInfo:(NSDictionary*)userInfo {
   STRequest* request = [STRequest requestWithProtocol:self.protocol
                                                  host:self.host
                                               account:self.account
@@ -97,80 +90,66 @@ static Stretchr* sharedSDK;
                                                   key:self.key
                                                method:STHTTPMethods.Get
                                                  path:path];
+  request.userInfo = userInfo;
 
-  dispatch_async(requestQueue, ^{
-    NSError* error;
-    STResponse* response = [STTransport executeRequest:request error:&error];
-    if (error != nil || [response hasErrors]) {
-      if (error != nil) {
-        failure(request, STNoStatusCode, @[ error ]);
-      } else {
-        failure(request, [response statusCode], [response errors]);
-      }
-    } else {
-      STResource* resource = [STResource resourceWithResponse:response];
-      success(resource);
-    }
-  });
+  STResponseBlock successResponse =
+      ^(STRequest * requestObject, STResponse * response) {
+    success(requestObject, [STResource resourceWithResponse:response]);
+  };
+
+  [self executeRequest:request
+               success:successResponse
+               failure:failure
+              userInfo:userInfo];
 }
 
 - (void)updateResourceAtPath:(NSString*)path
-                withResource:(id)object
+                  withObject:(id)object
                      success:(STResponseBlock)success
-                     failure:(STFailureBlock)failure {
+                     failure:(STFailureBlock)failure
+                    userInfo:(NSDictionary*)userInfo {
   STRequest* request = [STRequest requestWithProtocol:self.protocol
                                                  host:self.host
                                               account:self.account
                                               project:self.project
                                                   key:self.key
                                                method:STHTTPMethods.Patch
-                                                 path:path
-                                               object:object];
-  dispatch_async(requestQueue, ^{
-    NSError* error;
-    STResponse* response = [STTransport executeRequest:request error:&error];
-    if (error != nil || [response hasErrors]) {
-      if (error != nil) {
-        failure(request, STNoStatusCode, @[ error ]);
-      } else {
-        failure(request, [response statusCode], [response errors]);
-      }
-    } else {
-      success(response);
-    }
-  });
+                                                 path:path];
+  request.object = object;
+  request.userInfo = userInfo;
+
+  [self executeRequest:request
+               success:success
+               failure:failure
+              userInfo:userInfo];
 }
 
 - (void)replaceResourceAtPath:(NSString*)path
-                 withResource:(id)object
+                   withObject:(id)object
                       success:(STResponseBlock)success
-                      failure:(STFailureBlock)failure {
+                      failure:(STFailureBlock)failure
+                     userInfo:(NSDictionary*)userInfo {
   STRequest* request = [STRequest requestWithProtocol:self.protocol
                                                  host:self.host
                                               account:self.account
                                               project:self.project
                                                   key:self.key
                                                method:STHTTPMethods.Put
-                                                 path:path
-                                               object:object];
-  dispatch_async(requestQueue, ^{
-    NSError* error;
-    STResponse* response = [STTransport executeRequest:request error:&error];
-    if (error != nil || [response hasErrors]) {
-      if (error != nil) {
-        failure(request, STNoStatusCode, @[ error ]);
-      } else {
-        failure(request, [response statusCode], [response errors]);
-      }
-    } else {
-      success(response);
-    }
-  });
+                                                 path:path];
+
+  request.object = object;
+  request.userInfo = userInfo;
+
+  [self executeRequest:request
+               success:success
+               failure:failure
+              userInfo:userInfo];
 }
 
 - (void)deleteResourceAtPath:(NSString*)path
                      success:(STResponseBlock)success
-                     failure:(STFailureBlock)failure {
+                     failure:(STFailureBlock)failure
+                    userInfo:(NSDictionary*)userInfo {
   STRequest* request = [STRequest requestWithProtocol:self.protocol
                                                  host:self.host
                                               account:self.account
@@ -178,6 +157,17 @@ static Stretchr* sharedSDK;
                                                   key:self.key
                                                method:STHTTPMethods.Delete
                                                  path:path];
+  request.userInfo = userInfo;
+  [self executeRequest:request
+               success:success
+               failure:failure
+              userInfo:userInfo];
+}
+
+- (void)executeRequest:(STRequest*)request
+               success:(STResponseBlock)success
+               failure:(STFailureBlock)failure
+              userInfo:(NSDictionary*)userInfo {
   dispatch_async(requestQueue, ^{
     NSError* error;
     STResponse* response = [STTransport executeRequest:request error:&error];
@@ -188,7 +178,7 @@ static Stretchr* sharedSDK;
         failure(request, [response statusCode], [response errors]);
       }
     } else {
-      success(response);
+      success(request, response);
     }
   });
 }

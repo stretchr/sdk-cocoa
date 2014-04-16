@@ -50,8 +50,7 @@
   NSData* responseBody = [STURLConnection sendSynchronousRequest:urlRequest
                                                returningResponse:&urlResponse
                                                            error:error];
-  if (error != nil && [(*error)code] ==
-                          kCFURLErrorUserCancelledAuthentication) {
+  if (error != nil && (*error).code == kCFURLErrorUserCancelledAuthentication) {
     *error = nil;
     error = nil;
   }

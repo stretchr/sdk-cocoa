@@ -64,6 +64,12 @@
 @property(readwrite, nonatomic, copy) STQuery* query;
 
 /**
+ *  An optional userInfo object that will be passed to the failure and success
+ *  blocks when the request completes.
+ */
+@property(readwrite, nonatomic, copy) NSDictionary* userInfo;
+
+/**
  *  Creates a new request object which can then be used to execute a request
  *  to Stretchr.
  *
@@ -84,30 +90,6 @@
                       key:(NSString*)key
                    method:(NSString*)method
                      path:(NSString*)path;
-
-/**
- *  Creates a new request object which can then be used to execute a request
- *  to Stretchr.
- *
- *  @param protocol The HTTP protocol to use (http/https)
- *  @param host    The host on which Stretchr is running (default stretchr.com)
- *  @param account The account for this request.
- *  @param project The project for this request.
- *  @param key     The key for this request.
- *  @param method  The HTTP method to use.
- *  @param path    The path to the endpoint on Stretchr.
- *  @param object  The object to serialize and include in the request.
- *
- *  @return The initialized STRequest object.
- */
-+ (id)requestWithProtocol:(NSString*)protocol
-                     host:(NSString*)host
-                  account:(NSString*)account
-                  project:(NSString*)project
-                      key:(NSString*)key
-                   method:(NSString*)method
-                     path:(NSString*)path
-                   object:(id)object;
 
 /**
  *  URLString returns the URL as a string for this request. The URL

@@ -15,14 +15,16 @@
  *  STResponseBlock defines the block signature that will be called
  *  when a response is received from Stretchr
  *
+ *  @param request The original STRequest object used to make the request.
  *  @param response The STResponse object containing response data.
  */
-typedef void (^STResponseBlock)(STResponse* response);
+typedef void (^STResponseBlock)(STRequest* request, STResponse* response);
 
 /**
  *  STFailureBlock defines the block signature that will be called
  *  when a request to Stretchr fails.
  *
+ *  @param request The original STRequest object used to make the request.
  *  @param status The HTTP status code received.
  *  @param errors The errors received from Stretchr, or transport level errors.
  */

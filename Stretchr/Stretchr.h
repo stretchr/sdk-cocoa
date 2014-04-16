@@ -12,6 +12,7 @@
 #import "STResponse.h"
 #import "STConstants.h"
 #import "STTransport.h"
+#import "STRequest.h"
 
 /**
  * The Stretchr class is the class through which you will perform all
@@ -125,11 +126,14 @@
  *  @param path     The path at which this resource will be created.
  *  @param success  Called when the creation succeeds.
  *  @param failure  Called when the creation fails.
+ *  @param userInfo Associated with the request object sent to the completion
+ *  blocks. Useful for storing context. Pass nil if not needed.
  */
-- (void)createResource:(id)object
-                atPath:(NSString*)path
-               success:(STResponseBlock)success
-               failure:(STFailureBlock)failure;
+- (void)createResourceAtPath:(NSString*)path
+                  withObject:(id)object
+                     success:(STResponseBlock)success
+                     failure:(STFailureBlock)failure
+                    userInfo:(NSDictionary*)userInfo;
 
 /**
  *  readResourceAtPath issues a GET to Stretchr, requesting the data contained
@@ -139,10 +143,13 @@
  *  @param path    The path, including ID, of the resource to read.
  *  @param success Called when the read is successful. Contains the resource.
  *  @param failure Called when the read fails.
+ *  @param userInfo Associated with the request object sent to the completion
+ *  blocks. Useful for storing context. Pass nil if not needed.
  */
 - (void)readResourceAtPath:(NSString*)path
                    success:(STResourceBlock)success
-                   failure:(STFailureBlock)failure;
+                   failure:(STFailureBlock)failure
+                  userInfo:(NSDictionary*)userInfo;
 
 /**
  *  updateResourceAtPath issues a PATCH to Stretchr, updating the object found
@@ -154,11 +161,14 @@
  *  @param object   The object to use when patching the resource.
  *  @param success  Called when the update succeeds.
  *  @param failure  Called when the update fails.
+ *  @param userInfo Associated with the request object sent to the completion
+ *  blocks. Useful for storing context. Pass nil if not needed.
  */
 - (void)updateResourceAtPath:(NSString*)path
-                withResource:(id)object
+                  withObject:(id)object
                      success:(STResponseBlock)success
-                     failure:(STFailureBlock)failure;
+                     failure:(STFailureBlock)failure
+                    userInfo:(NSDictionary*)userInfo;
 
 /**
  *  replaceResourceAtPath issues a PUT to Stretchr, replacing the object found
@@ -170,11 +180,14 @@
  *  @param object   The object to use when patching the resource.
  *  @param success  Called when the update succeeds.
  *  @param failure  Called when the update fails.
+ *  @param userInfo Associated with the request object sent to the completion
+ *  blocks. Useful for storing context. Pass nil if not needed.
  */
 - (void)replaceResourceAtPath:(NSString*)path
-                 withResource:(id)object
+                   withObject:(id)object
                       success:(STResponseBlock)success
-                      failure:(STFailureBlock)failure;
+                      failure:(STFailureBlock)failure
+                     userInfo:(NSDictionary*)userInfo;
 
 /**
  *  deleteResourceAtPath issues a DELETE to Stretchr, deleting the object
@@ -183,12 +196,33 @@
  *  @param path    The path to the resource.
  *  @param success Called when the delete succeeds.
  *  @param failure Called when the delete fails.
+ *  @param userInfo Associated with the request object sent to the completion
+ *  blocks. Useful for storing context. Pass nil if not needed.
  */
 - (void)deleteResourceAtPath:(NSString*)path
                      success:(STResponseBlock)success
-                     failure:(STFailureBlock)failure;
+                     failure:(STFailureBlock)failure
+                    userInfo:(NSDictionary*)userInfo;
 
 // @ResourceCollection Operations
+
+// @General
+
+/**
+ *  Executes a fully built STRequest object. Useful if you wish to construct
+ *your
+ *  STRequest manually and submit it for execution.
+ *
+ *  @param request  The fully constructed STRequest object.
+ *  @param success  Called when the operation succeeds.
+ *  @param failure  Called when the operation fails.
+ *  @param userInfo Associated with the request object sent to the completion
+ *  blocks. Useful for storing context. Pass nil if not needed.
+ */
+- (void)executeRequest:(STRequest*)request
+               success:(STResponseBlock)success
+               failure:(STFailureBlock)failure
+              userInfo:(NSDictionary*)userInfo;
 
 // TODO: write the collection version of the functions. these will optionally
 // take queries.

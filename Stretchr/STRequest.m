@@ -26,6 +26,7 @@ NSString* cleanPath(NSString* path) {
 @synthesize method = _method;
 @synthesize path = _path;
 @synthesize object = _object;
+@synthesize userInfo = _userInfo;
 
 + (id)requestWithProtocol:(NSString*)protocol
                      host:(NSString*)host
@@ -34,23 +35,6 @@ NSString* cleanPath(NSString* path) {
                       key:(NSString*)key
                    method:(NSString*)method
                      path:(NSString*)path {
-  return [STRequest requestWithProtocol:protocol
-                                   host:host
-                                account:account
-                                project:project
-                                    key:key
-                                 method:method
-                                   path:path
-                                 object:nil];
-}
-+ (id)requestWithProtocol:(NSString*)protocol
-                     host:(NSString*)host
-                  account:(NSString*)account
-                  project:(NSString*)project
-                      key:(NSString*)key
-                   method:(NSString*)method
-                     path:(NSString*)path
-                   object:(id)object {
   STRequest* request = [[STRequest alloc] init];
   request.protocol = protocol;
   request.host = host;
@@ -59,9 +43,6 @@ NSString* cleanPath(NSString* path) {
   request.key = key;
   request.method = method;
   request.path = cleanPath(path);
-  if (object) {
-    [request setObject:object];
-  }
   return request;
 }
 

@@ -10,16 +10,18 @@
 
 @class STResource;
 @class STResponse;
+@class STRequest;
 
 /**
  *  STResourceBlock defines the block signature for the block
  *  that will be called when a resource response is received
  *  from Stretchr
  *
+ *  @param request The original STRequest object used to make the request.
  *  @param resource The STResource object from the response returned by
- *Stretchr.
+ *  Stretchr.
  */
-typedef void (^STResourceBlock)(STResource* resource);
+typedef void (^STResourceBlock)(STRequest* request, STResource* resource);
 
 /**
  *  STResource contains the resource data encapsulated in a Stretchr

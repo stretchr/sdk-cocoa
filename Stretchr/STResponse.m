@@ -7,23 +7,41 @@
 //
 
 #import "STResponse.h"
+#import "STConstants.h"
 
 @implementation STResponse
 
-+ (id)responseWithURLResponse:(NSURLResponse*)response body:(NSData*)body {
-  return nil;
+@synthesize data = _data;
+@synthesize errors = _errors;
+@synthesize status = _status;
+
++ (id)responseWithURLResponse:(NSHTTPURLResponse*)response
+                         body:(NSData*)body
+                        error:(NSError* __autoreleasing*)error {
+
+  return
+      [[STResponse alloc] initWithURLResponse:response body:body error:error];
 }
 
-- (BOOL)hasErrors {
-  return NO;
+- (id)initWithURLResponse:(NSHTTPURLResponse*)response
+                     body:(NSData*)body
+                    error:(NSError* __autoreleasing*)error {
+
+  if (!(self = [super init])) {
+
+    _data = [NSJSONSerialization JSONObjectWithData:body options:0 error:error];
+    if (error != nil && *error != nil) {
+      return nil;
+    }
+
+    _status = [_data[STResponseConstants.Status] integerValue];
+    _errors = _data[STResponseConstants.Errors];
+  }
+  return self;
 }
 
-- (NSArray*)errors {
-  return nil;
-}
-
-- (int)statusCode {
-  return 0;
+- (BOOL)success {
+  return _status >= 100 && _status < 400;
 }
 
 @end

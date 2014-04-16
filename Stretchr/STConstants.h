@@ -28,6 +28,8 @@ extern const struct STHTTPMethodsStruct {
 } STHTTPMethods;
 
 extern const struct STResponseConstantsStruct {
+  __unsafe_unretained NSString* Status;
+  __unsafe_unretained NSString* Errors;
   __unsafe_unretained NSString* Changes;
   __unsafe_unretained NSString* Created;
   __unsafe_unretained NSString* Updated;

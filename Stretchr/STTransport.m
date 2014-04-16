@@ -60,8 +60,13 @@
     return nil;
   }
 
-  STResponse* response =
-      [STResponse responseWithURLResponse:urlResponse body:responseBody];
+  STResponse* response = [STResponse responseWithURLResponse:urlResponse
+                                                        body:responseBody
+                                                       error:error];
+  if (error != nil && *error != nil) {
+    // An error occurred when creating the response object.
+    return nil;
+  }
 
   return response;
 }

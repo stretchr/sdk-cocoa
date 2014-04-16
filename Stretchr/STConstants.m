@@ -24,6 +24,8 @@ const struct STHTTPMethodsStruct STHTTPMethods = {.Get = @"GET",
                                                   .Patch = @"PATCH"};
 
 const struct STResponseConstantsStruct STResponseConstants = {
+    .Status = @"~status",
+    .Errors = @"~errors",
     .Changes = @"~changes",
     .Created = @"~created",
     .Updated = @"~updated",

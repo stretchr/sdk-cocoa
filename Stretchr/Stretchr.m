@@ -171,11 +171,11 @@ static Stretchr* sharedSDK;
   dispatch_async(requestQueue, ^{
     NSError* error;
     STResponse* response = [STTransport executeRequest:request error:&error];
-    if (error != nil || [response hasErrors]) {
+    if (error != nil || !response.success) {
       if (error != nil) {
         failure(request, STNoStatusCode, @[ error ]);
       } else {
-        failure(request, [response statusCode], [response errors]);
+        failure(request, response.status, response.errors);
       }
     } else {
       success(request, response);

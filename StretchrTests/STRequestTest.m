@@ -11,6 +11,7 @@
 #import "STRequest.h"
 #import "STConstants.h"
 #import "STQuery.h"
+#import "STNSString+STExtensions.h"
 
 @interface STRequestTest : XCTestCase
 
@@ -38,19 +39,7 @@
                                               project:@"project"
                                                   key:@"123"
                                                method:@"GET"
-                                                 path:@"/people/tyler"];
-
-  XCTAssertEqualObjects(@"https://account.stretchr.com/api/v1.1/project/people/"
-                         "tyler?key=123&include=~path",
-                        [request URLString]);
-
-  request = [STRequest requestWithProtocol:@"https"
-                                      host:@"stretchr.com"
-                                   account:@"account"
-                                   project:@"project"
-                                       key:@"123"
-                                    method:@"GET"
-                                      path:@"people/tyler"];
+                                                 path:@"people/tyler"];
 
   XCTAssertEqualObjects(@"https://account.stretchr.com/api/v1.1/project/people/"
                          "tyler?key=123&include=~path",

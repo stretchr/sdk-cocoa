@@ -13,4 +13,5 @@
 - (BOOL)beginsWithString:(NSString*)string;
 - (BOOL)containsString:(NSString*)substring;
 - (NSString*)stringByEncodingURLFormat;
+- (NSString*)cleanPath;
 @end

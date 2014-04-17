@@ -8,7 +8,24 @@
 
 #import "Stretchr.h"
 
+#import "STNSString+STExtensions.h"
+
 dispatch_queue_t requestQueue = NULL;
+
+@interface Stretchr ()
+/**
+ *  Constructs an STRequest object to be executed.
+ *
+ *  @param method   The HTTP method for the request.
+ *  @param path     The path for the request.
+ *  @param object   The object for the request.
+ *  @param userInfo The userInfo object for the request.
+ */
+- (STRequest*)constructRequestWithMethod:(NSString*)method
+                                    path:(NSString*)path
+                                  object:(id)object
+                                userInfo:(NSDictionary*)userInfo;
+@end
 
 @implementation Stretchr
 
@@ -65,17 +82,10 @@ static Stretchr* sharedSDK;
                      success:(STResponseBlock)success
                      failure:(STFailureBlock)failure
                     userInfo:(NSDictionary*)userInfo {
-  STRequest* request = [STRequest requestWithProtocol:self.protocol
-                                                 host:self.host
-                                              account:self.account
-                                              project:self.project
-                                                  key:self.key
-                                               method:STHTTPMethods.Post
-                                                 path:path];
-  request.object = object;
-  request.userInfo = userInfo;
-
-  [self executeRequest:request
+  [self executeRequest:[self constructRequestWithMethod:STHTTPMethods.Post
+                                                   path:path
+                                                 object:object
+                                               userInfo:userInfo]
                success:success
                failure:failure
               userInfo:userInfo];
@@ -85,21 +95,16 @@ static Stretchr* sharedSDK;
                    success:(STResourceBlock)success
                    failure:(STFailureBlock)failure
                   userInfo:(NSDictionary*)userInfo {
-  STRequest* request = [STRequest requestWithProtocol:self.protocol
-                                                 host:self.host
-                                              account:self.account
-                                              project:self.project
-                                                  key:self.key
-                                               method:STHTTPMethods.Get
-                                                 path:path];
-  request.userInfo = userInfo;
 
   STResponseBlock successResponse =
       ^(STRequest * requestObject, STResponse * response) {
     success(requestObject, [STResource resourceWithResponse:response]);
   };
 
-  [self executeRequest:request
+  [self executeRequest:[self constructRequestWithMethod:STHTTPMethods.Get
+                                                   path:path
+                                                 object:nil
+                                               userInfo:userInfo]
                success:successResponse
                failure:failure
               userInfo:userInfo];
@@ -110,17 +115,10 @@ static Stretchr* sharedSDK;
                      success:(STResponseBlock)success
                      failure:(STFailureBlock)failure
                     userInfo:(NSDictionary*)userInfo {
-  STRequest* request = [STRequest requestWithProtocol:self.protocol
-                                                 host:self.host
-                                              account:self.account
-                                              project:self.project
-                                                  key:self.key
-                                               method:STHTTPMethods.Patch
-                                                 path:path];
-  request.object = object;
-  request.userInfo = userInfo;
-
-  [self executeRequest:request
+  [self executeRequest:[self constructRequestWithMethod:STHTTPMethods.Patch
+                                                   path:path
+                                                 object:object
+                                               userInfo:userInfo]
                success:success
                failure:failure
               userInfo:userInfo];
@@ -131,18 +129,10 @@ static Stretchr* sharedSDK;
                       success:(STResponseBlock)success
                       failure:(STFailureBlock)failure
                      userInfo:(NSDictionary*)userInfo {
-  STRequest* request = [STRequest requestWithProtocol:self.protocol
-                                                 host:self.host
-                                              account:self.account
-                                              project:self.project
-                                                  key:self.key
-                                               method:STHTTPMethods.Put
-                                                 path:path];
-
-  request.object = object;
-  request.userInfo = userInfo;
-
-  [self executeRequest:request
+  [self executeRequest:[self constructRequestWithMethod:STHTTPMethods.Put
+                                                   path:path
+                                                 object:object
+                                               userInfo:userInfo]
                success:success
                failure:failure
               userInfo:userInfo];
@@ -152,18 +142,76 @@ static Stretchr* sharedSDK;
                      success:(STResponseBlock)success
                      failure:(STFailureBlock)failure
                     userInfo:(NSDictionary*)userInfo {
+  [self executeRequest:[self constructRequestWithMethod:STHTTPMethods.Delete
+                                                   path:path
+                                                 object:nil
+                                               userInfo:userInfo]
+               success:success
+               failure:failure
+              userInfo:userInfo];
+}
+
+- (void)createCollectionAtPath:(NSString*)path
+                   withObjects:(NSArray*)objects
+                       success:(STResponseBlock)success
+                       failure:(STFailureBlock)failure
+                      userInfo:(NSDictionary*)userInfo {
+  [self executeRequest:[self constructRequestWithMethod:STHTTPMethods.Post
+                                                   path:path
+                                                 object:objects
+                                               userInfo:userInfo]
+               success:success
+               failure:failure
+              userInfo:userInfo];
+}
+
+- (void)readCollectionAtPath:(NSString*)path
+                     success:(STCollectionBlock)success
+                     failure:(STFailureBlock)failure
+                    userInfo:(NSDictionary*)userInfo {
+  STResponseBlock successResponse =
+      ^(STRequest * requestObject, STResponse * response) {
+    success(requestObject, [STCollection collectionWithResponse:response]);
+  };
+
+  [self executeRequest:[self constructRequestWithMethod:STHTTPMethods.Get
+                                                   path:path
+                                                 object:nil
+                                               userInfo:userInfo]
+               success:successResponse
+               failure:failure
+              userInfo:userInfo];
+}
+
+- (void)deleteCollectionAtPath:(NSString*)path
+                       success:(STResponseBlock)success
+                       failure:(STFailureBlock)failure
+                      userInfo:(NSDictionary*)userInfo {
+
+  [self executeRequest:[self constructRequestWithMethod:STHTTPMethods.Delete
+                                                   path:path
+                                                 object:nil
+                                               userInfo:userInfo]
+               success:success
+               failure:failure
+              userInfo:userInfo];
+}
+
+- (STRequest*)constructRequestWithMethod:(NSString*)method
+                                    path:(NSString*)path
+                                  object:(id)object
+                                userInfo:(NSDictionary*)userInfo {
   STRequest* request = [STRequest requestWithProtocol:self.protocol
                                                  host:self.host
                                               account:self.account
                                               project:self.project
                                                   key:self.key
-                                               method:STHTTPMethods.Delete
-                                                 path:path];
+                                               method:method
+                                                 path:[path cleanPath]];
   request.userInfo = userInfo;
-  [self executeRequest:request
-               success:success
-               failure:failure
-              userInfo:userInfo];
+  request.object = object;
+
+  return request;
 }
 
 - (void)executeRequest:(STRequest*)request

@@ -10,6 +10,8 @@
 
 extern NSString* const STErrorDomain;
 extern const int STNoStatusCode;
+extern NSString* const STPathSeparator;
+extern NSString* const STEscapeChars;
 
 extern const struct STDefaultsStruct {
   __unsafe_unretained NSString* Protocol;

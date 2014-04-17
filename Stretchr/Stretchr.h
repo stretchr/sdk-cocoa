@@ -13,6 +13,7 @@
 #import "STConstants.h"
 #import "STTransport.h"
 #import "STRequest.h"
+#import "STCollection.h"
 
 /**
  * The Stretchr class is the class through which you will perform all
@@ -204,7 +205,56 @@
                      failure:(STFailureBlock)failure
                     userInfo:(NSDictionary*)userInfo;
 
-// @ResourceCollection Operations
+// @Collection Operations
+
+/**
+ *  createResource issues a POST to Stretchr, creating the given object at the
+ *  given path. The path may contain an explicit ID to use for this object. If
+ *  no ID is provided, it will be generated.
+ *
+ *  @param object   The resource to be serialized and created.
+ *  @param path     The path at which this resource will be created.
+ *  @param success  Called when the creation succeeds.
+ *  @param failure  Called when the creation fails.
+ *  @param userInfo Associated with the request object sent to the completion
+ *  blocks. Useful for storing context. Pass nil if not needed.
+ */
+- (void)createCollectionAtPath:(NSString*)path
+                   withObjects:(NSArray*)objects
+                       success:(STResponseBlock)success
+                       failure:(STFailureBlock)failure
+                      userInfo:(NSDictionary*)userInfo;
+
+/**
+ *  readResourceAtPath issues a GET to Stretchr, requesting the data contained
+ *  at the given path. The path to read must include an ID. It must not be
+ *  a collection path.
+ *
+ *  @param path    The path, including ID, of the resource to read.
+ *  @param success Called when the read is successful. Contains the resource.
+ *  @param failure Called when the read fails.
+ *  @param userInfo Associated with the request object sent to the completion
+ *  blocks. Useful for storing context. Pass nil if not needed.
+ */
+- (void)readCollectionAtPath:(NSString*)path
+                     success:(STCollectionBlock)success
+                     failure:(STFailureBlock)failure
+                    userInfo:(NSDictionary*)userInfo;
+
+/**
+ *  deleteResourceAtPath issues a DELETE to Stretchr, deleting the object
+ *  found at the given path.
+ *
+ *  @param path    The path to the resource.
+ *  @param success Called when the delete succeeds.
+ *  @param failure Called when the delete fails.
+ *  @param userInfo Associated with the request object sent to the completion
+ *  blocks. Useful for storing context. Pass nil if not needed.
+ */
+- (void)deleteCollectionAtPath:(NSString*)path
+                       success:(STResponseBlock)success
+                       failure:(STFailureBlock)failure
+                      userInfo:(NSDictionary*)userInfo;
 
 // @General
 

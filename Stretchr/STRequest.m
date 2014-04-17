@@ -11,13 +11,6 @@
 #import "STNSString+STExtensions.h"
 #import "STQuery.h"
 
-NSString* cleanPath(NSString* path) {
-  if ([path beginsWithString:@"/"]) {
-    return [path substringFromIndex:1];
-  }
-  return path;
-}
-
 @implementation STRequest
 
 @synthesize account = _account;
@@ -42,7 +35,7 @@ NSString* cleanPath(NSString* path) {
   request.project = project;
   request.key = key;
   request.method = method;
-  request.path = cleanPath(path);
+  request.path = path;
   return request;
 }
 

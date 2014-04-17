@@ -8,8 +8,10 @@
 
 #import "STConstants.h"
 
-NSString *const STErrorDomain = @"com.stretchr.error";
+NSString* const STErrorDomain = @"com.stretchr.error";
 const int STNoStatusCode = -1;
+NSString* const STPathSeparator = @"/";
+NSString* const STEscapeChars = @"!*'();:@&=+$,/?%#[]\"";
 
 const struct STDefaultsStruct STDefaults = {.Protocol = @"https",
                                             .HostSuffix = @"stretchr.com",

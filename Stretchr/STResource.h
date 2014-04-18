@@ -47,21 +47,23 @@ typedef void (^STResourceBlock)(STRequest* request, STResource* resource);
 @property(readonly, nonatomic) NSDictionary* data;
 
 /**
- *  Creates a new STResource object out of the given STResponse object.
+ *  Creates a new STResource object out of the given data object.
  *
- *  @param response The response object from which to create the STResource.
+ *  @param data The data object from which to build the STResource object.
+ *  This data object is extracted from the STResponse object.
  *
  *  @return The built STResource object.
  */
-+ (id)resourceWithResponse:(STResponse*)response;
++ (id)resourceWithData:(NSDictionary*)data;
 
 /**
- *  Creates a new STResource object out of the given STResponse object.
+ *  Creates a new STResource object out of the given data object.
  *
- *  @param response The response object from which to create the STResource.
+ *  @param data The data object from which to build the STResource object.
+ *  This data object is extracted from the STResponse object.
  *
  *  @return The built STResource object.
  */
-- (id)initWithResponse:(STResponse*)response;
+- (id)initWithData:(NSDictionary*)data;
 
 @end

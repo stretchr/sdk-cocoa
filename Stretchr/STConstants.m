@@ -32,13 +32,13 @@ const struct STResponseConstantsStruct STResponseConstants = {
     .Updated = @"~updated",
     .Deleted = @"~deleted",
     .Deltas = @"~deltas",
-    .Data = @"~data",
-    .Count = @"~count",
-    .Total = @"~total",
-    .Items = @"~items"};
+    .Data = @"~data", };
 
 const struct STResourceConstantsStruct STResourceConstants = {
     .ID = @"~id", .Path = @"~path", .Parent = @"~parent"};
+
+const struct STCollectionConstantsStruct STCollectionConstants = {
+    .Count = @"~count", .Total = @"~total", .Items = @"~items"};
 
 const struct STQueryConstantsStruct STQueryConstants = {
     .FilterChar = @":",

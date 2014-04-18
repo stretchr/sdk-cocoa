@@ -21,26 +21,53 @@
  *  @param resource The STCollection object from the response returned by
  *  Stretchr.
  */
-typedef void (^STCollectionBlock)(STRequest* request, STCollection* resource);
+typedef void (^STCollectionBlock)(STRequest* request, STCollection* collection);
 
 @interface STCollection : NSObject
 
 /**
- *  Creates a new STCollection object out of the given STResponse object.
- *
- *  @param response The response received from Stretchr.
- *
- *  @return The builts STCollection* object.
+ *  An array of STResource objects in this collection object.
  */
-+ (id)collectionWithResponse:(STResponse*)response;
+@property(readonly, nonatomic, copy) NSArray* resources;
 
 /**
- *  Creates a new STCollection object out of the given STResponse object.
- *
- *  @param response The response received from Stretchr.
- *
- *  @return The builts STCollection* object.
+ *  The number of objects in this collection.
  */
-- (id)initWithResponse:(STResponse*)response;
+@property(readonly, nonatomic) NSUInteger count;
+
+/**
+ *  The total number of objects in this collection.
+ *
+ *  This value will only be set if the "total" parameter was included in the
+ *  request that generated this colletion.
+ */
+@property(readonly, nonatomic) NSUInteger total;
+
+/**
+ *  All the objects in the response in raw NSDictionary format. Useful if you
+ *  simply want to directly access the objects themselves without having to
+ *  unwrap an STResource object.
+ */
+@property(readonly, nonatomic, copy) NSArray* rawObjects;
+
+/**
+ *  Creates a new STCollection object out of the given data object.
+ *
+ *  @param response The data object from which to build the STCollection object.
+ *  This data object is extracted from an STResponse object.
+ *
+ *  @return The built STCollection object.
+ */
++ (id)collectionWithData:(NSDictionary*)data;
+
+/**
+ *  Creates a new STCollection object out of the given data object.
+ *
+ *  @param response The data object from which to build the STCollection object.
+ *  This data object is extracted from an STResponse object.
+ *
+ *  @return The built STCollection object.
+ */
+- (id)initWithData:(NSDictionary*)data;
 
 @end

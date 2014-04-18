@@ -16,16 +16,16 @@
 @synthesize path = _path;
 @synthesize data = _data;
 
-+ (id)resourceWithResponse:(STResponse *)response {
-  return [[STResource alloc] initWithResponse:response];
++ (id)resourceWithData:(NSDictionary *)data {
+  return [[STResource alloc] initWithData:data];
 }
 
-- (id)initWithResponse:(STResponse *)response {
+- (id)initWithData:(NSDictionary *)data {
   if (!(self = [super init])) {
     return nil;
   }
 
-  _data = response.data[STResponseConstants.Data];
+  _data = [data copy];
   _ID = _data[STResourceConstants.ID];
   _path = _data[STResourceConstants.Path];
 

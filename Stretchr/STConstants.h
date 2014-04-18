@@ -48,6 +48,12 @@ extern const struct STResourceConstantsStruct {
   __unsafe_unretained NSString* Parent;
 } STResourceConstants;
 
+extern const struct STCollectionConstantsStruct {
+  __unsafe_unretained NSString* Count;
+  __unsafe_unretained NSString* Total;
+  __unsafe_unretained NSString* Items;
+} STCollectionConstants;
+
 extern const struct STQueryConstantsStruct {
   __unsafe_unretained NSString* FilterChar;
   __unsafe_unretained NSString* ListSeparatorChar;

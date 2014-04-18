@@ -98,7 +98,7 @@ static Stretchr* sharedSDK;
 
   STResponseBlock successResponse =
       ^(STRequest * requestObject, STResponse * response) {
-    success(requestObject, [STResource resourceWithResponse:response]);
+    success(requestObject, [STResource resourceWithData:response.data]);
   };
 
   [self executeRequest:[self constructRequestWithMethod:STHTTPMethods.Get
@@ -171,7 +171,7 @@ static Stretchr* sharedSDK;
                     userInfo:(NSDictionary*)userInfo {
   STResponseBlock successResponse =
       ^(STRequest * requestObject, STResponse * response) {
-    success(requestObject, [STCollection collectionWithResponse:response]);
+    success(requestObject, [STCollection collectionWithData:response.data]);
   };
 
   [self executeRequest:[self constructRequestWithMethod:STHTTPMethods.Get

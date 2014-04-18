@@ -119,12 +119,13 @@
 // @Resource Operations
 
 /**
- *  createResource issues a POST to Stretchr, creating the given object at the
+ *  Issues a POST to Stretchr, creating the given object at the
  *  given path. The path may contain an explicit ID to use for this object. If
  *  no ID is provided, it will be generated.
  *
- *  @param object   The resource to be serialized and created.
  *  @param path     The path at which this resource will be created.
+ *  @param object   The resource to be serialized and created.
+ *  @param query    The query to include with the request or nil.
  *  @param success  Called when the creation succeeds.
  *  @param failure  Called when the creation fails.
  *  @param userInfo Associated with the request object sent to the completion
@@ -132,34 +133,37 @@
  */
 - (void)createResourceAtPath:(NSString*)path
                   withObject:(id)object
+                       query:(STQuery*)query
                      success:(STResponseBlock)success
                      failure:(STFailureBlock)failure
                     userInfo:(NSDictionary*)userInfo;
 
 /**
- *  readResourceAtPath issues a GET to Stretchr, requesting the data contained
+ *  Issues a GET to Stretchr, requesting the data contained
  *  at the given path. The path to read must include an ID. It must not be
  *  a collection path.
  *
  *  @param path    The path, including ID, of the resource to read.
+ *  @param query   The query to include with the request or nil.
  *  @param success Called when the read is successful. Contains the resource.
  *  @param failure Called when the read fails.
  *  @param userInfo Associated with the request object sent to the completion
  *  blocks. Useful for storing context. Pass nil if not needed.
  */
 - (void)readResourceAtPath:(NSString*)path
+                     query:(STQuery*)query
                    success:(STResourceBlock)success
                    failure:(STFailureBlock)failure
                   userInfo:(NSDictionary*)userInfo;
 
 /**
- *  updateResourceAtPath issues a PATCH to Stretchr, updating the object found
+ *  Issues a PATCH to Stretchr, updating the object found
  *  at the given path. The path MUST contain an ID. If no object is found at
- *that
- *  location, this operation is an error.
+ *  that location, this operation is an error.
  *
  *  @param path     The path to the resource.
  *  @param object   The object to use when patching the resource.
+ *  @param query    The query to include with the request or nil.
  *  @param success  Called when the update succeeds.
  *  @param failure  Called when the update fails.
  *  @param userInfo Associated with the request object sent to the completion
@@ -167,18 +171,19 @@
  */
 - (void)updateResourceAtPath:(NSString*)path
                   withObject:(id)object
+                       query:(STQuery*)query
                      success:(STResponseBlock)success
                      failure:(STFailureBlock)failure
                     userInfo:(NSDictionary*)userInfo;
 
 /**
- *  replaceResourceAtPath issues a PUT to Stretchr, replacing the object found
+ *  Issues a PUT to Stretchr, replacing the object found
  *  at the given path. The path MUST contain an ID. If no object is found at
- *that
- *  location, the object will be created.
+ *  that location, the object will be created.
  *
  *  @param path     The path to the resource.
  *  @param object   The object to use when patching the resource.
+ *  @param query    The query to include with the request or nil.
  *  @param success  Called when the update succeeds.
  *  @param failure  Called when the update fails.
  *  @param userInfo Associated with the request object sent to the completion
@@ -186,21 +191,23 @@
  */
 - (void)replaceResourceAtPath:(NSString*)path
                    withObject:(id)object
+                        query:(STQuery*)query
                       success:(STResponseBlock)success
                       failure:(STFailureBlock)failure
                      userInfo:(NSDictionary*)userInfo;
 
 /**
- *  deleteResourceAtPath issues a DELETE to Stretchr, deleting the object
- *  found at the given path.
+ *  Issues a DELETE to Stretchr, deleting the object found at the given path.
  *
  *  @param path    The path to the resource.
+ *  @param query   The query to include with the request or nil.
  *  @param success Called when the delete succeeds.
  *  @param failure Called when the delete fails.
  *  @param userInfo Associated with the request object sent to the completion
  *  blocks. Useful for storing context. Pass nil if not needed.
  */
 - (void)deleteResourceAtPath:(NSString*)path
+                       query:(STQuery*)query
                      success:(STResponseBlock)success
                      failure:(STFailureBlock)failure
                     userInfo:(NSDictionary*)userInfo;
@@ -208,12 +215,12 @@
 // @Collection Operations
 
 /**
- *  createResource issues a POST to Stretchr, creating the given object at the
- *  given path. The path may contain an explicit ID to use for this object. If
- *  no ID is provided, it will be generated.
+ *  Issues a POST to Stretchr, creating the given objects at the
+ *  given path. The path may not contain an explicit ID.
  *
- *  @param object   The resource to be serialized and created.
- *  @param path     The path at which this resource will be created.
+ *  @param path     The path at which the resources will be created.
+ *  @param objects  The resources to be serialized and created.
+ *  @param query    The query to include with the request or nil.
  *  @param success  Called when the creation succeeds.
  *  @param failure  Called when the creation fails.
  *  @param userInfo Associated with the request object sent to the completion
@@ -221,37 +228,40 @@
  */
 - (void)createCollectionAtPath:(NSString*)path
                    withObjects:(NSArray*)objects
+                         query:(STQuery*)query
                        success:(STResponseBlock)success
                        failure:(STFailureBlock)failure
                       userInfo:(NSDictionary*)userInfo;
 
 /**
- *  readResourceAtPath issues a GET to Stretchr, requesting the data contained
- *  at the given path. The path to read must include an ID. It must not be
- *  a collection path.
+ *  Issues a GET to Stretchr, requesting the data contained at the given path.
+ *  The path to read must not include an ID. It must be a collection path.
  *
- *  @param path    The path, including ID, of the resource to read.
- *  @param success Called when the read is successful. Contains the resource.
+ *  @param path    The path to the collection to be read.
+ *  @param query   The query to include with the request or nil.
+ *  @param success Called when the read is successful. Contains the collection.
  *  @param failure Called when the read fails.
  *  @param userInfo Associated with the request object sent to the completion
  *  blocks. Useful for storing context. Pass nil if not needed.
  */
 - (void)readCollectionAtPath:(NSString*)path
+                       query:(STQuery*)query
                      success:(STCollectionBlock)success
                      failure:(STFailureBlock)failure
                     userInfo:(NSDictionary*)userInfo;
 
 /**
- *  deleteResourceAtPath issues a DELETE to Stretchr, deleting the object
- *  found at the given path.
+ *  Issues a DELETE to Stretchr, deleting the objects found at the given path.
  *
- *  @param path    The path to the resource.
+ *  @param path    The path to the collection.
+ *  @param query   The query to include with the request or nil.
  *  @param success Called when the delete succeeds.
  *  @param failure Called when the delete fails.
  *  @param userInfo Associated with the request object sent to the completion
  *  blocks. Useful for storing context. Pass nil if not needed.
  */
 - (void)deleteCollectionAtPath:(NSString*)path
+                         query:(STQuery*)query
                        success:(STResponseBlock)success
                        failure:(STFailureBlock)failure
                       userInfo:(NSDictionary*)userInfo;
@@ -264,6 +274,7 @@
  *  STRequest manually and submit it for execution.
  *
  *  @param request  The fully constructed STRequest object.
+ *  @param query    The query to include with the request or nil.
  *  @param success  Called when the operation succeeds.
  *  @param failure  Called when the operation fails.
  *  @param userInfo Associated with the request object sent to the completion
@@ -273,8 +284,5 @@
                success:(STResponseBlock)success
                failure:(STFailureBlock)failure
               userInfo:(NSDictionary*)userInfo;
-
-// TODO: write the collection version of the functions. these will optionally
-// take queries.
 
 @end

@@ -2,219 +2,73 @@
 //  STRequestTest.m
 //  Stretchr
 //
-//  Created by Tyler Bunnell on 1/16/14.
+//  Created by Tyler Bunnell on 4/8/14.
 //  Copyright (c) 2014 Stretchr, Inc. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 
-#import "STClient.h"
 #import "STRequest.h"
-#import "TestObject.h"
-#import "STNSString+STExtensions.h"
-#import "STTestTransport.h"
-#import "STResponse.h"
-#import "NSMutableArray+Queue.h"
 #import "STConstants.h"
-#import "STResource.h"
+#import "STQuery.h"
+#import "STNSString+STExtensions.h"
 
 @interface STRequestTest : XCTestCase
-@property(readwrite,strong)STClient* client;
-@property(readwrite,strong)STRequest* request;
-@property(readwrite,strong)STTestTransport* transport;
+
 @end
 
 @implementation STRequestTest
 
-- (void)setUp
-{
+- (void)setUp {
   [super setUp];
-  self.client = [[STClient alloc] initWithAccount:@"internal" project:@"test" APIKey:@"ABC123"];
-  self.request = [[STRequest alloc] initWithClient:self.client path:@"people"];
-  self.transport = [[STTestTransport alloc] init];
-  self.client.transport = self.transport;
-  
+  // Put setup code here. This method is called before the invocation of each
+  // test method in the class.
 }
 
-- (void)tearDown
-{
-  // Put teardown code here; it will be run once, after the last test case.
+- (void)tearDown {
+  // Put teardown code here. This method is called after the invocation of each
+  // test method in the class.
   [super tearDown];
 }
 
-- (void)testInit
-{
-  STClient* client = [[STClient alloc] initWithAccount:@"internal" project:@"test" APIKey:@"ABC123"];
-  STRequest* request = [[STRequest alloc] initWithClient:client path:@"people"];
-  XCTAssertNotNil(request);
-  XCTAssertEqualObjects(request.client, client);
-  XCTAssertEqualObjects(request.path, @"people");
-  XCTAssertEqualObjects(request.parameters[@"key"], @"ABC123");
-  
-  XCTAssertNotNil(request.parameters);
-  XCTAssertNotNil(request.filters);
-}
+- (void)testURLString {
 
-- (void)testSetParams
-{
-  [self.request setValue:@"age" forParameter:@"order"];
-  XCTAssertEqualObjects(@"age", self.request.parameters[@"order"]);
-}
+  STRequest* request = [STRequest requestWithProtocol:@"https"
+                                                 host:@"stretchr.com"
+                                              account:@"account"
+                                              project:@"project"
+                                                  key:@"123"
+                                               method:@"GET"
+                                                 path:@"people/tyler"];
 
-- (void)testSetFilters
-{
-  [self.request setValue:@"18" forFilter:@":upperAge"];
-  [self.request setValue:@"10" forFilter:@"lowerAge"];
-  
-  XCTAssertEqualObjects(@"18", self.request.filters[@":upperAge"]);
-  XCTAssertEqualObjects(@"10", self.request.filters[@":lowerAge"]);
-}
+  XCTAssertEqualObjects(@"https://account.stretchr.com/api/v1.1/project/people/"
+                         "tyler?key=123&include=~path",
+                        [request URLString]);
 
-- (void)testRequestURL
-{
-  STClient* client = [[STClient alloc] initWithAccount:@"company" project:@"project" APIKey:@"ABC123"];
-  STRequest* request = [[STRequest alloc] initWithClient:client path:@"people"];
-  
-  [request setValue:@"age" forParameter:@"order"];
-  [request setValue:@"<=18" forFilter:@":upperAge"];
-  [request setValue:@">10" forFilter:@"lowerAge"];
-  
-  NSString* url = [request URLString];
-  
-  XCTAssertTrue([url beginsWithString:@"https://company.stretchr.com/api/v1.1/project/people"]);
-  XCTAssertTrue([url containsString:@"order=age"]);
-  XCTAssertTrue([url containsString:@"%3AupperAge=%3C%3D18"]);
-  XCTAssertTrue([url containsString:@"%3AlowerAge=%3E10"]);
-}
+  request = [STRequest requestWithProtocol:@"https"
+                                      host:@"stretchr.com"
+                                   account:@"account"
+                                   project:@"project"
+                                       key:@"123"
+                                    method:@"GET"
+                                      path:@"people/tyler"];
 
-- (void)testReadOrError
-{
-  STRequest* request = [[STRequest alloc] initWithClient:[self client] path:@"people"];
-  
-  STResponse* fakeResponse = [[STResponse alloc] init];
-  
-  [self.transport.responses enqueue:fakeResponse];
-  
-  STResponse* response = [request readOrError:nil];
-  
-  XCTAssertNotNil(response);
-  XCTAssertEqual([self.transport.requests count], (NSUInteger)1);
-  XCTAssertEqualObjects(response, fakeResponse);
-  XCTAssertTrue([NSString isNilOrEmpty:request.body], @"There should be no body");
-  XCTAssertEqualObjects(STHTTPMethods.Get, request.HTTPMethod);
-  
-}
+  STQuery* query = [STQuery query];
+  [query addFilterForKey:@"name" equals:@"Tyler"];
+  [query addFilterForKey:@"age" between:@"18" and:@"34"];
+  [query addFilterForKeyExists:@"active"];
+  [query setAggregateGroupByKeys:@[ @"name", @"age" ]];
+  [query setAggregateSumForKeys:@[ @"sales" ]];
+  [query setAggregateCountResults];
 
-- (void)testDeleteOrError
-{
-  STRequest* request = [[STRequest alloc] initWithClient:[self client] path:@"people"];
-  
-  STResponse* fakeResponse = [[STResponse alloc] init];
-  
-  [self.transport.responses enqueue:fakeResponse];
-  
-  STResponse* response = [request deleteOrError:nil];
-  
-  XCTAssertNotNil(response);
-  XCTAssertEqual([self.transport.requests count], (NSUInteger)1);
-  XCTAssertEqualObjects(response, fakeResponse);
-  XCTAssertTrue([NSString isNilOrEmpty:request.body], @"There should be no body");
-  XCTAssertEqualObjects(STHTTPMethods.Delete, request.HTTPMethod);
-  
-}
+  [request setQuery:query];
 
-- (void)testCreateResourceOrError
-{
-  STRequest* request = [[STRequest alloc] initWithClient:[self client] path:@"people"];
-  STResponse* fakeResponse = [[STResponse alloc] initWithRequest:request];
-  fakeResponse.body = @"{\"~changes\":{\"~deltas\":[{\"~id\":\"new-id\",\"something\":true}]}}";
-  fakeResponse.status = 200;
-  STResource* resource = [[STResource alloc] initWithClient:self.client forPath:@"people"];
-  
-  [resource.data setObject:@"Mat" forKey:@"name"];
-  [resource.data setObject:@31 forKey:@"age"];
-  [resource.data setObject:@YES forKey:@"active"];
-  
-  [self.transport.responses enqueue:fakeResponse];
-  
-  NSError *error;
-  STResponse* response = [request createResource:resource orError:&error];
-  
-  XCTAssertFalse(STIsError(&error));
-  XCTAssertNotNil(response);
-  XCTAssertEqual([self.transport.requests count], (NSUInteger)1);
-  XCTAssertEqualObjects(response, fakeResponse);
-  XCTAssertFalse([NSString isNilOrEmpty:request.body], @"There should be a body");
-  XCTAssertEqualObjects(@"{\"name\":\"Mat\",\"age\":31,\"active\":true}", request.body);
-  XCTAssertEqualObjects(STHTTPMethods.Post, request.HTTPMethod);
-  
-  XCTAssertEqualObjects(resource.data[@"~id"], @"new-id", @"Delta data should get mixed in");
-  XCTAssertEqualObjects(resource.data[@"name"], @"Mat", @"Existing data not mentioned in the delta shouldn't change");
-  XCTAssertEqualObjects(resource.data[@"something"], @true, @"Delta data should get mixed in");
-
-}
-
-- (void)testUpdateResourceOrError
-{
-  STRequest* request = [[STRequest alloc] initWithClient:[self client] path:@"people"];
-  STResponse* fakeResponse = [[STResponse alloc] initWithRequest:request];
-  fakeResponse.body = @"{\"~changes\":{\"~deltas\":[{\"~id\":\"new-id\",\"something\":true}]}}";
-  fakeResponse.status = 200;
-  STResource* resource = [[STResource alloc] initWithClient:self.client forPath:@"people"];
-  
-  [resource.data setObject:@"Mat" forKey:@"name"];
-  [resource.data setObject:@31 forKey:@"age"];
-  [resource.data setObject:@YES forKey:@"active"];
-  
-  [self.transport.responses enqueue:fakeResponse];
-  
-  NSError *error;
-  STResponse* response = [request updateResource:resource orError:&error];
-  
-  XCTAssertFalse(STIsError(&error));
-  
-  XCTAssertNotNil(response);
-  XCTAssertEqual([self.transport.requests count], (NSUInteger)1);
-  XCTAssertEqualObjects(response, fakeResponse);
-  XCTAssertFalse([NSString isNilOrEmpty:request.body], @"There should be a body");
-  XCTAssertEqualObjects(@"{\"name\":\"Mat\",\"age\":31,\"active\":true}", request.body);
-  XCTAssertEqualObjects(STHTTPMethods.Patch, request.HTTPMethod);
-  
-  XCTAssertEqualObjects(resource.data[@"~id"], @"new-id", @"Delta data should get mixed in");
-  XCTAssertEqualObjects(resource.data[@"name"], @"Mat", @"Existing data not mentioned in the delta shouldn't change");
-  XCTAssertEqualObjects(resource.data[@"something"], @true, @"Delta data should get mixed in");
-
-}
-
-- (void)testReplaceResourceOrError
-{
-  STRequest* request = [[STRequest alloc] initWithClient:[self client] path:@"people"];
-  STResponse* fakeResponse = [[STResponse alloc] initWithRequest:request];
-  fakeResponse.body = @"{\"~changes\":{\"~deltas\":[{\"~id\":\"new-id\",\"something\":true}]}}";
-  fakeResponse.status = 200;
-  STResource* resource = [[STResource alloc] initWithClient:self.client forPath:@"people"];
-  
-  [resource.data setObject:@"Mat" forKey:@"name"];
-  [resource.data setObject:@31 forKey:@"age"];
-  [resource.data setObject:@YES forKey:@"active"];
-  
-  [self.transport.responses enqueue:fakeResponse];
-  
-  NSError *error;
-  STResponse* response = [request replaceResource:resource orError:&error];
-  
-  XCTAssertFalse(STIsError(&error));
-  XCTAssertNotNil(response);
-  XCTAssertEqual([self.transport.requests count], (NSUInteger)1);
-  XCTAssertEqualObjects(response, fakeResponse);
-  XCTAssertFalse([NSString isNilOrEmpty:request.body], @"There should be a body");
-  XCTAssertEqualObjects(@"{\"name\":\"Mat\",\"age\":31,\"active\":true}", request.body);
-  XCTAssertEqualObjects(STHTTPMethods.Put, request.HTTPMethod);
-  
-  XCTAssertEqualObjects(resource.data[@"~id"], @"new-id", @"Delta data should get mixed in");
-  XCTAssertEqualObjects(resource.data[@"name"], @"Mat", @"Existing data not mentioned in the delta shouldn't change");
-  XCTAssertEqualObjects(resource.data[@"something"], @true, @"Delta data should get mixed in");
-  
+  XCTAssertEqualObjects(
+      @"https://account.stretchr.com/api/v1.1/project/"
+       "people/"
+       "tyler?key=123&%3Aage=18..34&%3Aname=Tyler&include=~path&%3Aactive=%"
+       "2A&agg=group(name,age).sum(sales).count()",
+      [request URLString]);
 }
 
 @end

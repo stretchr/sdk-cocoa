@@ -7,29 +7,32 @@
 //
 
 #import "STNSString+STExtensions.h"
+#import "STConstants.h"
 
 @implementation NSString (STExtensions)
 
-+ (BOOL)isNilOrEmpty:(NSString*)string
-{
++ (BOOL)isNilOrEmpty:(NSString *)string {
   return string == nil || [string length] == 0;
 }
 
-- (BOOL)beginsWithString:(NSString*)string
-{
+- (BOOL)beginsWithString:(NSString *)string {
   return [self rangeOfString:string].location == 0;
 }
 
-- (BOOL)containsString:(NSString*)substring
-{
+- (BOOL)containsString:(NSString *)substring {
   return [self rangeOfString:substring].location != NSNotFound;
 }
 
-
-- (NSString*)stringByEncodingURLFormat
-{  
-  return CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,  (CFStringRef)self,  NULL,  (CFStringRef)@"!*'();:@&=+$,/?%#[]\"",  kCFStringEncodingUTF8));
+- (NSString *)stringByEncodingURLFormat {
+  return CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(
+      NULL, (CFStringRef)self, NULL, (CFStringRef)STEscapeChars,
+      kCFStringEncodingUTF8));
 }
 
+- (NSString *)cleanPath {
+
+  return [self stringByTrimmingCharactersInSet:
+                   [NSCharacterSet characterSetWithCharactersInString:@"/"]];
+}
 
 @end

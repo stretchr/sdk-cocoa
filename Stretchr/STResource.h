@@ -2,28 +2,68 @@
 //  STResource.h
 //  Stretchr
 //
-//  Created by Tyler Bunnell on 1/17/14.
+//  Created by Tyler Bunnell on 4/2/14.
 //  Copyright (c) 2014 Stretchr, Inc. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@class STClient;
+@class STResource;
 @class STResponse;
+@class STRequest;
 
+/**
+ *  STResourceBlock defines the block signature for the block
+ *  that will be called when a resource response is received
+ *  from Stretchr
+ *
+ *  @param request The original STRequest object used to make the request.
+ *  @param resource The STResource object from the response returned by
+ *  Stretchr.
+ */
+typedef void (^STResourceBlock)(STRequest* request, STResource* resource);
+
+/**
+ *  STResource contains the resource data encapsulated in a Stretchr
+ *  response object. This data is extracted from an STResponse object
+ *  and the original STResponse object is contained within this object
+ *  for deeper inspection of the response if desired.
+ */
 @interface STResource : NSObject
-- (id)initWithClient:(STClient*)client forPath:(NSString*) path;
-@property(readonly,copy)NSString* path;
-@property(readonly,strong)STClient* client;
-@property(readonly,strong)NSMutableDictionary* data;
 
-#pragma mark - Data
+/**
+ *  The Stretchr ID of the resource.
+ */
+@property(readonly, nonatomic) NSString* ID;
 
-- (BOOL) hasId;
-- (void)setResourceData:(id)data;
+/**
+ *  The path to the resource inside Stretchr.
+ */
+@property(readonly, nonatomic) NSString* path;
 
-#pragma mark - Actions
+/**
+ *  The data contained within the resource.
+ */
+@property(readonly, nonatomic) NSDictionary* data;
 
-- (STResponse *)saveOrError:(NSError*__autoreleasing *)error;
+/**
+ *  Creates a new STResource object out of the given data object.
+ *
+ *  @param data The data object from which to build the STResource object.
+ *  This data object is extracted from the STResponse object.
+ *
+ *  @return The built STResource object.
+ */
++ (id)resourceWithData:(NSDictionary*)data;
+
+/**
+ *  Creates a new STResource object out of the given data object.
+ *
+ *  @param data The data object from which to build the STResource object.
+ *  This data object is extracted from the STResponse object.
+ *
+ *  @return The built STResource object.
+ */
+- (id)initWithData:(NSDictionary*)data;
 
 @end

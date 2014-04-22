@@ -11,30 +11,32 @@
 
 @implementation NSDictionary (STExtensions)
 
-- (NSString *)stringFromQueryComponents
-{
+- (NSString*)stringFromQueryComponents {
   NSMutableArray* result = [NSMutableArray arrayWithCapacity:[self count]];
-  for (NSString* key in self)
-  {
+  for (NSString* key in self) {
     id object = [self objectForKey:key];
-    if ([object isKindOfClass:[NSString class]])
-    {
-      [result addObject:[NSString stringWithFormat:@"%@=%@", [key stringByEncodingURLFormat], [object stringByEncodingURLFormat]]];
-    }
-    else if ([object isKindOfClass:[NSArray class]])
-    {
+    if ([object isKindOfClass:[NSString class]]) {
+      [result addObject:[NSString stringWithFormat:
+                                      @"%@=%@", [key stringByEncodingURLFormat],
+                                      [object stringByEncodingURLFormat]]];
+    } else if ([object isKindOfClass:[NSArray class]]) {
       for (NSString* subObject in object) {
-        [result addObject:[NSString stringWithFormat:@"%@=%@", [key stringByEncodingURLFormat], [subObject stringByEncodingURLFormat]]];
+        [result
+            addObject:[NSString stringWithFormat:
+                                    @"%@=%@", [key stringByEncodingURLFormat],
+                                    [subObject stringByEncodingURLFormat]]];
       }
     }
-    
   }
   return [result componentsJoinedByString:@"&"];
 }
 
-+ (NSDictionary*)dictionaryFromJSONString:(NSString*)string error:(NSError*__autoreleasing *)error
-{
-  return [NSJSONSerialization JSONObjectWithData:[string dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:error];
++ (NSDictionary*)dictionaryFromJSONString:(NSString*)string
+                                    error:(NSError* __autoreleasing*)error {
+  return [NSJSONSerialization
+      JSONObjectWithData:[string dataUsingEncoding:NSUTF8StringEncoding]
+                 options:NSJSONReadingMutableContainers
+                   error:error];
 }
 
 @end

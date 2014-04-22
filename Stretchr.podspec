@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
   s.name         = "Stretchr"
   s.version      = "0.3.0"
   s.summary      = "The Cocoa SDK for the Stretchr platform."
-  s.homepage     = "http://stretchr.com"
+  s.homepage     = "http://www.stretchr.com/"
 
   s.license      = { :type => 'MIT',
   :text => <<-LICENSE

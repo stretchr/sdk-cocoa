@@ -12,7 +12,7 @@ Once Cocoapods is installed, you need to add the Stretchr SDK to your Podfile. F
 
 and add the following to your Podfile:
 
-```bash
+```
 platform :ios , '5.1'
 pod 'Stretchr'
 ```
@@ -35,7 +35,7 @@ Stretchr* stretchr = [Stretchr sharedSDK];
 
 Then, to read an item from Stretchr, you could do the following:
 
-```obj-c
+```
 STResourceBlock success = ^(STRequest * request, STResource * resource) {
   NSLog(@"Response: %@", resource);
 };
@@ -49,7 +49,7 @@ STFailureBlock failure =
                      failure:failure];
 ```
 
-For comprehensive usage information, please refer to the [documentation generated via Cocoadocs](http://cocoadocs.org/docsets/Stretchr/0.3.0/).
+For comprehensive usage information, please refer to the [CocoaDocs](http://cocoadocs.org/docsets/Stretchr/0.3.0/) generated documentation.
 
 ## Upcoming
 

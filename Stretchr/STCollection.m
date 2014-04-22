@@ -42,7 +42,8 @@
 
 - (NSString *)description {
   return [NSString stringWithFormat:@"Count: %ld, Total: %ld, Resources: %@",
-                                    _count, _total, _resources];
+                                    (unsigned long)_count,
+                                    (unsigned long)_total, _resources];
 }
 
 @end

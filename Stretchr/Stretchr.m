@@ -20,13 +20,11 @@ dispatch_queue_t requestQueue = NULL;
  *  @param path     The path for the request.
  *  @param object   The object for the request.
  *  @param query    The query to include with the request or nil.
- *  @param userInfo The userInfo object for the request.
  */
 - (STRequest*)constructRequestWithMethod:(NSString*)method
                                     path:(NSString*)path
                                   object:(id)object
-                                   query:(STQuery*)query
-                                userInfo:(NSDictionary*)userInfo;
+                                   query:(STQuery*)query;
 @end
 
 @implementation Stretchr
@@ -83,23 +81,19 @@ static Stretchr* sharedSDK;
                   withObject:(id)object
                        query:(STQuery*)query
                      success:(STResponseBlock)success
-                     failure:(STFailureBlock)failure
-                    userInfo:(NSDictionary*)userInfo {
+                     failure:(STFailureBlock)failure {
   [self executeRequest:[self constructRequestWithMethod:STHTTPMethods.Post
                                                    path:path
                                                  object:object
-                                                  query:query
-                                               userInfo:userInfo]
+                                                  query:query]
                success:success
-               failure:failure
-              userInfo:userInfo];
+               failure:failure];
 }
 
 - (void)readResourceAtPath:(NSString*)path
                      query:(STQuery*)query
                    success:(STResourceBlock)success
-                   failure:(STFailureBlock)failure
-                  userInfo:(NSDictionary*)userInfo {
+                   failure:(STFailureBlock)failure {
 
   STResponseBlock successResponse =
       ^(STRequest * requestObject, STResponse * response) {
@@ -109,81 +103,66 @@ static Stretchr* sharedSDK;
   [self executeRequest:[self constructRequestWithMethod:STHTTPMethods.Get
                                                    path:path
                                                  object:nil
-                                                  query:query
-                                               userInfo:userInfo]
+                                                  query:query]
                success:successResponse
-               failure:failure
-              userInfo:userInfo];
+               failure:failure];
 }
 
 - (void)updateResourceAtPath:(NSString*)path
                   withObject:(id)object
                        query:(STQuery*)query
                      success:(STResponseBlock)success
-                     failure:(STFailureBlock)failure
-                    userInfo:(NSDictionary*)userInfo {
+                     failure:(STFailureBlock)failure {
   [self executeRequest:[self constructRequestWithMethod:STHTTPMethods.Patch
                                                    path:path
                                                  object:object
-                                                  query:query
-                                               userInfo:userInfo]
+                                                  query:query]
                success:success
-               failure:failure
-              userInfo:userInfo];
+               failure:failure];
 }
 
 - (void)replaceResourceAtPath:(NSString*)path
                    withObject:(id)object
                         query:(STQuery*)query
                       success:(STResponseBlock)success
-                      failure:(STFailureBlock)failure
-                     userInfo:(NSDictionary*)userInfo {
+                      failure:(STFailureBlock)failure {
   [self executeRequest:[self constructRequestWithMethod:STHTTPMethods.Put
                                                    path:path
                                                  object:object
-                                                  query:query
-                                               userInfo:userInfo]
+                                                  query:query]
                success:success
-               failure:failure
-              userInfo:userInfo];
+               failure:failure];
 }
 
 - (void)deleteResourceAtPath:(NSString*)path
                        query:(STQuery*)query
                      success:(STResponseBlock)success
-                     failure:(STFailureBlock)failure
-                    userInfo:(NSDictionary*)userInfo {
+                     failure:(STFailureBlock)failure {
   [self executeRequest:[self constructRequestWithMethod:STHTTPMethods.Delete
                                                    path:path
                                                  object:nil
-                                                  query:query
-                                               userInfo:userInfo]
+                                                  query:query]
                success:success
-               failure:failure
-              userInfo:userInfo];
+               failure:failure];
 }
 
 - (void)createCollectionAtPath:(NSString*)path
                    withObjects:(NSArray*)objects
                          query:(STQuery*)query
                        success:(STResponseBlock)success
-                       failure:(STFailureBlock)failure
-                      userInfo:(NSDictionary*)userInfo {
+                       failure:(STFailureBlock)failure {
   [self executeRequest:[self constructRequestWithMethod:STHTTPMethods.Post
                                                    path:path
                                                  object:objects
-                                                  query:query
-                                               userInfo:userInfo]
+                                                  query:query]
                success:success
-               failure:failure
-              userInfo:userInfo];
+               failure:failure];
 }
 
 - (void)readCollectionAtPath:(NSString*)path
                        query:(STQuery*)query
                      success:(STCollectionBlock)success
-                     failure:(STFailureBlock)failure
-                    userInfo:(NSDictionary*)userInfo {
+                     failure:(STFailureBlock)failure {
   STResponseBlock successResponse =
       ^(STRequest * requestObject, STResponse * response) {
     success(requestObject, [STCollection collectionWithData:response.data]);
@@ -192,34 +171,28 @@ static Stretchr* sharedSDK;
   [self executeRequest:[self constructRequestWithMethod:STHTTPMethods.Get
                                                    path:path
                                                  object:nil
-                                                  query:query
-                                               userInfo:userInfo]
+                                                  query:query]
                success:successResponse
-               failure:failure
-              userInfo:userInfo];
+               failure:failure];
 }
 
 - (void)deleteCollectionAtPath:(NSString*)path
                          query:(STQuery*)query
                        success:(STResponseBlock)success
-                       failure:(STFailureBlock)failure
-                      userInfo:(NSDictionary*)userInfo {
+                       failure:(STFailureBlock)failure {
 
   [self executeRequest:[self constructRequestWithMethod:STHTTPMethods.Delete
                                                    path:path
                                                  object:nil
-                                                  query:query
-                                               userInfo:userInfo]
+                                                  query:query]
                success:success
-               failure:failure
-              userInfo:userInfo];
+               failure:failure];
 }
 
 - (STRequest*)constructRequestWithMethod:(NSString*)method
                                     path:(NSString*)path
                                   object:(id)object
-                                   query:(STQuery*)query
-                                userInfo:(NSDictionary*)userInfo {
+                                   query:(STQuery*)query {
   STRequest* request = [STRequest requestWithProtocol:self.protocol
                                                  host:self.host
                                               account:self.account
@@ -227,7 +200,6 @@ static Stretchr* sharedSDK;
                                                   key:self.key
                                                method:method
                                                  path:[path cleanPath]];
-  request.userInfo = userInfo;
   request.object = object;
   request.query = query;
 
@@ -236,8 +208,7 @@ static Stretchr* sharedSDK;
 
 - (void)executeRequest:(STRequest*)request
                success:(STResponseBlock)success
-               failure:(STFailureBlock)failure
-              userInfo:(NSDictionary*)userInfo {
+               failure:(STFailureBlock)failure {
   dispatch_async(requestQueue, ^{
     NSError* error;
     STResponse* response = [STTransport executeRequest:request error:&error];

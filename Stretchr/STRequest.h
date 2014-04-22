@@ -64,12 +64,6 @@
 @property(readwrite, nonatomic, copy) STQuery* query;
 
 /**
- *  An optional userInfo object that will be passed to the failure and success
- *  blocks when the request completes.
- */
-@property(readwrite, nonatomic, copy) NSDictionary* userInfo;
-
-/**
  *  Creates a new request object which can then be used to execute a request
  *  to Stretchr.
  *

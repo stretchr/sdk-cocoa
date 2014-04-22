@@ -19,7 +19,6 @@
 @synthesize method = _method;
 @synthesize path = _path;
 @synthesize object = _object;
-@synthesize userInfo = _userInfo;
 
 + (id)requestWithProtocol:(NSString*)protocol
                      host:(NSString*)host

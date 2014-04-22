@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "STQuery.h"
+#import "Stretchr.h"
 
 @interface STQuery ()
 /**
@@ -34,6 +35,24 @@
   // Put teardown code here. This method is called after the invocation of each
   // test method in the class.
   [super tearDown];
+}
+
+- (void)testEndToEnd {
+  [Stretchr initializeSharedSDKWithAccount:@"sandiego"
+                                   project:@"crime"
+                                       key:@"de0128c1cb7b70f583f56dd71da857df"];
+  Stretchr* stretchr = [Stretchr sharedSDK];
+STResourceBlock success = ^(STRequest * request, STResource * resource) {
+  NSLog(@"Response: %@", resource);
+};
+STFailureBlock failure =
+    ^(STRequest * request, NSInteger status, NSArray * errors) {
+  NSLog(@"Failure! Status: %ld, errors: %@", status, errors);
+};
+[stretchr readResourceAtPath:@"user/tyler"
+                       query:nil
+                     success:success
+                     failure:failure];
 }
 
 - (void)testFilters {

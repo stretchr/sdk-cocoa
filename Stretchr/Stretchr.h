@@ -14,6 +14,11 @@
 #import "STTransport.h"
 #import "STRequest.h"
 #import "STCollection.h"
+#import "STNSString+STExtensions.h"
+#import "STNSDictionary+STExtensions.h"
+#import "STQuery.h"
+#import "STResource.h"
+#import "STCollection.h"
 
 /**
  * The Stretchr class is the class through which you will perform all
@@ -128,15 +133,12 @@
  *  @param query    The query to include with the request or nil.
  *  @param success  Called when the creation succeeds.
  *  @param failure  Called when the creation fails.
- *  @param userInfo Associated with the request object sent to the completion
- *  blocks. Useful for storing context. Pass nil if not needed.
  */
 - (void)createResourceAtPath:(NSString*)path
                   withObject:(id)object
                        query:(STQuery*)query
                      success:(STResponseBlock)success
-                     failure:(STFailureBlock)failure
-                    userInfo:(NSDictionary*)userInfo;
+                     failure:(STFailureBlock)failure;
 
 /**
  *  Issues a GET to Stretchr, requesting the data contained
@@ -147,14 +149,11 @@
  *  @param query   The query to include with the request or nil.
  *  @param success Called when the read is successful. Contains the resource.
  *  @param failure Called when the read fails.
- *  @param userInfo Associated with the request object sent to the completion
- *  blocks. Useful for storing context. Pass nil if not needed.
  */
 - (void)readResourceAtPath:(NSString*)path
                      query:(STQuery*)query
                    success:(STResourceBlock)success
-                   failure:(STFailureBlock)failure
-                  userInfo:(NSDictionary*)userInfo;
+                   failure:(STFailureBlock)failure;
 
 /**
  *  Issues a PATCH to Stretchr, updating the object found
@@ -166,15 +165,12 @@
  *  @param query    The query to include with the request or nil.
  *  @param success  Called when the update succeeds.
  *  @param failure  Called when the update fails.
- *  @param userInfo Associated with the request object sent to the completion
- *  blocks. Useful for storing context. Pass nil if not needed.
  */
 - (void)updateResourceAtPath:(NSString*)path
                   withObject:(id)object
                        query:(STQuery*)query
                      success:(STResponseBlock)success
-                     failure:(STFailureBlock)failure
-                    userInfo:(NSDictionary*)userInfo;
+                     failure:(STFailureBlock)failure;
 
 /**
  *  Issues a PUT to Stretchr, replacing the object found
@@ -186,15 +182,12 @@
  *  @param query    The query to include with the request or nil.
  *  @param success  Called when the update succeeds.
  *  @param failure  Called when the update fails.
- *  @param userInfo Associated with the request object sent to the completion
- *  blocks. Useful for storing context. Pass nil if not needed.
  */
 - (void)replaceResourceAtPath:(NSString*)path
                    withObject:(id)object
                         query:(STQuery*)query
                       success:(STResponseBlock)success
-                      failure:(STFailureBlock)failure
-                     userInfo:(NSDictionary*)userInfo;
+                      failure:(STFailureBlock)failure;
 
 /**
  *  Issues a DELETE to Stretchr, deleting the object found at the given path.
@@ -203,14 +196,11 @@
  *  @param query   The query to include with the request or nil.
  *  @param success Called when the delete succeeds.
  *  @param failure Called when the delete fails.
- *  @param userInfo Associated with the request object sent to the completion
- *  blocks. Useful for storing context. Pass nil if not needed.
  */
 - (void)deleteResourceAtPath:(NSString*)path
                        query:(STQuery*)query
                      success:(STResponseBlock)success
-                     failure:(STFailureBlock)failure
-                    userInfo:(NSDictionary*)userInfo;
+                     failure:(STFailureBlock)failure;
 
 // @Collection Operations
 
@@ -223,15 +213,12 @@
  *  @param query    The query to include with the request or nil.
  *  @param success  Called when the creation succeeds.
  *  @param failure  Called when the creation fails.
- *  @param userInfo Associated with the request object sent to the completion
- *  blocks. Useful for storing context. Pass nil if not needed.
  */
 - (void)createCollectionAtPath:(NSString*)path
                    withObjects:(NSArray*)objects
                          query:(STQuery*)query
                        success:(STResponseBlock)success
-                       failure:(STFailureBlock)failure
-                      userInfo:(NSDictionary*)userInfo;
+                       failure:(STFailureBlock)failure;
 
 /**
  *  Issues a GET to Stretchr, requesting the data contained at the given path.
@@ -241,14 +228,11 @@
  *  @param query   The query to include with the request or nil.
  *  @param success Called when the read is successful. Contains the collection.
  *  @param failure Called when the read fails.
- *  @param userInfo Associated with the request object sent to the completion
- *  blocks. Useful for storing context. Pass nil if not needed.
  */
 - (void)readCollectionAtPath:(NSString*)path
                        query:(STQuery*)query
                      success:(STCollectionBlock)success
-                     failure:(STFailureBlock)failure
-                    userInfo:(NSDictionary*)userInfo;
+                     failure:(STFailureBlock)failure;
 
 /**
  *  Issues a DELETE to Stretchr, deleting the objects found at the given path.
@@ -257,14 +241,11 @@
  *  @param query   The query to include with the request or nil.
  *  @param success Called when the delete succeeds.
  *  @param failure Called when the delete fails.
- *  @param userInfo Associated with the request object sent to the completion
- *  blocks. Useful for storing context. Pass nil if not needed.
  */
 - (void)deleteCollectionAtPath:(NSString*)path
                          query:(STQuery*)query
                        success:(STResponseBlock)success
-                       failure:(STFailureBlock)failure
-                      userInfo:(NSDictionary*)userInfo;
+                       failure:(STFailureBlock)failure;
 
 // @General
 
@@ -277,12 +258,9 @@
  *  @param query    The query to include with the request or nil.
  *  @param success  Called when the operation succeeds.
  *  @param failure  Called when the operation fails.
- *  @param userInfo Associated with the request object sent to the completion
- *  blocks. Useful for storing context. Pass nil if not needed.
  */
 - (void)executeRequest:(STRequest*)request
                success:(STResponseBlock)success
-               failure:(STFailureBlock)failure
-              userInfo:(NSDictionary*)userInfo;
+               failure:(STFailureBlock)failure;
 
 @end

@@ -15,7 +15,7 @@ NSString* const STEscapeChars = @"!*'();:@&=+$,/?%#[]\"";
 
 const struct STDefaultsStruct STDefaults = {.Protocol = @"https",
                                             .HostSuffix = @"stretchr.com",
-                                            .Version = @"1.1",
+                                            .Version = @"1.2",
                                             .ResourceLimit = 100};
 
 const struct STHTTPMethodsStruct STHTTPMethods = {.Get = @"GET",

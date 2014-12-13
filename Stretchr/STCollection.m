@@ -27,15 +27,15 @@
     return nil;
   }
 
-  NSDictionary *_data = data[STResponseConstants.Data];
-  _rawObjects = [_data[STCollectionConstants.Items] copy];
+  _rawObjects = [data[STResponseConstants.Data] copy];
+
   _resources = [[NSMutableArray alloc] initWithCapacity:[_rawObjects count]];
   for (NSDictionary *item in _rawObjects) {
     [((NSMutableArray *)_resources)
         addObject:[STResource resourceWithData:item]];
   }
-  _count = [_data[STCollectionConstants.Count] integerValue];
-  _total = [_data[STCollectionConstants.Total] integerValue];
+  _count = [data[STCollectionConstants.Count] integerValue];
+  _total = [data[STCollectionConstants.Total] integerValue];
 
   return self;
 }

@@ -41,7 +41,7 @@
                                                method:@"GET"
                                                  path:@"people/tyler"];
 
-  XCTAssertEqualObjects(@"https://account.stretchr.com/api/v1.1/project/people/"
+  XCTAssertEqualObjects(@"https://account.stretchr.com/api/v1.2/project/people/"
                          "tyler?key=123&include=~path",
                         [request URLString]);
 
@@ -64,7 +64,7 @@
   [request setQuery:query];
 
   XCTAssertEqualObjects(
-      @"https://account.stretchr.com/api/v1.1/project/"
+      @"https://account.stretchr.com/api/v1.2/project/"
        "people/"
        "tyler?key=123&%3Aage=18..34&%3Aname=Tyler&include=~path&%3Aactive=%"
        "2A&agg=group(name,age).sum(sales).count()",

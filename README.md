@@ -2,11 +2,11 @@
 
 ## Installation
 
-The preferred method of including the Stretchr SDK in your project is through [Cocoapods](http://cocoapods.org/). To install Cocoapods, simply do:
+The preferred method of including the Stretchr SDK in your project is through [CocoaPods](http://cocoapods.org/). To install CocoaPods, simply do:
 
 `sudo gem install cocoapods`
 
-Once Cocoapods is installed, you need to add the Stretchr SDK to your Podfile. For example, in your project directory:
+Once CocoaPods is installed, you need to add the Stretchr SDK to your Podfile. For example, in your project directory:
 
 `vi Podfile`
 
